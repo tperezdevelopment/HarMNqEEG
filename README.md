@@ -6,7 +6,7 @@
     Joint China-Cuba LAB, UESTC, CNEURO
 
 
-HarMNqEEG TOOL DESCRIPTION</br>
+<strong>HarMNqEEG TOOL DESCRIPTION</strong></br>
 These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
 In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
 We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
@@ -18,22 +18,22 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 
 
-Auxiliar inputs
-outputFolder_path ----------> Path of output folder
-generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily
-                              calculate the cross spectra. Case True
-                              (1) is required to calculate the cross spectra
+<strong>Auxiliar inputs</strong>
+outputFolder_path ----------> Path of output folder</br>
+generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily</br>
+                              calculate the cross spectra. Case True</br>
+                              (1) is required to calculate the cross spectra</br>
 
 Data Gatherer
-raw_data_path -------------> Folder path of the raw data in .mat format. This folder
-                             contains subfolders by each subject. The
-                             subfolder contains a .mat file with the
-                             following parameters:
-                                - data          : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where
-                                                  nd : number of channels
-                                                  nt : epoch size (# of instants of times in an epoch)
-                                                  ne : number of epochs
-                                - sampling_freq : sampling frequency in Hz. Eg: 200
+raw_data_path -------------> Folder path of the raw data in .mat format. This folder</br>
+                             contains subfolders by each subject. The</br>
+                             subfolder contains a .mat file with the</br>
+                             following parameters:</br>
+                                - data          : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
+                                                  nd : number of channels</br>
+                                                  nt : epoch size (# of instants of times in an epoch)</br>
+                                                  ne : number of epochs</br>
+                                - sampling_freq : sampling frequency in Hz. Eg: 200</br>
                                 - cnames        : a cell array containing the names of the channels. The expected names are:
                                                   'Fp1'    'Fp2'    'F3'    'F4'    'C3'    'C4'    'P3'    'P4'    'O1'    'O2'    'F7'    'F8'    'T3'    'T4'    'T5'    'T6'    'Fz'    'Cz'    'Pz'
                                                   If the channels come in another order, they are re-arranged according to the expected order
