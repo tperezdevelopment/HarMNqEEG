@@ -26,7 +26,8 @@ generate_cross_spectra -----> Boolean parameter. Case False (0), will not  neces
                               (1) is required to calculate the cross spectra</br>
 
 <h4>Data Gatherer</h4>
-raw_data_path -------------> Folder path of the raw data in .mat format. This folder contains subfolders by each subject. The subfolder contains a .mat file with the following parameters:</br>
+raw_data_path -------------> Folder path of the raw data in .mat format. This folder contains subfolders by each subject. </br>
+                             The subfolder contains a .mat file with the following parameters:</br>
                                 - data          : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
                                                   nd : number of channels</br>
                                                   nt : epoch size (# of instants of times in an epoch)</br>
