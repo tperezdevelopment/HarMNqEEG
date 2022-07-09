@@ -6,7 +6,7 @@
     Joint China-Cuba LAB, UESTC, CNEURO
 
 
-HarMNqEEG TOOL DESCRIPTION
+HarMNqEEG TOOL DESCRIPTION</br>
 These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
 In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
 We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
