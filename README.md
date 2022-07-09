@@ -19,17 +19,15 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 
 <strong>INPUT PARAMETERS:</strong></br>
-Auxiliar inputs</br>
+<h4>Auxiliar inputs</h4>
 outputFolder_path ----------> Path of output folder</br>
-generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily</br>
-                              calculate the cross spectra. Case True</br>
+generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily
+                              calculate the cross spectra. Case True
                               (1) is required to calculate the cross spectra</br>
 
 Data Gatherer</br>
-raw_data_path -------------> Folder path of the raw data in .mat format. This folder</br>
-                             contains subfolders by each subject. The</br>
-                             subfolder contains a .mat file with the</br>
-                             following parameters:</br>
+raw_data_path -------------> Folder path of the raw data in .mat format. This folder
+                             contains subfolders by each subject. The subfolder contains a .mat file with the following parameters:</br>
                                 - data          : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
                                                   nd : number of channels</br>
                                                   nt : epoch size (# of instants of times in an epoch)</br>
@@ -38,8 +36,7 @@ raw_data_path -------------> Folder path of the raw data in .mat format. This fo
                                 - cnames        : a cell array containing the names of the channels. The expected names are:</br>
                                                   'Fp1'    'Fp2'    'F3'    'F4'    'C3'    'C4'    'P3'    'P4'    'O1'    'O2'    'F7'    'F8'    'T3'    'T4'    'T5'    'T6'    'Fz'    'Cz'    'Pz'
                                                   If the channels come in another order, they are re-arranged according to the expected order</br>
-                                - data_code     : is the name of the original data file just for purpose of identification.</br>
-                                                  It can be a code used by the owner to identify the data.</br>
+                                - data_code     : is the name of the original data file just for purpose of identification. It can be a code used by the owner to identify the data.</br>
                                 - reference     : a string containing the name of the reference of the data.</br>
                                 - age           : subject's age at recording time</br>
                                 - sex           : subject's sex</br>
