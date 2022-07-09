@@ -21,57 +21,60 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <h2>INPUT PARAMETERS:</h2> 
 <h4>Auxiliar inputs</h4>
 <ul>
-<li>outputFolder_path : Path of output folder</li>
-<li>generate_cross_spectra : Boolean parameter. Case False (0), will not  necessarily calculate the cross spectra. Case True (1) is required to calculate the cross spectra</li>
+<li>outputFolder_path: Path of output folder</li>
+<li>generate_cross_spectra: Boolean parameter. Case False (0), will not  necessarily calculate the cross spectra. Case True (1) is required to calculate the cross spectra</li>
 </ul>
 
 <h4>Data Gatherer</h4>
 <ul>
-<li>raw_data_path: Folder path of the raw data in .mat format. This folder contains subfolders by each subject. 
+<li>raw_data_path : Folder path of the raw data in .mat format. This folder contains subfolders by each subject. 
                              The subfolder contains a .mat file with the following parameters:</br>
-<ul style="list-style-type: none;">                              
-							<li style="list-style-type: none;">  - data  : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
+<ul>                              
+							<li>  data  : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
                                               <ul style="list-style-type: none;"><li>    nd : number of channels</li>
                                                  <li> nt : epoch size (# of instants of times in an epoch)</li>
                                                  <li> ne : number of epochs</li></ul>
-                              <li>  - sampling_freq : sampling frequency in Hz. Eg: 200</li>
-                              <li>   - cnames    : a cell array containing the names of the channels. </br>
+                              <li>   sampling_freq : sampling frequency in Hz. Eg: 200</li>
+                              <li>   cnames    : a cell array containing the names of the channels. </br>
 							                      The expected names are:</br>
                                                   'Fp1'    'Fp2'    'F3'    'F4'    'C3'    'C4'    'P3'    'P4'    'O1'    'O2'    'F7'    'F8'    'T3'    'T4'    'T5'    'T6'    'Fz'    'Cz'    'Pz'
                                                   If the channels come in another order, they are re-arranged according to the expected order</li>
-                               <li> - data_code     : is the name of the original data file just for purpose of identification. It can be a code used by the owner to identify the data.</li>
-                              <li>  - reference     : a string containing the name of the reference of the data.</li>
-                               <li> - age           : subject's age at recording time</li>
-                               <li> - sex           : subject's sex</li>
-                               <li> - country       : country providing the data</li>
-                               <li> - eeg_device    : EEG hardware where the data was recorded</li>
+                               <li>  data_code     : is the name of the original data file just for purpose of identification. It can be a code used by the owner to identify the data.</li>
+                              <li>   reference     : a string containing the name of the reference of the data.</li>
+                               <li>  age           : subject's age at recording time</li>
+                               <li>  sex           : subject's sex</li>
+                               <li>  country       : country providing the data</li>
+                               <li>  eeg_device    : EEG hardware where the data was recorded</li>
 								</ul></li></ul>
 								
 <h4>Preproccess Guassianize Data </h4>
-<ul> <li>typeLog ----------> Type of gaussianize method to apply. </br> 
-										Options:</br>
-                                   <ulstyle="list-style-type: none;"><li> typeLog(1)-> for log (Boolean):     log-spectrum</li>
-                                    <li>typeLog(2)-> for riemlogm (Boolean): cross-spectrum with riemannian metric</li></ul>
+<ul> <li>typeLog: Type of gaussianize method to apply. </br> 
+										<strong>Options:</strong></br>
+                                   <ul><li> typeLog(1): for log (Boolean):     log-spectrum</li>
+                                    <li>typeLog(2): for riemlogm (Boolean): cross-spectrum with riemannian metric</li></ul>
 </li></ul>									
 									
 
 
 <h4>Calculate z-scores and harmonize </h4>
-batch_correction --> List of the batch correction that we have. </br>
-				     Options:</br>
-                     batch_correction(1)->  ANT_Neuro-Malaysia</br>
-                     batch_correction(2)->  BrainAmp_DC-Chengdu_2014</br>
-                     batch_correction(3)->  BrainAmp_MR_plus_64C-Chongqing</br>
-                     batch_correction(4)->  BrainAmp_MR_plus-Germany_2013</br>
-                     batch_correction(5)->  DEDAAS Barbados1978</br>
-                     batch_correction(6)->  DEDAAS-NewYork_1970s</br>
-                     batch_correction(7)->  EGI-256 HCGSN_Zurich(2017)-Swiss</br>
-                     batch_correction(8)->  Medicid-3M Cuba1990</br>
-                     batch_correction(9)->  Medicid-4 Cuba2003</br>
-                     batch_correction(10)-> Medicid_128Ch-CHBMP</br>
-                     batch_correction(11)-> NihonKohden-Bern(1980)_Swiss</br>
-                     batch_correction(12)-> actiCHamp_Russia_2013</br>
-                     batch_correction(13)-> Neuroscan_synamps_2-Colombia</br>
-                     batch_correction(14)-> nvx136-Russia(2013)</br>
-								
+<ul>
+<li>batch_correction --> List of the batch correction that we have. </br>
+				     <strong>Options:</strong></br>
+		<ul>			 
+                    <li> batch_correction(1):  ANT_Neuro-Malaysia</li>
+                    <li> batch_correction(2):  BrainAmp_DC-Chengdu_2014</li>
+                    <li> batch_correction(3):  BrainAmp_MR_plus_64C-Chongqing</li>
+                    <li>batch_correction(4):  BrainAmp_MR_plus-Germany_2013</li>
+                    <li> batch_correction(5):  DEDAAS Barbados1978</li>
+                    <li> batch_correction(6):  DEDAAS-NewYork_1970s</li>
+                    <li> batch_correction(7):  EGI-256 HCGSN_Zurich(2017)-Swiss</li>
+                    <li>batch_correction(8):  Medicid-3M Cuba1990</li>
+                    <li> batch_correction(9):  Medicid-4 Cuba2003</li>
+                    <li> batch_correction(10): Medicid_128Ch-CHBMP</li>
+                    <li> batch_correction(11): NihonKohden-Bern(1980)_Swiss</li>
+                    <li> batch_correction(12): actiCHamp_Russia_2013</li>
+                    <li> batch_correction(13): Neuroscan_synamps_2-Colombia</li>
+                    <li> batch_correction(14): nvx136-Russia(2013)</li>
+	   </ul>							
 
+</ul>
