@@ -20,10 +20,9 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 <strong>INPUT PARAMETERS:</strong></br>
 <h4>Auxiliar inputs</h4>
-outputFolder_path ----------> Path of output folder</br>
-generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily
-                              calculate the cross spectra. </br> Case True
-                              (1) is required to calculate the cross spectra</br>
+<ul>
+<li>outputFolder_path: Path of output folder</li>
+<li>generate_cross_spectra :Boolean parameter. Case False (0), will not  necessarily calculate the cross spectra. Case True (1) is required to calculate the cross spectra</li></ul>
 
 <h4>Data Gatherer</h4>
 raw_data_path -------------> Folder path of the raw data in .mat format. This folder contains subfolders by each subject. The subfolder contains a .mat file with the following parameters:</br>
