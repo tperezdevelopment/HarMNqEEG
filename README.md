@@ -26,8 +26,7 @@ generate_cross_spectra -----> Boolean parameter. Case False (0), will not  neces
                               (1) is required to calculate the cross spectra</br>
 
 <h4>Data Gatherer</h4>
-raw_data_path -------------> Folder path of the raw data in .mat format. This folder
-                             contains subfolders by each subject. The subfolder contains a .mat file with the following parameters:</br>
+raw_data_path -------------> Folder path of the raw data in .mat format. This folder contains subfolders by each subject. The subfolder contains a .mat file with the following parameters:</br>
                                 - data          : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
                                                   nd : number of channels</br>
                                                   nt : epoch size (# of instants of times in an epoch)</br>
@@ -45,13 +44,15 @@ raw_data_path -------------> Folder path of the raw data in .mat format. This fo
 								
 								
 <h4>Preproccess Guassianize Data </h4>
-typeLog ----------> Type of gaussianize method to apply. Options:</br>
+typeLog ----------> Type of gaussianize method to apply. </br> 
+					Options:</br>
                     typeLog(1)-> for log (Boolean):     log-spectrum</br>
                     typeLog(2)-> for riemlogm (Boolean): cross-spectrum with riemannian metric</br>
 
 
 <h4>Calculate z-scores and harmonize </h4>
-batch_correction --> List of the batch correction that we have. Options:</br>
+batch_correction --> List of the batch correction that we have. </br>
+				     Options:</br>
                      batch_correction(1)->  ANT_Neuro-Malaysia</br>
                      batch_correction(2)->  BrainAmp_DC-Chengdu_2014</br>
                      batch_correction(3)->  BrainAmp_MR_plus_64C-Chongqing</br>
