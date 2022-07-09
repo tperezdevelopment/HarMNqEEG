@@ -14,18 +14,18 @@ of the variability in the EEG that is not due to the neurophysiological activity
 at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of 
 eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes 
 the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
-choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.
+choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.</br>
 
 
 
 <strong>INPUT PARAMETERS:</strong></br>
-<h5>Auxiliar inputs</h5>
+<h4>Auxiliar inputs</h4>
 outputFolder_path ----------> Path of output folder</br>
 generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily
                               calculate the cross spectra. </br> Case True
                               (1) is required to calculate the cross spectra</br>
 
-Data Gatherer</br>
+<h4>Data Gatherer</h4>
 raw_data_path -------------> Folder path of the raw data in .mat format. This folder
                              contains subfolders by each subject. The subfolder contains a .mat file with the following parameters:</br>
                                 - data          : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
@@ -44,13 +44,13 @@ raw_data_path -------------> Folder path of the raw data in .mat format. This fo
                                 - eeg_device    : EEG hardware where the data was recorded</br>
 								
 								
-Preproccess Guassianize Data </br>
+<h4>Preproccess Guassianize Data </h4>
 typeLog ----------> Type of gaussianize method to apply. Options:</br>
                     typeLog(1)-> for log (Boolean):     log-spectrum</br>
                     typeLog(2)-> for riemlogm (Boolean): cross-spectrum with riemannian metric</br>
 
 
-Calculate z-scores and harmonize </br>
+<h4>Calculate z-scores and harmonize </h4>
 batch_correction --> List of the batch correction that we have. Options:</br>
                      batch_correction(1)->  ANT_Neuro-Malaysia</br>
                      batch_correction(2)->  BrainAmp_DC-Chengdu_2014</br>
