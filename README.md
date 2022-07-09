@@ -19,10 +19,10 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 
 <strong>INPUT PARAMETERS:</strong></br>
-<h4>Auxiliar inputs</h4>
+<h5>Auxiliar inputs</h5>
 outputFolder_path ----------> Path of output folder</br>
 generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily
-                              calculate the cross spectra. Case True
+                              calculate the cross spectra. </br> Case True
                               (1) is required to calculate the cross spectra</br>
 
 Data Gatherer</br>
