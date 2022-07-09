@@ -31,7 +31,7 @@ end
 if ~exist('dsetname', 'var') || isempty(dsetname)
     error(['Check the dsetname attribute: ' dsetname ' not exist or is empty']);
 end
-sets = vertcat(att.Datasets.Name);
+sets = char({att.Datasets.Name}');
 [iex, ipos] = ismember(dsetname, sets, 'rows');
 
 if ~iex

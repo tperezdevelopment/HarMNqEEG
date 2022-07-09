@@ -15,33 +15,33 @@ try
 
         switch find(batch_correction)
             case 1
-                reRefBatch={nomenclatura_batch,'DEDAAS Barbados1978'};
+                reRefBatch={nomenclatura_batch,'ANTNeuro Malaysia'};
             case 2
-                reRefBatch={nomenclatura_batch, 'BrainAmp_MR_plus_64C-Chongqing'};
+                reRefBatch={nomenclatura_batch, 'BrainAmpDC Chengdu'};                 
             case 3
-                reRefBatch={nomenclatura_batch, 'BrainAmp_DC-Chengdu_2014'};
+                reRefBatch={nomenclatura_batch, 'BrainAmpMRplus Chongqing'};
             case 4
-                reRefBatch={nomenclatura_batch, 'Medicid3M-Cuba1990'};
+                reRefBatch={nomenclatura_batch, 'BrainAmpMRplus Germany'};
             case 5
-                reRefBatch={nomenclatura_batch, 'Medicid-4-Cuba'};
+                reRefBatch={nomenclatura_batch, 'DEDAAS Barbados1978'};
             case 6
-                reRefBatch={nomenclatura_batch, 'Medicid_128Ch-CHBMP'};
+                reRefBatch={nomenclatura_batch, 'DEDAAS NewYork'};
             case 7
-                reRefBatch={nomenclatura_batch, 'Neuroscan_synamps_2-Colombia'};
+                reRefBatch={nomenclatura_batch, 'EGI Zurich'};
             case 8
-                reRefBatch={nomenclatura_batch, 'ANT_Neuro-Malaysia'};
+                reRefBatch={nomenclatura_batch, 'Medicid-3M Cuba1990'};
             case 9
-                reRefBatch={nomenclatura_batch, 'BrainAmp_MR_plus-Germany_2013'};
+                reRefBatch={nomenclatura_batch, 'Medicid-4 Cuba2003'};
             case 10
-                reRefBatch={nomenclatura_batch, 'actiCHamp_Russia_2013'};
+                reRefBatch={nomenclatura_batch, 'Medicid-5 CHBMP'};
             case 11
-                reRefBatch={nomenclatura_batch, 'nvx136-Russia(2013)'};
+                reRefBatch={nomenclatura_batch, 'NihonKohden Bern'};
             case 12
-                reRefBatch={nomenclatura_batch, 'EGI-256 HCGSN_Zurich(2017)-Swiss'};
+                reRefBatch={nomenclatura_batch, 'actiChamp Russia'};
             case 13
-                reRefBatch={nomenclatura_batch, 'NihonKohden-Bern(1980)_Swiss'};
+                reRefBatch={nomenclatura_batch, 'neuroscan Colombia'};
             case 14
-                reRefBatch={nomenclatura_batch, 'DEDAAS-NewYork_1970s'};
+                reRefBatch={nomenclatura_batch, 'nvx136 Russia'};
             otherwise
                 reRefBatch=[];
         end

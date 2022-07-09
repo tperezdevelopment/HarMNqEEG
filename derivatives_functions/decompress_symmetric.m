@@ -13,7 +13,7 @@ function [MatS] = decompress_symmetric(MVecS, nr)
 % if x1 > 0, nr = x1; elseif x2 > 0, nr = x2; else nr = 0; end
 % if (nr - floor(nr)) ~= 0, %error, is not an integer number
 nec = (nr+1)*nr./2;
-if ne ~= nec %error, is not an integer number
+if ne ~= nec %#ok<BDSCI> %error, is not an integer number
     error('Matrix is not in the corect compacted format for symmetric matrices'); 
 end
 MatS = zeros(nr, nr, nf);
@@ -21,7 +21,7 @@ m = ones(nr, nr);
 indU = find(triu(m));
 for k=1:nf
     m = zeros(nr, nr);
-    m(indU) = MVecS(:,k);
+    m(indU) = MVecS(:,k); %#ok<FNDSB> 
     m = m + triu(m,1)';
     MatS(:,:,k) = m;
 end

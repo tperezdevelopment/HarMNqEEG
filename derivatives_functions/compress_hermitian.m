@@ -15,6 +15,6 @@ for k=1:nf
             error('The matrix is not hermitian');
         end
     end
-    MatC(:,:,k) = triu(real(M))-tril(imag(M));
+    MatC(:,:,k) = triu(real(M))+tril(imag(M));
 end
 end

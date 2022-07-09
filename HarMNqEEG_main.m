@@ -7,21 +7,14 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 
 
 % HarMNqEEG TOOL DESCRIPTION
-%% This tool evaluates the  batch harmonized z-scores based on the multinational norms.
-% This toolbox extends the frequency domain quantitative electroencephalography (qEEG) methods
-% pursuing higher sensitivity to detect Brain Developmental Disorders. Prior qEEG work lacked
-% integration of cross-spectral information omitting important functional connectivity descriptors.
-% Lack of geographical diversity precluded accounting for site-specific variance,
-% increasing qEEG nuisance variance. We ameliorate these weaknesses. i)
-% Create lifespan Riemannian multinational qEEG norms for cross-spectral tensors.
-% These norms result from the HarMNqEEG project fostered by the Global Brain Consortium.
-% We calculate the norms with data from 9 countries, 12 devices, and 14 studies,
-% including 1564 subjects. qEEG traditional and Riemannian descriptive parameters were calculated
-% using additive mixed-effects models. We demonstrate qEEG "batch effects" and provide methods
-% to calculate harmonized z-scores. ii) provide traditional and Riemannian norms. iii)
-% We offer open code to calculate different individual z-scores from the HarMNqEEG dataset.
-% These results contribute to developing bias-free, low-cost neuroimaging technologies applicable
-% in various health settings
+%% These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
+%% In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
+%% We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
+%% of the variability in the EEG that is not due to the neurophysiological activity of the person, but rather than to impedance 
+%% at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of 
+%% eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes 
+%% the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
+%% choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.
 
 
 % INPUT PARAMETERS:
@@ -62,20 +55,23 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 
 %% Calculate z-scores and harmonize %%
 %%% batch_correction --> List of the batch correction that we have. Options:
-%%%                      batch_correction(1)->  DEDAAS Barbados1978
-%%%                      batch_correction(2)->  BrainAmp_MR_plus_64C-Chongqing
-%%%                      batch_correction(3)->  BrainAmp_DC-Chengdu_2014
-%%%                      batch_correction(4)->  Medicid3M-Cuba1990
-%%%                      batch_correction(5)->  Medicid-4-Cuba
-%%%                      batch_correction(6)->  Medicid_128Ch-CHBMP
-%%%                      batch_correction(7)->  Neuroscan_synamps_2-Colombia
-%%%                      batch_correction(8)->  ANT_Neuro-Malaysia
-%%%                      batch_correction(9)->  BrainAmp_MR_plus-Germany_2013
-%%%                      batch_correction(10)-> actiCHamp_Russia_2013
-%%%                      batch_correction(11)-> nvx136-Russia(2013)
-%%%                      batch_correction(12)-> EGI-256 HCGSN_Zurich(2017)-Swiss
-%%%                      batch_correction(13)-> NihonKohden-Bern(1980)_Swiss
-%%%                      batch_correction(14)-> DEDAAS-NewYork_1970s
+%%%                      batch_correction(1)->  ANT_Neuro-Malaysia
+%%%                      batch_correction(2)->  BrainAmp_DC-Chengdu_2014
+%%%                      batch_correction(3)->  BrainAmp_MR_plus_64C-Chongqing
+%%%                      batch_correction(4)->  BrainAmp_MR_plus-Germany_2013
+%%%                      batch_correction(5)->  DEDAAS Barbados1978
+%%%                      batch_correction(6)->  DEDAAS-NewYork_1970s
+%%%                      batch_correction(7)->  EGI-256 HCGSN_Zurich(2017)-Swiss
+%%%                      batch_correction(8)->  Medicid-3M Cuba1990
+%%%                      batch_correction(9)->  Medicid-4 Cuba2003
+%%%                      batch_correction(10)-> Medicid_128Ch-CHBMP
+%%%                      batch_correction(11)-> NihonKohden-Bern(1980)_Swiss
+%%%                      batch_correction(12)-> actiCHamp_Russia_2013
+%%%                      batch_correction(13)-> Neuroscan_synamps_2-Colombia
+%%%                      batch_correction(14)-> nvx136-Russia(2013)
+
+
+
 
 
 %%Checking the parameters
@@ -140,6 +136,9 @@ for i=1:size(pathnames,2)
         [jsonFile]=HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_init,[derivatives_output_folder filesep data_code], data_struct.fmin,...
             data_struct.freqres, data_struct.fmax, data_struct.nt, data_struct.ffteeg, data_struct.name, data_struct.pais, data_struct.EEGMachine, data_struct.sex, data_struct.age,reRefBatch);
 
+       
+
+        
         %% END STEP 1 Cross_spectrum
 
         if typeLog(1)==1

@@ -19,7 +19,7 @@ switch typeLog
         end
     case  'riemlogm'  %% developed by Bosch
         fn = fieldnames(DPs_table);
-        ind = strmatch(metaDataName, fn);
+        ind = strmatch(metaDataName, fn); %#ok<*MATCH2> 
         st = strrep(fn(ind), metaDataName, '');
         xi = zeros(length(st),1); yi = xi;
         for k=1:length(st)
