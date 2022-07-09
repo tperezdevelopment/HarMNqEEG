@@ -29,9 +29,9 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <ul>
 <li>raw_data_path: Folder path of the raw data in .mat format. This folder contains subfolders by each subject. 
                              The subfolder contains a .mat file with the following parameters:</br>
-<ul>                              
-							<li> <ul><li> - data  : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
-                                              <ul><li>    nd : number of channels</li>
+<ul style="list-style-type: none;">                              
+							<li>  - data  : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where</br>
+                                              <ul style="list-style-type: none;"><li>    nd : number of channels</li>
                                                  <li> nt : epoch size (# of instants of times in an epoch)</li>
                                                  <li> ne : number of epochs</li></ul>
                               <li>  - sampling_freq : sampling frequency in Hz. Eg: 200</li>
