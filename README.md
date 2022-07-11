@@ -91,7 +91,7 @@ Matlab 2021b or higher
 </ul>
 
 <h2 dir="auto">HarMNqEEG Output Description</h2>
-<strong>Folder struct</strong></br>
+<strong>Folder structure</strong></br>
 The tool will be save a subfolder 'derivatives' (following the struct BIDs, https://bids.neuroimaging.io/) into the folder defined by the user with the outputFolder_path parameter. Into the subfolder derivatives, the result will saved by each folder subject. </br>
 <strong>Type of output files</strong></br>
 Into each folder subject will be saved two files HarMNqeeg_derivatives.json and HarMNqeeg_derivatives.h5. The .h5 file is a hdf5 format. HDF5 is a data model, library, and file format for storing and managing data (More info: https://portal.hdfgroup.org/display/HDF5/HDF5). The two files will saved commun values like the name of the tool, description, and other metas info. Also will be saved attributes and matrix description</br>
@@ -118,8 +118,7 @@ Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:
    <li>Raw_Riemannian_Cross_Spectra: Raw Cross-spectral matrix transformed to the Riemanian space.</li>
    <li>Harmonized_Raw_Cross_Spectra: Harmonized Raw Cross-spectral matrix transformed to the Riemanian space.</li>
    <li>Z_scores_Riemannian_Cross_Spectra: Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>
-   <li>Harmonized_Z_scores_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>
-   <li></li>
+   <li>Harmonized_Z_scores_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>   
 
 </ol>
 
