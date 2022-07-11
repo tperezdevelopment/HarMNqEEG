@@ -55,20 +55,20 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 
 %% Calculate z-scores and harmonize %%
 %%% batch_correction --> List of the batch correction that we have. Options:
-%%%                      batch_correction(1)->  ANT_Neuro-Malaysia
-%%%                      batch_correction(2)->  BrainAmp_DC-Chengdu_2014
-%%%                      batch_correction(3)->  BrainAmp_MR_plus_64C-Chongqing
-%%%                      batch_correction(4)->  BrainAmp_MR_plus-Germany_2013
-%%%                      batch_correction(5)->  DEDAAS Barbados1978
-%%%                      batch_correction(6)->  DEDAAS-NewYork_1970s
-%%%                      batch_correction(7)->  EGI-256 HCGSN_Zurich(2017)-Swiss
-%%%                      batch_correction(8)->  Medicid-3M Cuba1990
-%%%                      batch_correction(9)->  Medicid-4 Cuba2003
-%%%                      batch_correction(10)-> Medicid_128Ch-CHBMP
-%%%                      batch_correction(11)-> NihonKohden-Bern(1980)_Swiss
-%%%                      batch_correction(12)-> actiCHamp_Russia_2013
-%%%                      batch_correction(13)-> Neuroscan_synamps_2-Colombia
-%%%                      batch_correction(14)-> nvx136-Russia(2013)
+%%%                      1->  ANT_Neuro-Malaysia
+%%%                      2->  BrainAmp_DC-Chengdu_2014
+%%%                      3->  BrainAmp_MR_plus_64C-Chongqing
+%%%                      4->  BrainAmp_MR_plus-Germany_2013
+%%%                      5->  DEDAAS Barbados1978
+%%%                      6->  DEDAAS-NewYork_1970s
+%%%                      7->  EGI-256 HCGSN_Zurich(2017)-Swiss
+%%%                      8->  Medicid-3M Cuba1990
+%%%                      9->  Medicid-4 Cuba2003
+%%%                      10-> Medicid_128Ch-CHBMP
+%%%                      11-> NihonKohden-Bern(1980)_Swiss
+%%%                      12-> actiCHamp_Russia_2013
+%%%                      13-> Neuroscan_synamps_2-Colombia
+%%%                      14-> nvx136-Russia(2013)
 
 
 
@@ -150,7 +150,7 @@ for i=1:size(pathnames,2)
 
             %% Save the Raw Log-Spectra
             dsetname = 'Raw_Log_Spectra'; dtype='Real_Matrix';
-            DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq'};
+            DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq.'};
             prec='double';
             [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'log', 'log'), DsetAttr);
 

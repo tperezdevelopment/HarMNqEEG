@@ -25,7 +25,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <li> Call the main function HarMNqEEG_main.m</li>
 </ol>
 
-<strong> Requirements Installation</strong>
+<strong> Requirements Installation</strong></br>
 Matlab 2021b or higher
 
 
@@ -72,23 +72,56 @@ Matlab 2021b or higher
 <li>batch_correction --> List of the batch correction that we have. </br>
 				     <strong>Options:</strong></br>
 		<ul>			 
-                    <li> batch_correction(1):  ANT_Neuro-Malaysia</li>
-                    <li> batch_correction(2):  BrainAmp_DC-Chengdu_2014</li>
-                    <li> batch_correction(3):  BrainAmp_MR_plus_64C-Chongqing</li>
-                    <li>batch_correction(4):  BrainAmp_MR_plus-Germany_2013</li>
-                    <li> batch_correction(5):  DEDAAS Barbados1978</li>
-                    <li> batch_correction(6):  DEDAAS-NewYork_1970s</li>
-                    <li> batch_correction(7):  EGI-256 HCGSN_Zurich(2017)-Swiss</li>
-                    <li>batch_correction(8):  Medicid-3M Cuba1990</li>
-                    <li> batch_correction(9):  Medicid-4 Cuba2003</li>
-                    <li> batch_correction(10): Medicid_128Ch-CHBMP</li>
-                    <li> batch_correction(11): NihonKohden-Bern(1980)_Swiss</li>
-                    <li> batch_correction(12): actiCHamp_Russia_2013</li>
-                    <li> batch_correction(13): Neuroscan_synamps_2-Colombia</li>
-                    <li> batch_correction(14): nvx136-Russia(2013)</li>
+                    <li> 1:  ANT_Neuro-Malaysia</li>
+                    <li> 2:  BrainAmp_DC-Chengdu_2014</li>
+                    <li> 3:  BrainAmp_MR_plus_64C-Chongqing</li>
+                    <li> 4:  BrainAmp_MR_plus-Germany_2013</li>
+                    <li> 5:  DEDAAS Barbados1978</li>
+                    <li> 6:  DEDAAS-NewYork_1970s</li>
+                    <li> 7:  EGI-256 HCGSN_Zurich(2017)-Swiss</li>
+                    <li> 8:  Medicid-3M Cuba1990</li>
+                    <li> 9:  Medicid-4 Cuba2003</li>
+                    <li> 10: Medicid_128Ch-CHBMP</li>
+                    <li> 11: NihonKohden-Bern(1980)_Swiss</li>
+                    <li> 12: actiCHamp_Russia_2013</li>
+                    <li> 13: Neuroscan_synamps_2-Colombia</li>
+                    <li> 14: nvx136-Russia(2013)</li>
 	   </ul>							
 
 </ul>
+
+<h2 dir="auto">HarMNqEEG Output Description</h2>
+<strong>Folder struct</strong></br>
+The tool will be save a subfolder 'derivatives' (following the struct BIDs, https://bids.neuroimaging.io/) into the folder defined by the user with the outputFolder_path parameter. Into the subfolder derivatives, the result will saved by each folder subject. </br>
+<strong>Type of output files</strong></br>
+Into each folder subject will be saved two files HarMNqeeg_derivatives.json and HarMNqeeg_derivatives.h5. The .h5 file is a hdf5 format. HDF5 is a data model, library, and file format for storing and managing data (More info: https://portal.hdfgroup.org/display/HDF5/HDF5). The two files will saved commun values like the name of the tool, description, and other metas info. Also will be saved attributes and matrix description</br>
+<ol>
+   <li>Name_Subject: name of the subject</li>
+   <li>Country: of the subject</li>
+   <li>EEGMachine: EEG device with which the study was carried out</li>
+   <li>Sex: sex of the subject</li>
+   <li>Age: age of the subject</li>
+   <li>MinFreq: Minimum spectral frequency (according to the data recording maybe down-sampled if higher than the expected, or the original one if lower than the expected)</li>
+   <li>FreqRes: Frequency resolution (maybe down-sampled if higher than the expected, or the original one if lower than the expected)</li>
+   <li>MaxFreq: Maximum spectral frequency (according to the data recording maybe down-sampled if higher than the expected, or the original one if lower than the expected) </li>
+   <li>Epoch_Length: Epoch size (# of instants of times in an epoch)</li>
+   <li>FFT_coefs: Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).</li>
+   <li>reRefBatch: In case of the batch_correction is not empty. The reRefBatch is the batch correction of the z-scores</li>
+</ol>
+   
+Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:   
+<ol>
+   <li>Raw_Log_Spectra: Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq</li>
+   <li>Harmonized_Log_Spectra: Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
+   <li>Z_scores_Log_Spectra: The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the power spectral density (PSD) of channel i and frequency f. The raw spectra is transformed to the Log space to achieve quasi gaussian distribution.</li>
+   <li>Harmonized_Z_scores_Log_Spectra: Harmonized Z-score of the log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
+   <li>Raw_Riemannian_Cross_Spectra: Raw Cross-spectral matrix transformed to the Riemanian space.</li>
+   <li>Harmonized_Raw_Cross_Spectra: Harmonized Raw Cross-spectral matrix transformed to the Riemanian space.</li>
+   <li>Z_scores_Riemannian_Cross_Spectra: Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>
+   <li>Harmonized_Z_scores_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>
+   <li></li>
+
+</ol>
 
 
 <h2 dir="auto">HarMNqEEG EXAMPLE</h2>

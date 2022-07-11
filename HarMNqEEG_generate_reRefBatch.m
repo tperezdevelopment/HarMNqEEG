@@ -4,16 +4,18 @@ function [reRefBatch] = HarMNqEEG_generate_reRefBatch(batch_correction,country, 
 nomenclatura_batch=[country '_' EEGMachine];
 
 try
-    batch_correction=str2double(batch_correction); 
+    if class(batch_correction)=="string" || class(batch_correction)=="char"
+        batch_correction=str2double(batch_correction);
+    end
 
     if isempty(find(batch_correction, 1))
-         reRefBatch=[];
+        reRefBatch=[];
     else
         switch batch_correction
             case 1
                 reRefBatch={nomenclatura_batch,'ANTNeuro Malaysia'};
             case 2
-                reRefBatch={nomenclatura_batch, 'BrainAmpDC Chengdu'};                 
+                reRefBatch={nomenclatura_batch, 'BrainAmpDC Chengdu'};
             case 3
                 reRefBatch={nomenclatura_batch, 'BrainAmpMRplus Chongqing'};
             case 4
