@@ -6,7 +6,7 @@
     Joint China-Cuba LAB, UESTC, CNEURO
 
 
-<strong>HarMNqEEG TOOL DESCRIPTION</strong></br>
+<h2 dir="auto">HarMNqEEG TOOL DESCRIPTION</h2>
 These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
 In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
 We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
@@ -16,6 +16,17 @@ eliminating a scale factor that affects the signal amplitude and refers all the 
 the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
 choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.</br>
 
+
+
+<h2 dir="auto">HarMNqEEG Installation and Requirements</h2>
+<ol dir="auto">
+<li> Clone the the repository or download the .zip folder. </li>
+<li>Extact the folder and Add the HarMNqEEG folder to your path in MATLAB</li>
+<li> Call the main function HarMNqEEG_main.m</li>
+</ol>
+
+<strong> Requirements Installation</strong>
+Matlab 2021b or higher
 
 
 <h2 dir="auto">INPUT PARAMETERS:</h2> 
@@ -79,7 +90,8 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 </ul>
 
-<strong>HarMNqEEG EXAMPLE</strong></br>
+
+<h2 dir="auto">HarMNqEEG EXAMPLE</h2>
 In the folder example_data, there are two subfolders and the test_HarMNqEEG.m file to run the tool with data example.
 
 <ul>
