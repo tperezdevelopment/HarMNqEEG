@@ -8,11 +8,11 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 
 % HarMNqEEG TOOL DESCRIPTION
 % % These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
-% % In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
-% % We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
-% % of the variability in the EEG that is not due to the neurophysiological activity of the person, but rather than to impedance 
-% % at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of 
-% % eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes 
+% % In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage.
+% % We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent
+% % of the variability in the EEG that is not due to the neurophysiological activity of the person, but rather than to impedance
+% % at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of
+% % eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes
 % % the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
 % % choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.
 
@@ -116,8 +116,8 @@ for i=1:size(pathnames,2)
         all_data =importdata(filepath{1});
         [~, data_code, ~] = fileparts(filename{1});
 
-        %% Disp information
-         disp(['Processing case ', data_code]);
+        %% Disp information. Begin process by case
+        disp(['BEGIN PROCESS FOR ', data_code]);
 
         %% BEGIN STEP 1 Cross_spectrum
         if generate_cross_spectra  %%Call data_gatherer
@@ -139,9 +139,9 @@ for i=1:size(pathnames,2)
         [jsonFile]=HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_init,[derivatives_output_folder filesep data_code], data_struct.fmin,...
             data_struct.freqres, data_struct.fmax, data_struct.nt, data_struct.ffteeg, data_struct.name, data_struct.pais, data_struct.EEGMachine, data_struct.sex, data_struct.age,reRefBatch);
 
-       
 
-        
+
+
         %% END STEP 1 Cross_spectrum
 
         if typeLog(1)==1
@@ -216,6 +216,8 @@ for i=1:size(pathnames,2)
         %% Saving json file
         saveJSON(jsonFile,[derivatives_output_folder filesep data_code filesep 'HarMNqeeg_derivatives.json'])
 
+        %% Disp information. End process by case
+        disp(['END PROCESS FOR ', data_code]);
 
 
 

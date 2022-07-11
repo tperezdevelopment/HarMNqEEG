@@ -18,11 +18,11 @@ end
 
 %% STEP 3 Calculation of the z-scores and the hamornized steps
 % Get DPs_table for calculate Step 3
-try 
+try
     [DPs_table] = HarMNqEEG_genMetaDataTable(data_struct, veclogS, typeLog);
 catch ME
-  rethrow(ME);
-end    
+    rethrow(ME);
+end
 
 
 % Creating tmp folder
@@ -34,13 +34,13 @@ writetable(DPs_table,file_DPs_table_csv);
 T=mnhs.Ttest;
 
 % Deleting the tmp folder
-warning('off', 'MATLAB:MKDIR:DirectoryExists'); %% turn off the warning
-if exist([pwd filesep 'tmp'], 'dir')
-   rmdir([pwd filesep 'tmp'], 's');
-end    
-
-warning('on', 'MATLAB:MKDIR:DirectoryExists'); %% turn on again the warning
-
+try
+    if exist([pwd filesep 'tmp'], 'dir')
+        rmdir([pwd filesep 'tmp'], 's');
+    end
+catch ME
+    rethrow(ME);
+end
 
 
 

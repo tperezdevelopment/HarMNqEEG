@@ -1,8 +1,17 @@
 clear; clc;
 
-raw_data_path='D:\BOSCH\CORRIDA DE DATOS PARA HARMNQEEG';
+%% For generate the cross spectra options
+% raw_data_path=[pwd filesep 'example_data' filesep 'without_the_cross_spectra_generated'];
+% generate_cross_spectra=1;
+% outputFolder_path=[pwd filesep 'HARMNqEEG_Result_without_the_cross_spectra_generated'];
+
+%% For cross spectra generated
+raw_data_path=[pwd filesep 'example_data' filesep 'with_cross_spectra_generated'];
 generate_cross_spectra=0;
-outputFolder_path=[pwd filesep 'HARMNqEEG_Result_for_Bosch_10-07-2022_CIAABL3'];
+outputFolder_path=[pwd filesep 'HARMNqEEG_Result_with_cross_spectra_generated'];
+
+
+
 typeLog='1 1';
 batch_correction='6';
 
