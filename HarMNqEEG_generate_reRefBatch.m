@@ -1,19 +1,15 @@
 function [reRefBatch] = HarMNqEEG_generate_reRefBatch(batch_correction,country, EEGMachine)
 %% This will generate the reference for the batch correction
 
-
 nomenclatura_batch=[country '_' EEGMachine];
 
 try
-    batch_correction=str2num(batch_correction); %#ok<ST2NM>
+    batch_correction=str2double(batch_correction); 
 
-    if sum(batch_correction)>1
-        error('You must select only one batch correction');
-    elseif isempty(find(batch_correction, 1))
+    if isempty(find(batch_correction, 1))
          reRefBatch=[];
     else
-
-        switch find(batch_correction)
+        switch batch_correction
             case 1
                 reRefBatch={nomenclatura_batch,'ANTNeuro Malaysia'};
             case 2
@@ -51,5 +47,5 @@ catch
     error('Incorrect definition of the parameter "Batch correction"')
 
 end
-end
+
 

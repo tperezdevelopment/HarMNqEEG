@@ -7,24 +7,24 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 
 
 % HarMNqEEG TOOL DESCRIPTION
-%% These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
-%% In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
-%% We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
-%% of the variability in the EEG that is not due to the neurophysiological activity of the person, but rather than to impedance 
-%% at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of 
-%% eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes 
-%% the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
-%% choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.
+% % These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
+% % In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
+% % We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
+% % of the variability in the EEG that is not due to the neurophysiological activity of the person, but rather than to impedance 
+% % at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of 
+% % eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes 
+% % the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
+% % choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.
 
 
 % INPUT PARAMETERS:
-%% Auxiliar inputs
+% % Auxiliar inputs
 %%% outputFolder_path ----------> Path of output folder
 %%% generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily
 %%%                               calculate the cross spectra. Case True
 %%%                               (1) is required to calculate the cross spectra
 
-%% Data Gatherer
+% % Data Gatherer
 %%% raw_data_path -------------> Folder path of the raw data in .mat format. This folder
 %%%                              contains subfolders by each subject. The
 %%%                              subfolder contains a .mat file with the
@@ -115,6 +115,9 @@ for i=1:size(pathnames,2)
         [filename,filepath] = recorrer_folders(cell2mat(pathnames(i)));
         all_data =importdata(filepath{1});
         [~, data_code, ~] = fileparts(filename{1});
+
+        %% Disp information
+         disp(['Processing case ', data_code]);
 
         %% BEGIN STEP 1 Cross_spectrum
         if generate_cross_spectra  %%Call data_gatherer
@@ -232,7 +235,7 @@ end
 
 
 
-disp('------------------------------------------ END PROCESS ------------------------------------------');
+disp('----------------------------------------------------------------- END ALL PROCESS -----------------------------------------------------------------');
 
 
 

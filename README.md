@@ -18,7 +18,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 
 
-<h2>INPUT PARAMETERS:</h2> 
+<h2 dir="auto">INPUT PARAMETERS:</h2> 
 <h4>Auxiliar inputs</h4>
 <ul>
 <li>outputFolder_path: Path of output folder</li>
@@ -77,4 +77,12 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
                     <li> batch_correction(14): nvx136-Russia(2013)</li>
 	   </ul>							
 
+</ul>
+
+<strong>HarMNqEEG EXAMPLE</strong></br>
+In the folder example_data, there are two subfolders and the test_HarMNqEEG.m file to run the tool with data example.
+
+<ul>
+  <li>Subfolder: with_cross_spectra_generated. This folder will be the raw_data_path parameter. This folder contains 2 subjects by folder for testing the tool. In each subject folder there is a .mat file with the <strong>cross spectra generated</strong>. When the raw_data_path parameters is the results of the data_gatherer ( Github location of the script: https://github.com/CCC-members/BC-V_group_stat/blob/master/data_gatherer.m), the generate_cross_spectra parameter must be 0 </li>
+  <li>Subfolder: without_the_cross_spectra_generated. This folder will be the raw_data_path parameter. This folder contains 2 subjects by folder for testing the tool. In each subject folder there is a .mat file with the <strong>cross spectra input data</strong>. The generate_cross_spectra parameter must be 1 </li>
 </ul>
