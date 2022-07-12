@@ -1,4 +1,4 @@
-function [jsonFile] = HarMNqeeg_derivates_init(h5_file_full_path, perc_compres, MinFreq, FreqRes, MaxFreq, Epoch_Length, fftcoefs, dnames, freqrange, name, pais, EEGMachine, sex, age, reRefBatch)
+function [jsonFile] = HarMNqeeg_derivates_init(h5_file_full_path, perc_compres, MinFreq, FreqRes, MaxFreq, Epoch_Length, fftcoefs, dnames, freqrange,srate, name, pais, EEGMachine, sex, age, reRefBatch)
 
 %% Declare the json File
 jsonFile.Attributes.Software= "HarMNqEEG";
@@ -20,12 +20,11 @@ jsonFile.Attributes.EEGMachine=EEGMachine;
 jsonFile.Attributes.Sex=sex;
 jsonFile.Attributes.Age=age;
 jsonFile.Attributes.Frequency_Unit="Hz";
-jsonFile.Attributes.MinFreq=num2str(MinFreq);
-jsonFile.Attributes.FreqRes=num2str(FreqRes);
-jsonFile.Attributes.MaxFreq=num2str(MaxFreq);
+jsonFile.Attributes.Frequency_Resolution=num2str(FreqRes);
 jsonFile.Attributes.Epoch_Length=num2str(Epoch_Length);
-jsonFile.Attributes.Channels_Names =dnames;
-jsonFile.Attributes.Frequency_Range =freqrange;
+jsonFile.Attributes.Channels_Names=dnames;
+jsonFile.Attributes.Sampling_Frequency=num2str(srate);
+
 %% saving reference
 if ~isempty(reRefBatch)
     jsonFile.Attributes.Reference_Batch_Correction=reRefBatch{2};
@@ -34,8 +33,9 @@ end
 
 %% Add attributes .h5 file
 %%% Creating h5 file. Inserting fftcoefs data
-dsetname = 'FFT_coefs'; dtype='Complex_Matrix'; overw=false;
-DsetAttr = {'Algorithm', 'FFT Matlab R2020';'Domain', 'Frequency'; 'Description', 'Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).'};
+dsetname = 'FFT_coefs'; dtype='Complex_Matrix'; overw=false; 
+DsetAttr = {'Algorithm', 'FFT Matlab R2020';'Domain', 'Frequency'; 'Description', 'Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).'; ...
+           'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
 prec='double';
 try
     HarMNqeeg_derivates_h5_builder(h5_file_full_path,dsetname,fftcoefs,DsetAttr, dtype, overw, prec, perc_compres);

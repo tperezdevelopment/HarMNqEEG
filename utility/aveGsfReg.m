@@ -23,7 +23,7 @@ end
 
 
 function M=evalfunc(step,M,dF)
-[Nd,~,Nf]=size(M);
+[~,~,Nf]=size(M);
 switch step
     case 'ave'
         M=aveReference(M);
