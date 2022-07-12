@@ -15,7 +15,7 @@ outputFolder_path=[pwd filesep 'HARMNqEEG_Result_with_cross_spectra_generated'];
 
 
 typeLog='1 1';
-batch_correction=''; %or% batch_correction=6;
+batch_correction=6; %or% batch_correction='';
 
 if exist(outputFolder_path, 'dir')
    rmdir(outputFolder_path, 's');
