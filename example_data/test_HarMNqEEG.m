@@ -1,5 +1,7 @@
 clear; clc;
 
+addpath(genpath(pwd));
+
 %% For generate the cross spectra options
 % raw_data_path=[pwd filesep 'example_data' filesep 'without_the_cross_spectra_generated'];
 % generate_cross_spectra=1;
