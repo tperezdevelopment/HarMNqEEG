@@ -137,7 +137,7 @@ for i=1:size(pathnames,2)
         %% Declare the json File and .h5 file
         test_folder([derivatives_output_folder filesep data_code]);
         [jsonFile]=HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_init,[derivatives_output_folder filesep data_code], data_struct.fmin,...
-            data_struct.freqres, data_struct.fmax, data_struct.nt, data_struct.ffteeg, data_struct.dnames, data_struct.freqrange, data_struct.name, data_struct.pais, data_struct.EEGMachine, data_struct.sex, data_struct.age,reRefBatch);
+            data_struct.freqres, data_struct.fmax, data_struct.nt, data_struct.ffteeg, data_struct.name, data_struct.pais, data_struct.EEGMachine, data_struct.sex, data_struct.age,reRefBatch);
 
 
 
@@ -202,8 +202,8 @@ for i=1:size(pathnames,2)
             [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zglobalriemlogm', 'riemlogm'), DsetAttr);
 
             if ~isempty(reRefBatch)
-                %% Save the Harmonized Z-scores Riemannian Cross-Spectra
-                dsetname = 'Harmonized_Z_scores_Riemannian_Cross_Spectra'; dtype='Hermitian';
+                %% Save the Harmonized Z-scores Cross-Spectra
+                dsetname = 'Harmonized_Z_scores_Cross_Spectra'; dtype='Hermitian';
                 DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Z-scores of the Cross-spectral matrix transformed to the Riemanian space.'};
                 [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zstudyriemlogm', 'riemlogm'), DsetAttr);
             end

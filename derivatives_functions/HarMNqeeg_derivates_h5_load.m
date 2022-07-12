@@ -56,7 +56,12 @@ end
 data = h5read(h5_filename,dsetname);
 sz = size(data);
 
-switch lower(dset_att.DataType)
+if iscell(dset_att.DataType)
+    type = dset_att.DataType{1};
+else
+    type = dset_att.DataType;
+end
+switch lower(type)
     case 'complex_matrix'  %recreate the data as a complex matrix
         if sz(end) ~= 2            
             error( 'Data in file is not as expected. Pls, report the error to the providers');
@@ -78,6 +83,8 @@ switch lower(dset_att.DataType)
         catch ME
             rethrow(ME);
         end
+    case 'real_matrix'
+        %Nothing to do, data is already in good shape
     otherwise        
         error([dset_att.DataType ': Conversion not implemented']); 
 end

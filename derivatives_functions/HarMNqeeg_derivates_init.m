@@ -1,4 +1,4 @@
-function [jsonFile] = HarMNqeeg_derivates_init(h5_file_full_path, perc_compres, MinFreq, FreqRes, MaxFreq, Epoch_Length, fftcoefs, name, pais, EEGMachine, sex, age, reRefBatch)
+function [jsonFile] = HarMNqeeg_derivates_init(h5_file_full_path, perc_compres, MinFreq, FreqRes, MaxFreq, Epoch_Length, fftcoefs, dnames, freqrange, name, pais, EEGMachine, sex, age, reRefBatch)
 
 %% Declare the json File
 jsonFile.Attributes.Software= "HarMNqEEG";
@@ -11,7 +11,7 @@ jsonFile.Attributes.Software_Original_Code="Author: Ying Wang, Min Li";
 jsonFile.Attributes.Software_Derivatives_Original_Author="Sc.D. Jorge F. Bosch-Bayard <oldgandalf@gmail.com>. Montreal Neurological Institute";
 jsonFile.Attributes.Cbrain_Software_Author="Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>";
 jsonFile.Attributes.Maintainer= "tperezdevelopment@gmail.com";
-jsonFile.Attributes.Reference_Paper="Harmonized-Multinational qEEG Norms (HarMNqEEG). Link: https://www.biorxiv.org/content/10.1101/2022.01.12.476128v1";
+jsonFile.Attributes.Reference_Paper="Li M, et al.. Harmonized-Multinational qEEG norms (HarMNqEEG). Neuroimage. 2022;256:119190. doi: 10.1016/j.neuroimage.2022.119190. Epub 2022 Apr 7. PMID: 35398285.";
 
 %% Inserting specific data
 jsonFile.Attributes.Name_Subject=name;
@@ -19,10 +19,13 @@ jsonFile.Attributes.Country=pais;
 jsonFile.Attributes.EEGMachine=EEGMachine;
 jsonFile.Attributes.Sex=sex;
 jsonFile.Attributes.Age=age;
+jsonFile.Attributes.Frequency_Units="Hz";
 jsonFile.Attributes.MinFreq=num2str(MinFreq);
 jsonFile.Attributes.FreqRes=num2str(FreqRes);
 jsonFile.Attributes.MaxFreq=num2str(MaxFreq);
 jsonFile.Attributes.Epoch_Length=num2str(Epoch_Length);
+jsonFile.Attributes.Channels_Names =dnames;
+jsonFile.Attributes.Frequency_Range =freqrange;
 %% saving reference
 if ~isempty(reRefBatch)
     jsonFile.Attributes.Reference_Batch_Correction=reRefBatch{2};
