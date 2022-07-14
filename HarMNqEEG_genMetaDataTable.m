@@ -33,14 +33,23 @@ else
     DPs_table.age=data_struct.age;
 end
 
-switch  data_struct.sex
-    case {'F','w',70,0,'female'}
-        DPs_table.sex='F';
-    case {'M','m',77,1,'male'}
-        DPs_table.sex='M';
-    otherwise
-        error('Check info sex');
+if isnan(data_struct.sex)
+    warning('Missing info Sex');
+else
+    switch  data_struct.sex
+        case {''}
+            error('The')
+        case {'F','w',70,0,'female'}
+            DPs_table.sex='F';
+        case {'M','m',77,1,'male'}
+            DPs_table.sex='M';
+        otherwise
+            DPs_table.sex=data_struct.sex;
+            warning('Check info sex, %s is not a valid value', data_struct.sex);
+    end
 end
+
+
 
 
 DPs_table.ref=data_struct.ref;
