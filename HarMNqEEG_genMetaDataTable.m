@@ -25,8 +25,8 @@ catch
 end
 
 
-DPs_table.name=[country '_' data_struct.EEGMachine '_' data_struct.name];
-DPs_table.country=country;
+DPs_table.name=cellstr([country '_' data_struct.EEGMachine '_' data_struct.name]);
+DPs_table.country=cellstr(country);
 if isnan(data_struct.age)
     error('Missing info Age');
 else
@@ -35,16 +35,15 @@ end
 
 if isnan(data_struct.sex)
     warning('Missing info Sex');
+    DPs_table.sex={'U'};
 else
-    switch  data_struct.sex
-        case {''}
-            error('The')
+    switch  data_struct.sex       
         case {'F','w',70,0,'female'}
-            DPs_table.sex='F';
+            DPs_table.sex={'F'};
         case {'M','m',77,1,'male'}
-            DPs_table.sex='M';
+            DPs_table.sex={'M'};
         otherwise
-            DPs_table.sex=data_struct.sex;
+            DPs_table.sex=cellstr(data_struct.sex);
             warning('Check info sex, %s is not a valid value', data_struct.sex);
     end
 end
@@ -52,9 +51,9 @@ end
 
 
 
-DPs_table.ref=data_struct.ref;
-DPs_table.device=data_struct.EEGMachine;
-DPs_table.study=[country '_' data_struct.EEGMachine];
+DPs_table.ref=cellstr(data_struct.ref);
+DPs_table.device=cellstr(data_struct.EEGMachine);
+DPs_table.study=cellstr([country '_' data_struct.EEGMachine]);
 DPs_table.nepochs=data_struct.nepochs;
 DPs_table.freqres=data_struct.freqres;
 
