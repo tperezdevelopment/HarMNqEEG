@@ -7,7 +7,7 @@ if strcmpi(dtype,'Complex_Matrix')
     jsonFile.(dsetname).Storage="The first and second component of the last dimension are correspondingly the real and the imaginary parts of the matrix";
 end
 if strcmpi(dtype,'Hermitian')
-    jsonFile.(dsetname).Storage= "Optimized according the specification in https://wherever it is described.org";
+    jsonFile.(dsetname).Storage= "Optimized according the specification in https://portal.hdfgroup.org/display/HDF5/HDF5";
 end
 
 if exist('DsetAttr', 'var') && ~isempty(DsetAttr)
