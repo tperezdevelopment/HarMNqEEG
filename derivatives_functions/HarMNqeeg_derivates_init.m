@@ -1,4 +1,4 @@
-function [jsonFile] = HarMNqeeg_derivates_init(h5_file_full_path, perc_compres, MinFreq, FreqRes, MaxFreq, Epoch_Length, fftcoefs, dnames, freqrange,srate, name, pais, EEGMachine, sex, age, reRefBatch)
+function [jsonFile] = HarMNqeeg_derivates_init(h5_file_full_path, FreqRes, Epoch_Length, dnames,srate, name, pais, EEGMachine, sex, age, reRefBatch)
 
 %% Declare the json File
 jsonFile.Attributes.Software= "HarMNqEEG";
@@ -30,19 +30,11 @@ if ~isempty(reRefBatch)
     jsonFile.Attributes.Reference_Batch_Correction=reRefBatch{2};
 end
 
+%% Creating hdf5 file
+H5F.create(h5_file_full_path);
 
 %% Add attributes .h5 file
-%%% Creating h5 file. Inserting fftcoefs data
-dsetname = 'FFT_coefs'; dtype='Complex_Matrix'; overw=false; 
-DsetAttr = {'Algorithm', 'FFT Matlab R2020';'Domain', 'Frequency'; 'Description', 'Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).'; ...
-           'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-prec='double';
-try
-    HarMNqeeg_derivates_h5_builder(h5_file_full_path,dsetname,fftcoefs,DsetAttr, dtype, overw, prec, perc_compres);
-    [jsonFile]=HarMNqeeg_derivates_json_builder(jsonFile,dsetname,dtype, DsetAttr);
-catch ME
-    rethrow(ME);
-end
 cellfun(@(x) h5writeatt(h5_file_full_path,'/',x,jsonFile.Attributes.(x)),fieldnames(jsonFile.Attributes),'UniformOutput',false);
+
 end
 
