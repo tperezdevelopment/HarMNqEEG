@@ -5,6 +5,7 @@ jsonFile.Attributes.Software= "HarMNqEEG";
 jsonFile.Attributes.creation_date=date;
 jsonFile.Attributes.Description_Software="These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings. In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent of the variability in the EEG that is not due to the neurophysiological activity of the person, but rather than to impedance at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.";
 jsonFile.Attributes.Description_Json_File= "This is a json file that describes the outputs and the path respectively.";
+jsonFile.Attributes.Software_Url= "https://github.com/tperezdevelopment/HarMNqEEG";
 jsonFile.Attributes.Software_Version= "1.0.0";
 jsonFile.Attributes.Institutes= "Joint China-Cuba LAB, UESTC, CNEURO";
 jsonFile.Attributes.Software_Original_Code="Author: Ying Wang, Min Li";
