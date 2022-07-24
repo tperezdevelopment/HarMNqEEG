@@ -92,8 +92,8 @@ Matlab 2021b or higher
 
 <ul> <li>optional_matrix: List of matrix optional that the user can select. </br> 
 										<strong>Options:</strong></br>
-                                   <ul><li> optional_matrix(1): FFTCoefs (Boolean): Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
-                                    <li>optional_matrix(2): muglobalriemlogm (Boolean): Cross spectrum mean value of variance</li></ul>
+                                   <ul><li> optional_matrix(1): Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
+                                    <li>optional_matrix(2): Mean for Age of Riemannian Cross Spectra Norm</li></ul>
 </li></ul>									
 					
 
@@ -132,8 +132,8 @@ Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:
 <strong>Optional Matrix</strong></br>
 With the optional_matrix, the user can be select the following matrix to save:
 <ol>
-  <li>FFTCoefs: Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
-  <li>Cross spectrum mean value of variance</li>
+  <li>FFT_coefs: Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
+  <li>Mean_for_Age_of_Riemannian_Cross_Spectra_Norm: Mean for Age of Riemannian Cross Spectra Norm</li>
 </ol>
 
 
