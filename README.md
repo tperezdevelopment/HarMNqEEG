@@ -97,7 +97,7 @@ Matlab 2021b or higher
 </li></ul>									
 					
 
-<h2 dir="auto"><a href="HarMNqEEG_hdf5_description">HarMNqEEG Output Description</a></h2>
+<h2 dir="auto"><a href="#HarMNqEEG_hdf5_description">HarMNqEEG Output Description</a></h2>
 <strong>Folder structure</strong></br>
 The tool will be save a subfolder 'derivatives' (following the struct BIDs, https://bids.neuroimaging.io/) into the folder defined by the user with the outputFolder_path parameter. Into the subfolder derivatives, the result will saved by each folder subject. </br>
 <strong>Type of output files</strong></br>
