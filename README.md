@@ -90,7 +90,14 @@ Matlab 2021b or higher
 
 </ul>
 
-<h2 dir="auto">HarMNqEEG Output Description</h2>
+<ul> <li>optional_matrix: List of matrix optional that the user can select. </br> 
+										<strong>Options:</strong></br>
+                                   <ul><li> optional_matrix(1): FFTCoefs (Boolean): Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
+                                    <li>optional_matrix(2): muglobalriemlogm (Boolean): Cross spectrum mean value of variance</li></ul>
+</li></ul>									
+					
+
+<h2 dir="auto"><a href="HarMNqEEG_hdf5_description">HarMNqEEG Output Description</a></h2>
 <strong>Folder structure</strong></br>
 The tool will be save a subfolder 'derivatives' (following the struct BIDs, https://bids.neuroimaging.io/) into the folder defined by the user with the outputFolder_path parameter. Into the subfolder derivatives, the result will saved by each folder subject. </br>
 <strong>Type of output files</strong></br>
@@ -120,6 +127,13 @@ Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:
    <li>Z_scores_Riemannian_Cross_Spectra: Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>
    <li>Harmonized_Z_scores_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>   
 
+</ol>
+
+<strong>Optional Matrix</strong></br>
+With the optional_matrix, the user can be select the following matrix to save:
+<ol>
+  <li>FFTCoefs: Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
+  <li>Cross spectrum mean value of variance</li>
 </ol>
 
 

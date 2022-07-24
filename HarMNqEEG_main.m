@@ -72,8 +72,8 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 
 %% Optional Matrices to save
 %%% optional_matrix --> List of matrix optional that the user can select. Options:
-%%%                     optional_matrix(1) -> FFTCoefs: Complex matrix of FFT coefficients of nd x nfreqs x epoch length
-%%%                     optional_matrix(2) -> muglobalriemlogm: Cross spectro mean value of variance
+%%%                     optional_matrix(1) -> FFTCoefs (Boolean): Complex matrix of FFT coefficients of nd x nfreqs x epoch length
+%%%                     optional_matrix(2) -> muglobalriemlogm (Boolean): Cross spectrum mean value of variance
 
 
 
@@ -250,8 +250,8 @@ for i=1:size(pathnames,2)
 
             %% Saving muglobalriemlogm (Optional Matrix)
             if optional_matrix(2)==1
-                dsetname = 'Cross_Spectro_Mean_Value_of_Variance'; dtype='Complex_Matrix';
-                DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Cross spectro mean value of variance.'; ...
+                dsetname = 'Cross_Spectrum_Mean_Value_of_Variance'; dtype='Complex_Matrix';
+                DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Cross spectrum mean value of variance.'; ...
                     'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
                 [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'muglobalriemlogm', 'riemlogm'), DsetAttr);
             end

@@ -91,7 +91,7 @@ if strcmpi(dtype,'Complex_Matrix')
     h5writeatt(h5_file_full_path,dsetname,'Storage', 'The first and second component of the last dimension are correspondingly the real and the imaginary parts of the matrix');
 end
 if strcmpi(dtype,'Hermitian')
-    h5writeatt(h5_file_full_path,dsetname,'Storage', 'Optimized according the specification in https://github.com/tperezdevelopment/HarMNqEEG#HarMNqEEG_hdf5_description');
+    h5writeatt(h5_file_full_path,dsetname,'Storage', 'Optimized according the specification in https://wherever it is described.org');
 end
 
 end
