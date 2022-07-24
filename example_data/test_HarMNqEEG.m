@@ -14,9 +14,9 @@ outputFolder_path=[pwd filesep 'HARMNqEEG_Result_with_cross_spectra_generated'];
 
 
 
-typeLog='0 1';
+typeLog='1 1';
 
-optional_matrix='0 0';
+optional_matrix='1 1';
 
 batch_correction=6; %or% batch_correction='';
 
