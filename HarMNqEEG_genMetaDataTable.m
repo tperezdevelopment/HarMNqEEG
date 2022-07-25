@@ -33,24 +33,6 @@ else
     DPs_table.age=data_struct.age;
 end
 
-if isnan(data_struct.sex)
-    warning('Missing info Sex');
-    DPs_table.sex={'U'};
-else
-    switch  data_struct.sex       
-        case {'F','w',70,0,'female'}
-            DPs_table.sex={'F'};
-        case {'M','m',77,1,'male'}
-            DPs_table.sex={'M'};
-        otherwise
-            DPs_table.sex=cellstr(data_struct.sex);
-            warning('Check info sex, %s is not a valid value', data_struct.sex);
-    end
-end
-
-
-
-
 DPs_table.ref=cellstr(data_struct.ref);
 DPs_table.device=cellstr(data_struct.EEGMachine);
 DPs_table.study=cellstr([country '_' data_struct.EEGMachine]);

@@ -41,7 +41,6 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 %%%                                                   It can be a code used by the owner to identify the data.
 %%%                                 - reference     : a string containing the name of the reference of the data.
 %%%                                 - age           : subject's age at recording time
-%%%                                 - sex           : subject's sex
 %%%                                 - country       : country providing the data
 %%%                                 - eeg_device    : EEG hardware where the data was recorded
 
@@ -148,11 +147,12 @@ for i=1:size(pathnames,2)
         [reRefBatch] = HarMNqEEG_generate_reRefBatch(batch_correction,data_struct.pais, data_struct.EEGMachine);
 
 
+
         %% Declare the json File and .h5 file
         test_folder([derivatives_output_folder filesep data_code]);
         [jsonFile]=HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_init,[derivatives_output_folder filesep data_code], data_code,data_struct.freqres,...
             data_struct.nt, data_struct.dnames, data_struct.srate ,data_struct.name, ...
-            data_struct.pais, data_struct.EEGMachine, data_struct.sex, data_struct.age,reRefBatch);
+            data_struct.pais, data_struct.EEGMachine, data_struct.age,reRefBatch);
 
 
         %% Saving FFTCoefs (Optional Matrix)

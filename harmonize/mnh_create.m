@@ -36,7 +36,7 @@ else
     resp=get_spec_hearder('diag',mnhs.respType{1});
 end
 %% assign all necessary information
-inform={'name','country','device','study','sex','disease'};%,'datasetName'
+inform={'name','country','device','study','disease'}; %% deleted sex colunm by tperezdevelopment
 factor={'freq','age'};
 
 

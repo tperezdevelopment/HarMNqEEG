@@ -19,9 +19,11 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 <h2 dir="auto">HarMNqEEG Installation and Requirements</h2>
 <ol dir="auto">
+<li>Matlab version: 2021a</li>
 <li> Clone the the repository or download the .zip folder. </li>
 <li>Extact the folder and Add the HarMNqEEG folder to your path in MATLAB</li>
 <li> Call the main function HarMNqEEG_main.m</li>
+
 </ol>
 
 <strong> Requirements Installation</strong></br>
