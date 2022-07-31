@@ -1,3 +1,0 @@
-BEGIN PROCESS FOR 00097
------------------------------------------------------------------ Calculates for log-spectrum -----------------------------------------------------------------
-use NY_2_DEDAASas the reference of DEDAAS NewYork, replace information in T for calculation

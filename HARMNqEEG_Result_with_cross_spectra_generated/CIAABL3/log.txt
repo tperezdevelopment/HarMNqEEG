@@ -1,3 +1,0 @@
-BEGIN PROCESS FOR CIAABL3
------------------------------------------------------------------ Calculates for log-spectrum -----------------------------------------------------------------
-use Italy_DEDAASas the reference of DEDAAS NewYork, replace information in T for calculation
