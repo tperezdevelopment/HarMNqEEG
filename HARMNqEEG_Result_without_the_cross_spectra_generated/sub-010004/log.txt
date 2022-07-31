@@ -1,0 +1,3 @@
+BEGIN PROCESS FOR sub-010004
+----------------------------------------------------------------- Calculates for log-spectrum -----------------------------------------------------------------
+use Barbados_DEDAASas the reference of DEDAAS NewYork, replace information in T for calculation

@@ -1,10 +1,9 @@
-function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch_correction, optional_matrix, outputFolder_path)
-
+function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_metadata, raw_data_path, typeLog,batch_correction, optional_matrix)
 %     Original code Author: Ying Wang, Min Li
 %     Cbrain Tool Author: Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
 %     Copyright(c): 2020-2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com
 %     Joint China-Cuba LAB, UESTC, CNEURO
-
+%     Matlab version: 2021b
 
 % HarMNqEEG TOOL DESCRIPTION
 % % These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
@@ -18,33 +17,36 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 
 
 % INPUT PARAMETERS:
-% % Auxiliar inputs
+%% Auxiliar inputs
 %%% outputFolder_path ----------> Path of output folder
-%%% generate_cross_spectra -----> Boolean parameter. Case False (0), will not  necessarily
-%%%                               calculate the cross spectra. Case True
-%%%                               (1) is required to calculate the cross spectra
+%%% generate_cross_spectra -----> Boolean parameter. Case False (0), the
+%%%                               raw_data_path folder will contain the
+%%%                               data_gatherer output. Case True (1) is required to calculate the cross spectra
 
-% % Data Gatherer
-%%% raw_data_path -------------> Folder path of the raw data in .mat format. This folder
-%%%                              contains subfolders by each subject. The
-%%%                              subfolder contains a .mat file with the
-%%%                              following parameters:
-%%%                                 - data          : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where
-%%%                                                   nd : number of channels
-%%%                                                   nt : epoch size (# of instants of times in an epoch)
-%%%                                                   ne : number of epochs
-%%%                                 - sampling_freq : sampling frequency in Hz. Eg: 200
-%%%                                 - cnames        : a cell array containing the names of the channels. The expected names are:
-%%%                                                   'Fp1'    'Fp2'    'F3'    'F4'    'C3'    'C4'    'P3'    'P4'    'O1'    'O2'    'F7'    'F8'    'T3'    'T4'    'T5'    'T6'    'Fz'    'Cz'    'Pz'
-%%%                                                   If the channels come in another order, they are re-arranged according to the expected order
-%%%                                 - data_code     : is the name of the original data file just for purpose of identification.
-%%%                                                   It can be a code used by the owner to identify the data.
-%%%                                 - reference     : a string containing the name of the reference of the data.
-%%%                                 - age           : subject's age at recording time
-%%%                                 - country       : country providing the data
-%%%                                 - eeg_device    : EEG hardware where the data was recorded
+%% Data Gatherer
+%%% raw_data_path -------------> Folder path of the raw data. If the generate_cross_spectra is True (1),
+%%%                              this folder must contain a subfolders by
+%%%                              each subjects or a list of eeg data, or the mix of subject folder and subject file. If
+%%%                              the generate_cross_spectra is False (0),
+%%%                              this folder must be contain the
+%%%                              data_gatherer output, with the cross spectra generated (See more: https://github.com/CCC-members/BC-V_group_stat/blob/master/data_gatherer.m)
 
-
+%% Metadata
+%%% subjects_metadata --------> This files is optional in case generate_cross_spectra is False (0)
+%%%                              In case generate_cross_spectra is True this must be a , .csv, or .xls, or .xlsx file that must
+%%%                              contain a list of subjects with the
+%%%                              following metadata info:
+%%%                              1- data_code: Name of the file
+%%%                                 subject or the subfolder subjet listed
+%%%                                 in raw_data_path folder. Required
+%%%                                 metadata
+%%%                              2- reference: A string containing the name
+%%%                                 of the reference of the data. Required metadata
+%%%                              3- age: Subject's age at recording time. Required metadata
+%%%                              4- sex: Subject's sex. Optional metadata
+%%%                              5- country: Country providing the data. Required metadata
+%%%                              6- eeg_device: EEG hardware where the data
+%%%                                 was recorded. Required metadata
 
 %% Preproccess Guassianize Data %%
 %%% typeLog ----------> Type of gaussianize method to apply. Options:
@@ -75,15 +77,29 @@ function [] = HarMNqEEG_main(generate_cross_spectra,raw_data_path, typeLog,batch
 %%%                     optional_matrix(2) -> Mean for Age of Riemannian Cross Spectra Norm
 
 
+% Checking the parameters
+if isempty(outputFolder_path)
+    outputFolder_path=[raw_data_path filesep 'derivatives'];
+end
 
 
-%%Checking the parameters
 if isempty(generate_cross_spectra)
     generate_cross_spectra=true;
 end
 
 if isempty(raw_data_path)
     error('The parameter raw_data_path is required');
+end
+
+if ~isempty(subjects_metadata)
+    if ~isfile(subjects_metadata)
+        error('The parameter subjects metadata must be a file')
+    else
+        [~, ~, ext] = fileparts(subjects_metadata);
+        if ~strcmp(ext, '.xls') && ~strcmp(ext, '.xlsx') && ~strcmp(ext, '.csv') && ~strcmp(ext, '.mat')
+            error('The subjects metadata file need to have xls or xlsx or csv extension');
+        end
+    end
 end
 
 if isempty(typeLog)
@@ -110,182 +126,130 @@ if ~isempty(optional_matrix)
 
 end
 
-
-
-
 % ADD PATH Commented for compiled version
 addpath(genpath(pwd));
 
 % Create output folder and subfolders
-derivatives_output_folder=[outputFolder_path filesep 'derivatives'];
-test_folder(derivatives_output_folder);
+test_folder(outputFolder_path);
 
 % Calculate All in loop
-
 [~,pathnames] = recorrer_folders(raw_data_path);
 for i=1:size(pathnames,2)
     try
-        [filename,filepath] = recorrer_folders(cell2mat(pathnames(i)));
-        all_data =importdata(filepath{1});
-        [~, data_code, ~] = fileparts(filename{1});
+        [~, data_code, ~] = fileparts(cell2mat(pathnames(i)));
+
+        %% Creating folder for data_code
+        outputFolder_path_data_code=[outputFolder_path filesep data_code];
+        test_folder(outputFolder_path_data_code);
+
+        %% Creating log file by subject and begin save info
+        logFile=[outputFolder_path_data_code  filesep 'log.txt'];
+        test_folder(logFile);
+        diary off;
+        diary (logFile);
+        diary on;
 
         %% Disp information. Begin process by case
         disp(['BEGIN PROCESS FOR ', data_code]);
 
-        %% BEGIN STEP 1 Cross_spectrum
-        if generate_cross_spectra  %%Call data_gatherer
-            [data_struct, error_msg] = data_gatherer(all_data.data, all_data.sampling_freq, all_data.cnames,data_code , ...
-                all_data.reference, all_data.age, all_data.sex, all_data.country, all_data.eeg_device);
-            if ~isempty(error_msg)
-                error(error_msg);
+        if generate_cross_spectra
+            %% Checking firts is .mat
+            if isfile(cell2mat(pathnames(i)))
+                [~,~,mat_ext] = fileparts(cell2mat(pathnames(i)));
+                if strcmp(mat_ext, '.mat')                     %%Reading by .mat
+                    all_data =importdata(cell2mat(pathnames(i)));
+                    try
+                        HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra,typeLog, all_data, data_code, batch_correction, optional_matrix);
+                    catch ME
+                        disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
+                        diary off;
+                        continue;
+                    end
+                else
+                    if isempty(subjects_metadata)
+                        error('The parameter subjects_metadata is required when should the cross spectrum be calculated, generate_cross_spectra is True');
+                    end
+                    %%Reading by fileio module from Fieltrip
+                    %% Checking metadata for data_code
+                    metadata_table = readtable(subjects_metadata);
+                    [~, data_code_position] = ismember({data_code},metadata_table.data_code);
+                    if data_code_position==0
+                        warning([data_code ' not found in the subjects metadata file']);
+                        diary off;
+                        continue;
+                    end
+
+                    try
+                        [all_data] = HarMNqEEG_read_data_fileio(cell2mat(pathnames(i)), metadata_table, data_code_position);
+                        HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
+                    catch ME
+                        disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
+                        diary off;
+                        continue;
+                    end
+                end
+
+            else  %% folders subjects
+                if isempty(subjects_metadata)
+                    error('The parameter subjects_metadata is required when should the cross spectrum be calculated, generate_cross_spectra is True');
+                end
+                %% Checking metadata for data_code
+                metadata_table = readtable(subjects_metadata);
+                [~, data_code_position] = ismember({data_code},metadata_table.data_code);
+                if data_code_position==0
+                    warning([data_code ' not found in the subjects metadata file']);
+                    diary off;
+                    continue;
+                end
+
+                if isfolder(cell2mat(pathnames(i)))
+                    if startsWith(data_code, 'sub-') %% checking is BIDS
+                        try
+                            HarMNqEEG_calculate_bids(cell2mat(pathnames(i)), typeLog, metadata_table, data_code_position, batch_correction, outputFolder_path_data_code, optional_matrix);
+                        catch ME
+                            disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
+                            diary off;
+                            continue;
+                        end
+                    elseif  ~isempty(dir(fullfile(cell2mat(pathnames(i)), '*.PLG')))   %% checking is PLG
+                        if ~isempty(fullfile(cell2mat(pathnames(i)), '*.WIN'))
+                            [all_data]= HarMNqEEG_import_plg(cell2mat(pathnames(i)), metadata_table, data_code_position);
+                            HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
+                        else
+                            warning(['The ' data_code ' must be contain the win file'] );
+                            diary off;
+                            continue;
+                        end
+                    else
+                        warning(['Please check the info for ' data_code ]);
+                        diary off;
+                        continue;
+                    end
+
+                end
             end
-        else
-            data_struct=all_data;
-        end
-
-        %%% reference batch
-        [reRefBatch] = HarMNqEEG_generate_reRefBatch(batch_correction,data_struct.pais, data_struct.EEGMachine);
-
-
-
-        %% Declare the json File and .h5 file
-        test_folder([derivatives_output_folder filesep data_code]);
-        [jsonFile]=HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_init,[derivatives_output_folder filesep data_code], data_code,data_struct.freqres,...
-            data_struct.nt, data_struct.dnames, data_struct.srate ,data_struct.name, ...
-            data_struct.pais, data_struct.EEGMachine, data_struct.age,reRefBatch);
-
-
-        %% Saving FFTCoefs (Optional Matrix)
-        if optional_matrix(1)==1
-            dsetname = 'FFT_coefs'; dtype='Complex_Matrix';
-            DsetAttr = {'Algorithm', 'FFT Matlab R2020';'Domain', 'Frequency'; 'Description', 'Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).'; ...
-                'Minimum_Spectral_Frequency', num2str(data_struct.fmin); 'Maximum_Spectral_Frequency', num2str(data_struct.fmax); 'Frequency_Range',  data_struct.freqrange };
-            prec='double';
-            [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, data_struct.ffteeg, DsetAttr);
-
-        end
-
-
-        %% END STEP 1 Cross_spectrum
-
-        if typeLog(1)==1
-            disp('----------------------------------------------------------------- Calculates for log-spectrum -----------------------------------------------------------------');
-            [T] = HarMNqEEG_step2_step3_by_typeLog(data_struct, 'log', reRefBatch);
-
-            %%% declare same parameters for all the matrix
-            freqrange=T.freq';
-            MinFreq=freqrange(1);
-            MaxFreq=freqrange(end);
-
-            %% Save the Raw Log-Spectra
-            dsetname = 'Raw_Log_Spectra'; dtype='Real_Matrix';
-            DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq.'; ...
-                'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-            prec='double';
-            [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'log', 'log'), DsetAttr);
-
-            %% Save the Harmonized Raw Log-Spectra
-            dsetname = 'Harmonized_Log_Spectra'; dtype='Real_Matrix';
-            DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.';...
-                'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-            prec='double';
-            [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarlog', 'log'), DsetAttr);
-
-
-            %% Save the Z-scores Log Spectra
-            dsetname = 'Z_scores_Log_Spectra'; dtype='Real_Matrix';
-            DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the power spectral density (PSD) of channel i and frequency f. The raw spectra is transformed to the Log space to achieve quasi gaussian distribution.';...
-                'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-            prec='single';
-            [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zgloballog', 'log'), DsetAttr);
-
-            if ~isempty(reRefBatch)
-                %% Save the Harmonized Z-scores Log Spectra
-                dsetname = 'Harmonized_Z_scores_Log_Spectra'; dtype='Real_Matrix';
-                DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Harmonized Z-score of the log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.';...
-                    'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-                prec='single';
-                [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zstudylog', 'log'), DsetAttr);
-            end
-            disp('----------------------------------------------------------------- END Calculates for log-spectrum -----------------------------------------------------------------');
-        end
-
-        if typeLog(2)==1
-            disp('----------------------------------------------------------------- Calculates for cross-spectrum with riemannian metric -----------------------------------------------------------------');
-            [T] = HarMNqEEG_step2_step3_by_typeLog(data_struct, 'riemlogm', reRefBatch);
-
-            %% MATRIX STEP 2
-            %%% declare same parameters for all the matrix
-            prec='double';
-            freqrange=T.freq';
-            MinFreq=freqrange(1);
-            MaxFreq=freqrange(end);
-
-            %% Save the Raw Riemannian Cross-Spectra
-            dsetname = 'Raw_Riemannian_Cross_Spectra'; dtype='Hermitian';
-            DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Raw Cross-spectral matrix transformed to the Riemanian space.';...
-                'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-            %% Notes globalriemlogm and riemlogm are the same
-            [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'globalriemlogm', 'riemlogm'), DsetAttr);
-
-            %% Save the Harmonized Raw Riemannian Cross-Spectra
-            dsetname = 'Harmonized_Raw_Riemannian_Cross_Spectra'; dtype='Hermitian';
-            DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Raw Cross-spectral matrix transformed to the Riemanian space.';...
-                'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-            [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarriemlogm', 'riemlogm'), DsetAttr);
-
-            %% Save the Z-scores Riemannian Cross-Spectra
-            dsetname = 'Z_scores_Riemannian_Cross_Spectra'; dtype='Hermitian';
-            DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Z-scores of the Cross-spectral matrix transformed to the Riemanian space.';...
-                'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-            [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zglobalriemlogm', 'riemlogm'), DsetAttr);
-
-            if ~isempty(reRefBatch)
-                %% Save the Harmonized Z-scores Riemannian Cross-Spectra
-                dsetname = 'Harmonized_Z_scores_Riemannian_Cross_Spectra'; dtype='Hermitian';
-                DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Z-scores of the Cross-spectral matrix transformed to the Riemanian space.'; ...
-                    'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-                [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zstudyriemlogm', 'riemlogm'), DsetAttr);
+        else  %% only call the all steps
+            all_data =importdata(cell2mat(pathnames(i)));
+            try
+                HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
+            catch ME
+                disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
+                diary off;
+                continue;
             end
 
-            %% Saving muglobalriemlogm (Optional Matrix)
-            if optional_matrix(2)==1
-                dsetname = 'Mean_for_Age_of_Riemannian_Cross_Spectra_Norm'; dtype='Complex_Matrix';
-                DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Mean for Age of Riemannian Cross Spectra Norm.'; ...
-                    'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-                [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, [derivatives_output_folder filesep data_code], data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'muglobalriemlogm', 'riemlogm'), DsetAttr);
-            end
-            disp('----------------------------------------------------------------- END Calculates for cross-spectrum with riemannian metric -----------------------------------------------------------------');
+        end %% cross spectro generated
 
-        end
-
-
-        %% Saving json file
-        saveJSON(jsonFile,[derivatives_output_folder filesep data_code filesep 'HarMNqeeg_derivatives_' data_code '.json'])
 
         %% Disp information. End process by case
         disp(['END PROCESS FOR ', data_code]);
 
-
+        diary off;
 
     catch ME
-        disp(['organize fail for #%s: %s\n ', data_code,ME.message]);
         rethrow(ME);
     end
 
 
 end
 
-
-
-
-
-
-
-
-
-disp('----------------------------------------------------------------- END ALL PROCESS -----------------------------------------------------------------');
-
-
-
-end
