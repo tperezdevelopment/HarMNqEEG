@@ -155,8 +155,8 @@ for i=1:size(pathnames,2)
         if generate_cross_spectra
             %% Checking firts is .mat
             if isfile(cell2mat(pathnames(i)))
-                [~,~,mat_ext] = fileparts(cell2mat(pathnames(i)));
-                if strcmp(mat_ext, '.mat')                     %%Reading by .mat
+                [~,~,file_ext] = fileparts(cell2mat(pathnames(i)));
+                if strcmp(file_ext, '.mat')                     %%Reading by .mat
                     all_data =importdata(cell2mat(pathnames(i)));
                     try
                         HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra,typeLog, all_data, data_code, batch_correction, optional_matrix);
@@ -179,13 +179,19 @@ for i=1:size(pathnames,2)
                         continue;
                     end
 
-                    try
-                        [all_data] = HarMNqEEG_read_data_fileio(cell2mat(pathnames(i)), metadata_table, data_code_position);
+                    if  strcmp(file_ext, '.txt') %% txt format for all data
+                        [all_data]= HarMNqEEG_import_txt(cell2mat(pathnames(i)), metadata_table, data_code_position);
                         HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
-                    catch ME
-                        disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
-                        diary off;
-                        continue;
+                    else
+
+                        try
+                            [all_data] = HarMNqEEG_read_data_fileio(cell2mat(pathnames(i)), metadata_table, data_code_position);
+                            HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
+                        catch ME
+                            disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
+                            diary off;
+                            continue;
+                        end
                     end
                 end
 

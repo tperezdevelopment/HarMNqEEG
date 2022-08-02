@@ -1,0 +1,17 @@
+BEGIN PROCESS FOR MC0000001_A
+<a href="matlab: opentoline('D:\GITHUB\HarMNqEEG\HarMNqEEG_import_txt.m',9,1)">9   </a>nd=size(data_txt.data,1);
+dbstep
+dbstep
+dbstep
+all_data.data=reshape(data_txt.data,[nd, nt, ne])
+
+all_data = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+    data: [58×512×80 double]
+
+dbstep
+dbcont
+----------------------------------------------------------------- Calculates for log-spectrum -----------------------------------------------------------------
+use Barbados_DEDAASas the reference of DEDAAS NewYork, replace information in T for calculation

@@ -1,4 +1,6 @@
 function [data, MONTAGE, Age, SAMPLING_FREQ, epoch_size, wins, mrks] = plg_read(basename, state, isPE, mrk, npoints)
+% From : Qeegt toolbox
+% Author: Sc.D. Jorge F. Bosch-Bayard. Montreal Neurological Institute
 
 % FUNCTION [data, MONTAGE, Age, SAMPLING_FREQ, epoch_size] = plg_read(basename, state);
 % basename:   name of PLG file to read (without extension(s))

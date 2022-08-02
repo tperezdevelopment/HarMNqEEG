@@ -8,19 +8,21 @@ lwin=2.56;
 [~, data_code, ~]=fileparts(filepath);
 
 %% Calling functions from old qeegt
-[data, MONTAGE, ~, SAMPLING_FREQ, epoch_size, ~, msg] = read_plgwindows([filepath filesep data_code], state, lwin);
+[data, ~, ~, SAMPLING_FREQ, ~, ~, msg] = read_plgwindows([filepath filesep data_code], state, lwin);
 
 if ~isempty(msg)
    error(msg);
 end    
 
 nd=size(data,1);
-nt=size(data,2)/size(epoch_size,1);
-ne=size(epoch_size,1);
+nt=SAMPLING_FREQ*lwin; %% by default 200 Hz * 2.56 sec=512
+ne=size(data,2)/nt;
 all_data.data=reshape(data,[nd, nt, ne]);
 
 all_data.sampling_freq=SAMPLING_FREQ;
-all_data.cnames=MONTAGE;
+
+%% Change in montage assuming the default montage
+all_data.cnames={'Fp1'    'Fp2'    'F3'    'F4'    'C3'    'C4'    'P3'    'P4'    'O1'    'O2'    'F7'    'F8'    'T3'    'T4'    'T5'    'T6'    'Fz'    'Cz'    'Pz'}';
 
 all_data.data_code=data_code;
 

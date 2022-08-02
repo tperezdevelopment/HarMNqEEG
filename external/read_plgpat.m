@@ -1,4 +1,6 @@
 function pat_info = read_plgpat(pat_name)
+% From : Qeegt toolbox
+% Author: Sc.D. Jorge F. Bosch-Bayard. Montreal Neurological Institute
 
 pat_info = [];
 try

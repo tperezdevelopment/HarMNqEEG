@@ -1,4 +1,7 @@
 function [data, MONTAGE, age, SAMPLING_FREQ, epoch_size, wins, msg] = read_plgwindows(plgname, state, lwin)
+% From : Qeegt toolbox
+% Author: Sc.D. Jorge F. Bosch-Bayard. Montreal Neurological Institute
+
 %plgname: nombre del PLG, con el path, sin el .PLG
 %state: un caracter. ejemplo, 'A'
 %lwin en seg, ejemplo: 0.005 (5 msec)

@@ -3,16 +3,16 @@ clear; clc;
 addpath(genpath(pwd));
 
 %% For generate the cross spectra options
-% raw_data_path='C:\Users\tperezdevelopment\Desktop\lectura de datos_2,0.0\data_eeg_bids';
-% generate_cross_spectra=1;
-% outputFolder_path=[pwd filesep 'HARMNqEEG_Result_lectura_datos2_BIDS'];
-% subjects_metadata='C:\Users\tperezdevelopment\Desktop\lectura de datos_2,0.0\tabla_bids.xlsx';
+raw_data_path='C:\Users\tperezdevelopment\Desktop\lectura de datos\datos_plg';
+generate_cross_spectra=1;
+outputFolder_path=[pwd filesep 'HARMNqEEG_Result_lectura_datos2_PLG'];
+subjects_metadata='C:\Users\tperezdevelopment\Desktop\lectura de datos\tabla_plg.xlsx';
 
 %% for cross spectra with other options
-raw_data_path=[pwd filesep 'example_data' filesep 'without_the_cross_spectra_generated'];
-generate_cross_spectra=1;
-outputFolder_path=[pwd filesep 'HARMNqEEG_Result_without_the_cross_spectra_generated'];
-subjects_metadata='';
+% raw_data_path=[pwd filesep 'example_data' filesep 'without_the_cross_spectra_generated'];
+% generate_cross_spectra=1;
+% outputFolder_path=[pwd filesep 'HARMNqEEG_Result_without_the_cross_spectra_generated'];
+% subjects_metadata='';
 
 %% For cross spectra generated
 % raw_data_path=[pwd filesep 'example_data' filesep 'with_cross_spectra_generated'];
