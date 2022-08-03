@@ -1,4 +1,4 @@
-function test_folder(name)
+function test_folder(name, type)
 %%
 %     Author: Ying Wang, Min Li
 %     Create Time: 2021
@@ -6,39 +6,41 @@ function test_folder(name)
 %     Joint China-Cuba LAB, UESTC
 %     Modified by tperezdevelopment
 
-[~, ~, e]=fileparts(name);
+%% name -----> the full path of the folder or file that will created
+%% type -----> the type of the name that will be created. File of dir. If it is empty the default value is dir
 
 
-if isempty(e)
-    if exist(name,'dir')
-        %% diary off for remove
-        diary off;
-        rmdir(name, 's');
-        pause(0.50) %in seconds
-    end
-    mkdir(name);
-else
-    if  exist(name,'file')
-        %% diary off for remove
-        diary off;
-        delete(filetxt);
-        pause(0.50) %in seconds
-    end
-    [p, ~, ~]=fileparts(name);
-    if ~exist(p,'dir')
-        mkdir(p);
-    end
-    %% From Leadfield ToolBox
-    f = fopen( name, 'w' );
-    fclose(f);
-end
+if nargin<2 || isempty(type)
+    type='dir';
 end
 
+switch type
+    case 'dir'
+        if exist(name,'dir')
+            try
+                rmdir(name, 's');
+                pause(0.50) %in seconds
+            catch
+
+            end
+        end
+        mkdir(name);
+
+    case 'type'
+        if  exist(name,'file')
+            try
+                delete(name);
+                pause(0.50) %in seconds
+            catch
+
+            end
+        end
+        %% From Leadfield ToolBox
+        f = fopen( name, 'w' );
+        fclose(f);
+end
 
 
-
-
-
-
+end
 
 

@@ -1,4 +1,4 @@
-function [all_data] = HarMNqEEG_import_txt(filepath, metadata_table, pos)
+function [all_data] = HarMNqEEG_import_txt(filepath, all_data)
 % This function will import txt data
 
 [~, data_code, ~]=fileparts(filepath);
@@ -21,22 +21,6 @@ else
     all_data.cnames=channels;
 end
 all_data.data_code=data_code;
-
-
-%% Get the metada
-try
-    all_data.reference=char(metadata_table.reference(pos));
-    all_data.age=double(metadata_table.age(pos));
-    if isempty(metadata_table.sex(pos))
-        all_data.sex={'U'};
-    else
-        all_data.sex=metadata_table.sex(pos);
-    end
-    all_data.country=char(metadata_table.country(pos));
-    all_data.eeg_device=char(metadata_table.eeg_device(pos));
-catch ME
-    rethrow(ME);
-end
 
 
 

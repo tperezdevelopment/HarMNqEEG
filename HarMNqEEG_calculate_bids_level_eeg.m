@@ -1,4 +1,4 @@
-function [] = HarMNqEEG_calculate_bids_level_eeg(filepath, typeLog, metadata_table, data_code_position, batch_correction, outputFolder_path, optional_matrix)
+function [] = HarMNqEEG_calculate_bids_level_eeg(filepath, typeLog, all_data, batch_correction, outputFolder_path, generate_cross_spectra, optional_matrix)
 %% Calculate for each eeg file in eeg folder
 
 % Create output folder and subfolders
@@ -7,17 +7,15 @@ test_folder(derivatives_output_folder);
 [~,allFiles] = recorrer_folders(fullfile(filepath, 'eeg'));
 for eeg_i=1:length(allFiles)
     [~, data_code, ext]=fileparts(cell2mat(allFiles(eeg_i)));
-    if strcmp(ext, '.edf') ||  strcmp(ext, '.eeg') || strcmp(ext, '.edf') || strcmp(ext, '.vhdr') || strcmp(ext, '.vmrk') ...
-            || strcmp(ext, '.set') || strcmp(ext, '.fdt') || strcmp(ext, '.bdf')
-        [all_data] = HarMNqEEG_read_data_fileio(cell2mat(allFiles(eeg_i)), metadata_table, data_code_position);
+    if strcmp(ext, '.edf') || strcmp(ext, '.bdf') %% This will be more
+        [all_data] = HarMNqEEG_read_data_fileio(cell2mat(allFiles(eeg_i)), all_data);
         %% Disp information. Begin process by case
         disp(['BEGIN PROCESS FOR ', data_code]);
-        HarMNqEEG_all_steps(derivatives_output_folder,typeLog, all_data, data_code, batch_correction, optional_matrix);
+        HarMNqEEG_all_steps(derivatives_output_folder,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
         %% Disp information. End process by case
         disp(['END PROCESS FOR ', data_code]);
-
-
     end
+
 
 end
 end

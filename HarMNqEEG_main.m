@@ -33,7 +33,7 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 
 %% Metadata
 %%% subjects_metadata --------> This files is optional in case generate_cross_spectra is False (0)
-%%%                              In case generate_cross_spectra is True this must be a , .csv, or .xls, or .xlsx file that must
+%%%                              In case generate_cross_spectra is True this must be a  .csv file. This file must
 %%%                              contain a list of subjects with the
 %%%                              following metadata info:
 %%%                              1- data_code: Name of the file
@@ -77,9 +77,12 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 %%%                     optional_matrix(2) -> Mean for Age of Riemannian Cross Spectra Norm
 
 
-% Checking the parameters
+% Checking the parameters and Create output folder and subfolders
 if isempty(outputFolder_path)
     outputFolder_path=[raw_data_path filesep 'derivatives'];
+else
+    outputFolder_path=[outputFolder_path filesep 'derivatives'];
+    test_folder(outputFolder_path);
 end
 
 
@@ -96,8 +99,8 @@ if ~isempty(subjects_metadata)
         error('The parameter subjects metadata must be a file')
     else
         [~, ~, ext] = fileparts(subjects_metadata);
-        if ~strcmp(ext, '.xls') && ~strcmp(ext, '.xlsx') && ~strcmp(ext, '.csv') && ~strcmp(ext, '.mat')
-            error('The subjects metadata file need to have xls or xlsx or csv extension');
+        if ~strcmp(ext, '.csv') && ~strcmp(ext, '.xlsx') && ~strcmp(ext, '.tsv') && ~strcmp(ext, '.mat')
+            error('The subjects metadata file need to have csv, or tsv or mat extension');
         end
     end
 end
@@ -129,8 +132,10 @@ end
 % ADD PATH Commented for compiled version
 addpath(genpath(pwd));
 
-% Create output folder and subfolders
-test_folder(outputFolder_path);
+
+
+
+disp('----------------------------------------------------------------- BEGIN PROCESS ALL PROCESS -----------------------------------------------------------------');
 
 % Calculate All in loop
 [~,pathnames] = recorrer_folders(raw_data_path);
@@ -143,11 +148,13 @@ for i=1:size(pathnames,2)
         test_folder(outputFolder_path_data_code);
 
         %% Creating log file by subject and begin save info
-        logFile=[outputFolder_path_data_code  filesep 'log.txt'];
-        test_folder(logFile);
+        logFile=[outputFolder_path_data_code  filesep data_code '_log.txt'];
+        test_folder(logFile, 'file');
         diary off;
         diary (logFile);
         diary on;
+
+
 
         %% Disp information. Begin process by case
         disp(['BEGIN PROCESS FOR ', data_code]);
@@ -170,22 +177,21 @@ for i=1:size(pathnames,2)
                         error('The parameter subjects_metadata is required when should the cross spectrum be calculated, generate_cross_spectra is True');
                     end
                     %%Reading by fileio module from Fieltrip
-                    %% Checking metadata for data_code
-                    metadata_table = readtable(subjects_metadata);
-                    [~, data_code_position] = ismember({data_code},metadata_table.data_code);
-                    if data_code_position==0
-                        warning([data_code ' not found in the subjects metadata file']);
+                    try
+                        [all_data] = HarMNqEEG_read_subjects_metadata(subjects_metadata,data_code);
+                    catch ME
+                        disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
                         diary off;
                         continue;
                     end
 
                     if  strcmp(file_ext, '.txt') %% txt format for all data
-                        [all_data]= HarMNqEEG_import_txt(cell2mat(pathnames(i)), metadata_table, data_code_position);
+                        [all_data]= HarMNqEEG_import_txt(cell2mat(pathnames(i)), all_data);
                         HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
                     else
 
                         try
-                            [all_data] = HarMNqEEG_read_data_fileio(cell2mat(pathnames(i)), metadata_table, data_code_position);
+                            [all_data] = HarMNqEEG_read_data_fileio(cell2mat(pathnames(i)), all_data);
                             HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
                         catch ME
                             disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
@@ -199,11 +205,12 @@ for i=1:size(pathnames,2)
                 if isempty(subjects_metadata)
                     error('The parameter subjects_metadata is required when should the cross spectrum be calculated, generate_cross_spectra is True');
                 end
+
                 %% Checking metadata for data_code
-                metadata_table = readtable(subjects_metadata);
-                [~, data_code_position] = ismember({data_code},metadata_table.data_code);
-                if data_code_position==0
-                    warning([data_code ' not found in the subjects metadata file']);
+                try
+                    [all_data] = HarMNqEEG_read_subjects_metadata(subjects_metadata,data_code);
+                catch ME
+                    disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
                     diary off;
                     continue;
                 end
@@ -211,7 +218,7 @@ for i=1:size(pathnames,2)
                 if isfolder(cell2mat(pathnames(i)))
                     if startsWith(data_code, 'sub-') %% checking is BIDS
                         try
-                            HarMNqEEG_calculate_bids(cell2mat(pathnames(i)), typeLog, metadata_table, data_code_position, batch_correction, outputFolder_path_data_code, optional_matrix);
+                            HarMNqEEG_calculate_bids(cell2mat(pathnames(i)), data_code, typeLog, all_data, batch_correction, outputFolder_path_data_code, generate_cross_spectra, optional_matrix);
                         catch ME
                             disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
                             diary off;
@@ -219,8 +226,14 @@ for i=1:size(pathnames,2)
                         end
                     elseif  ~isempty(dir(fullfile(cell2mat(pathnames(i)), '*.PLG')))   %% checking is PLG
                         if ~isempty(fullfile(cell2mat(pathnames(i)), '*.WIN'))
-                            [all_data]= HarMNqEEG_import_plg(cell2mat(pathnames(i)), metadata_table, data_code_position);
-                            HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
+                            try
+                                [all_data]= HarMNqEEG_import_plg(cell2mat(pathnames(i)), all_data);
+                                HarMNqEEG_all_steps(outputFolder_path_data_code,generate_cross_spectra, typeLog, all_data, data_code, batch_correction, optional_matrix);
+                            catch ME
+                                disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
+                                diary off;
+                                continue;
+                            end
                         else
                             warning(['The ' data_code ' must be contain the win file'] );
                             diary off;
@@ -244,11 +257,11 @@ for i=1:size(pathnames,2)
                 continue;
             end
 
-        end %% cross spectro generated
+        end %% cross spectro generated if
 
 
         %% Disp information. End process by case
-        disp(['END PROCESS FOR ', data_code]);
+        disp(['----------------------------------------------------------------- END PROCESS FOR ' data_code ' -----------------------------------------------------------------']);
 
         diary off;
 
@@ -258,4 +271,6 @@ for i=1:size(pathnames,2)
 
 
 end
+
+disp('----------------------------------------------------------------- END PROCESS ALL PROCESS -----------------------------------------------------------------');
 
