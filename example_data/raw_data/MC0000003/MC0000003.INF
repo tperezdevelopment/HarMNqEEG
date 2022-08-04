@@ -1,0 +1,129 @@
+PLGNC = 1 58
+PLGNS = 1 209348
+PLGSR(Hz) = 1 200.00
+Gains = 58 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00
+           20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00
+           20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00
+           20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00
+           20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00
+           20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00
+           20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00 20000.00
+           20000.00 20000.00
+A-WMax = 1 1183
+B-WMax = 1 1359
+C-WMax = 1 1143
+D-WMax = 1 789
+E-WMax = 1 1343
+F-WMax = 1 1305
+PLGMontage = 58 1__-REF 2__-REF 3__-REF 4__-REF 5__-REF 6__-REF 7__-REF 8__-REF 9__-REF 10_-REF
+                11_-REF 12_-REF 13_-REF 14_-REF 15_-REF 16_-REF 17_-REF 18_-REF 19_-REF 20_-REF
+                21_-REF 24_-REF 25_-REF 26_-REF 27_-REF 38_-REF 39_-REF 40_-REF 41_-REF 44_-REF
+                45_-REF 52_-REF 53_-REF 54_-REF 55_-REF 62_-REF 64_-REF 65_-REF 66_-REF 67_-REF
+                78_-REF 79_-REF 82_-REF 83_-REF 90_-REF 91_-REF 96_-REF 97_-REF 98_-REF 99_-REF
+                100-REF 101-REF 102-REF 103-REF 112-REF 113-REF 114-REF 115-REF
+LCut(Hz) = 58 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+              0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+              0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+              0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+              0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+              0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+HCut(Hz) = 58 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+              50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+              50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+              50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+              50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+              50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+NotchFilter = 58 ON ON ON ON ON ON ON ON ON ON
+                 ON ON ON ON ON ON ON ON ON ON
+                 ON ON ON ON ON ON ON ON ON ON
+                 ON ON ON ON ON ON ON ON ON ON
+                 ON ON ON ON ON ON ON ON ON ON
+                 ON ON ON ON ON ON ON ON
+ScreenDuration = 1 10.00
+A-MInfo = 1 eyes_closed
+B-MInfo = 1 eyes_opened
+C-MInfo = 1 hyperventilation_1
+D-MInfo = 1 hyperventilation_2
+E-MInfo = 1 hyperventilation_3
+F-MInfo = 1 recuperation
+G-MInfo = 1 $$
+H-MInfo = 1 $$
+I-MInfo = 1 $$
+J-MInfo = 1 $$
+K-MInfo = 1 $$
+L-MInfo = 1 $$
+0-MInfo = 1 blinking
+1-MInfo = 1 movement
+2-MInfo = 1 noise
+3-MInfo = 1 paroxysmal_activity
+4-MInfo = 1 seizure
+5-MInfo = 1 EKG
+6-MInfo = 1 EMG_artifacts
+7-MInfo = 1 sweating
+8-MInfo = 1 electrodes_artifacts
+9-MInfo = 1 $$
+.CMM = 1 1
+.CLB = 1 1
+.IMP = 1 1
+LastMontage = 1 REGISTRO
+PLGAlias = 58 1__-REF 2__-REF 3__-REF 4__-REF 5__-REF 6__-REF 7__-REF 8__-REF 9__-REF 10_-REF
+              11_-REF 12_-REF 13_-REF 14_-REF 15_-REF 16_-REF 17_-REF 18_-REF 19_-REF 20_-REF
+              21_-REF 24_-REF 25_-REF 26_-REF 27_-REF 38_-REF 39_-REF 40_-REF 41_-REF 44_-REF
+              45_-REF 52_-REF 53_-REF 54_-REF 55_-REF 62_-REF 64_-REF 65_-REF 66_-REF 67_-REF
+              78_-REF 79_-REF 82_-REF 83_-REF 90_-REF 91_-REF 96_-REF 97_-REF 98_-REF 99_-REF
+              100-REF 101-REF 102-REF 103-REF 112-REF 113-REF 114-REF 115-REF
+DefLCut(Hz) = 58 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+                 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+                 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+                 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+                 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+                 0.50 0.50 0.50 0.50 0.50 0.50 0.50 0.50
+DefHCut(Hz) = 58 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+                 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+                 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+                 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+                 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+                 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+NotchFrequency = 1 60.00
+DefNotchFilter = 58 ON ON ON ON ON ON ON ON ON ON
+                    ON ON ON ON ON ON ON ON ON ON
+                    ON ON ON ON ON ON ON ON ON ON
+                    ON ON ON ON ON ON ON ON ON ON
+                    ON ON ON ON ON ON ON ON ON ON
+                    ON ON ON ON ON ON ON ON
+ValidEEG = 58 ON ON ON ON ON ON ON ON ON ON
+              ON ON ON ON ON ON ON ON ON ON
+              ON ON ON ON ON ON ON ON ON ON
+              ON ON ON ON ON ON ON ON ON ON
+              ON ON ON ON ON ON ON ON ON ON
+              ON ON ON ON ON ON ON ON
+PLGAmp(McV) = 58 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+                 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+                 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+                 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+                 30.00 30.00 30.00 30.00 30.00 30000.00 30.00 30.00 30.00 30.00
+                 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+Color = 58 0 0 0 0 0 0 0 0 0 0
+           0 0 0 0 0 0 0 0 0 0
+           0 0 0 0 0 0 0 0 0 0
+           0 0 0 0 0 0 0 0 0 0
+           0 0 0 0 0 0 0 0 0 0
+           0 0 0 0 0 0 0 0
+Space = 58 OFF OFF OFF OFF OFF OFF OFF OFF OFF OFF
+           OFF OFF OFF OFF OFF OFF OFF OFF OFF OFF
+           OFF OFF OFF OFF OFF OFF OFF OFF OFF OFF
+           OFF OFF OFF OFF OFF OFF OFF OFF OFF OFF
+           OFF OFF OFF OFF OFF OFF OFF OFF OFF OFF
+           OFF OFF OFF OFF OFF OFF OFF OFF
+Polarity = 58 1 1 1 1 1 1 1 1 1 1
+              1 1 1 1 1 1 1 1 1 1
+              1 1 1 1 1 1 1 1 1 1
+              1 1 1 1 1 1 1 1 1 1
+              1 1 1 1 1 1 1 1 1 1
+              1 1 1 1 1 1 1 1
+.PLG = 1 1
+.MRK = 1 1
+.WIN = 1 1
+.CDC = 1 1
+BytesDiskBuffer = 1 -32768
+.INF = 1 1

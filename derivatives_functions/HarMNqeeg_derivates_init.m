@@ -1,4 +1,4 @@
-function [jsonFile] = HarMNqeeg_derivates_init(h5_file_full_path, FreqRes, Epoch_Length, dnames,srate, name, pais, EEGMachine, sex, age, reRefBatch)
+function [jsonFile] = HarMNqeeg_derivates_init(h5_file_full_path, FreqRes, Epoch_Length, dnames,srate, name, pais, EEGMachine, age, reRefBatch)
 
 %% Declare the json File
 jsonFile.Attributes.Software= "HarMNqEEG";
@@ -18,7 +18,6 @@ jsonFile.Attributes.Reference_Paper="Li M, et al.. Harmonized-Multinational qEEG
 jsonFile.Attributes.Name_Subject=name;
 jsonFile.Attributes.Country=pais;
 jsonFile.Attributes.EEGMachine=EEGMachine;
-jsonFile.Attributes.Sex=sex;
 jsonFile.Attributes.Age=age;
 jsonFile.Attributes.Frequency_Unit="Hz";
 jsonFile.Attributes.Frequency_Resolution=num2str(FreqRes);

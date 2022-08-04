@@ -8,12 +8,8 @@ function mnhs=MnhCaller(mnhs)
 
 % dbstop if error Commented by tperezdevelopment for compiled version
 %% record
-diary off
 [~,filename]=fileparts(mnhs.path_table);
 filename=[mnhs.path_out,filesep,filename,'_',mnhs.tag];
-diaryfile=[filename,'_diary.txt'];
-test_folder(diaryfile);
-diary(diaryfile);
 mnhs.time_start=datetime;
 mnhs = mnhs.mnhfun(mnhs);%
 %% only for model compare
@@ -33,4 +29,4 @@ writetable(mnhs.Ttest,[filename,'.csv']); %%save in csv file
 % save([filename,'.mat'], 'Predict_zscore_table');
 disp(['finish ',mfilename,'-',func2str(mnhs.mnhfun),'-',mnhs.tag]);
 mnhs.time_finish=datetime;
-diary off
+

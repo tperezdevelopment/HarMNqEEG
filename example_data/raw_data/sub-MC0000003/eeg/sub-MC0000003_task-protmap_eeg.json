@@ -1,0 +1,17 @@
+{
+  "TaskName": "protmap",
+  "TaskDescription": "Protocol used in Cuban Human Brain Mapping Project",
+  "SamplingFrequency": 200,
+  "EEGChannelCount": 58,
+  "EOGChannelCount": 0,
+  "ECGChannelCount": 0,
+  "EMGChannelCount": 0,
+  "MiscChannelCount":  0,
+  "TriggerChannelCount":  0,
+  "EEGPlacementScheme": "10-10",
+  "EEGReference": "common",
+  "PowerLineFrequency": 60,
+  "SoftwareFilters": "n/a",
+  "RecordingDuration": 1046.74,
+  "RecordingType": "continuous"
+}
