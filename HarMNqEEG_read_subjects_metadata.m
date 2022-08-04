@@ -13,7 +13,7 @@ switch ext
         metadata_table = readtable(subjects_metadata, 'FileType', 'text','Delimiter', '\t',...
             'TreatAsEmpty', {'N/A','n/a'});
     case '.mat'
-        metadata_table=import(subjects_metadata);
+        metadata_table=importdata(subjects_metadata);
 end
 
 

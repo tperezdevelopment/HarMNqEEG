@@ -7,7 +7,7 @@ test_folder(derivatives_output_folder);
 [~,allFiles] = recorrer_folders(fullfile(filepath, 'eeg'));
 for eeg_i=1:length(allFiles)
     [~, data_code, ext]=fileparts(cell2mat(allFiles(eeg_i)));
-    if strcmp(ext, '.edf') || strcmp(ext, '.bdf') %% This will be more
+    if strcmp(ext, '.edf') || strcmp(ext, '.bdf') || strcmp(ext, '.set') %% This will be more
         [all_data] = HarMNqEEG_read_data_fileio(cell2mat(allFiles(eeg_i)), all_data);
         %% Disp information. Begin process by case
         disp(['BEGIN PROCESS FOR ', data_code]);

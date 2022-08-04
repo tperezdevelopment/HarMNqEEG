@@ -18,26 +18,76 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 
 % INPUT PARAMETERS:
 %% Auxiliar inputs
-%%% outputFolder_path ----------> Path of output folder
+%%% outputFolder_path ----------> Path of output folder.
 %%% generate_cross_spectra -----> Boolean parameter. Case False (0), the
 %%%                               raw_data_path folder will contain the
 %%%                               data_gatherer output. Case True (1) is required to calculate the cross spectra
 
+%% Note important
+%%% The chanel montage must be 10-20 system
+
 %% Data Gatherer
-%%% raw_data_path -------------> Folder path of the raw data. If the generate_cross_spectra is True (1),
-%%%                              this folder must contain a subfolders by
-%%%                              each subjects or a list of eeg data, or the mix of subject folder and subject file. If
-%%%                              the generate_cross_spectra is False (0),
-%%%                              this folder must be contain the
-%%%                              data_gatherer output, with the cross spectra generated (See more: https://github.com/CCC-members/BC-V_group_stat/blob/master/data_gatherer.m)
+%%% raw_data_path -------------> Folder path of the raw data. The content of this raw_data_path depends 
+%%%                              of generate_cross_spectra parameters:
+%%%                              1- If the generate_cross_spectra is False (0),
+%%%                              this folder must be contain the data_gatherer output, with the cross spectra generated
+%%%                              (See more: https://github.com/CCC-members/BC-V_group_stat/blob/master/data_gatherer.m)
+%%%                              2- If the generate_cross_spectra is True
+%%%                              (1), the raw_data_path can contain the
+%%%                              following formats:
+%%%                                 2.1- A Matlab structure (*.mat) with the
+%%%                                 following parameters:
+%%%                                 - data          : an artifact-free EEG scalp data matrix, organized as nd x nt x ne, where
+%%%                                                   nd : number of channels
+%%%                                                   nt : epoch size (# of instants of times in an epoch)
+%%%                                                   ne : number of epochs
+%%%                                 - sampling_freq : sampling frequency in Hz. Eg: 200
+%%%                                 - cnames        : a cell array containing the names of the channels. The expected names are:
+%%%                                                   'Fp1'    'Fp2'    'F3'    'F4'    'C3'    'C4'    'P3'    'P4'    'O1'    'O2'    'F7'    'F8'    'T3'    'T4'    'T5'    'T6'    'Fz'    'Cz'    'Pz'
+%%%                                                   If the channels come in another order, they are re-arranged according to the expected order
+%%%                                 - data_code     : is the name of the original data file just for purpose of identification.
+%%%                                                   It can be a code used by the owner to identify the data.
+%%%                                 - reference     : a string containing the name of the reference of the data.
+%%%                                 - age           : subject's age at recording time
+%%%                                 - sex           : subject's sex
+%%%                                 - country       : country providing the data
+%%%                                 - eeg_device    : EEG hardware where the data was recorded
+%%%                                 
+%%%                                 2.2- An ASCII file (*.txt) with a fixed
+%%%                                 structure which contains the data of an EEG file. In that case, the file needs to
+%%%                                 have the extension ".txt" and m ust have the following structure:
+%%%                                  - NAME
+%%%                                  - SEX
+%%%                                  - AGE
+%%%                                  - SAMPLING_FREQ
+%%%                                  - EPOCH_SIZE
+%%%                                  - NCHANNELS
+%%%                                  - MONTAGE=
+%%%                                    Fp1-REF
+%%%                                    Fp2-REF
+%%%                                    F3_-REF
+%%%                                   and so on. The program expects NCHANNELS lines with the names
+%%%                                  AFTER THE CHANNELS NAMES THE EEG DATA
+%%%                                  where each lione is an instant of time and each column represents a channel.
+%%%                                 If the EEG contains 30 segments of 512 points each and 19 channels, then
+%%%                                 30*512 lines of 19 columns of numbers (either float or integer) are expected
+%%%         
+%%%                                 2.3- Generic data formats (*.edf)
+%%%
+%%%                                 2.4- Biosemi (*.bdf)
+%%%
+%%%                                 2.5- EEGLAB format (*.set)
+%%%
+%%%                                 2.6- MEDICID neurometrics system (*.plg)
+
 
 %% Metadata
 %%% subjects_metadata --------> This files is optional in case generate_cross_spectra is False (0)
-%%%                              In case generate_cross_spectra is True this must be a  .csv file. This file must
+%%%                              In case generate_cross_spectra is True this must be a  *.csv, *.tsv or *.mat file format. This file must
 %%%                              contain a list of subjects with the
 %%%                              following metadata info:
 %%%                              1- data_code: Name of the file
-%%%                                 subject or the subfolder subjet listed
+%%%                                 subject or the subfolder subject listed
 %%%                                 in raw_data_path folder. Required
 %%%                                 metadata
 %%%                              2- reference: A string containing the name
@@ -55,7 +105,11 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 
 
 %% Calculate z-scores and harmonize %%
-%%% batch_correction --> List of the batch correction that we have. Options:
+%%% batch_correction --> List of the batch correction. You must select one closed study for calculating batch harmonized z-scores.
+%%%                      The batch_correction you can put the number of the
+%%%                      batch list or the batch correction name.
+%%%                      The name of existed batch reference is the union
+%%%                      between: EEG_Device+Country+Study_Year:
 %%%                      1->  ANT_Neuro-Malaysia
 %%%                      2->  BrainAmp_DC-Chengdu_2014
 %%%                      3->  BrainAmp_MR_plus_64C-Chongqing
@@ -148,13 +202,11 @@ for i=1:size(pathnames,2)
         test_folder(outputFolder_path_data_code);
 
         %% Creating log file by subject and begin save info
-        logFile=[outputFolder_path_data_code  filesep data_code '_log.txt'];
+        logFile=[outputFolder_path_data_code  filesep 'log_' data_code '.txt'];
         test_folder(logFile, 'file');
         diary off;
         diary (logFile);
         diary on;
-
-
 
         %% Disp information. Begin process by case
         disp(['BEGIN PROCESS FOR ', data_code]);
