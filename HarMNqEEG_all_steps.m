@@ -91,27 +91,27 @@ if typeLog(2)==1
 
     %% Save the Raw Riemannian Cross-Spectra
     dsetname = 'Raw_Riemannian_Cross_Spectra'; dtype='Hermitian';
-    DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Raw Cross-spectral matrix transformed to the Riemanian space.';...
+    DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Raw Cross-spectral matrix transformed to the Tangent space.';...
         'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
     %% Notes globalriemlogm and riemlogm are the same
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'globalriemlogm', 'riemlogm'), DsetAttr);
 
     %% Save the Harmonized Raw Riemannian Cross-Spectra
     dsetname = 'Harmonized_Raw_Riemannian_Cross_Spectra'; dtype='Hermitian';
-    DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Raw Cross-spectral matrix transformed to the Riemanian space.';...
+    DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Raw Cross-spectral matrix transformed to the Tangent space.';...
         'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarriemlogm', 'riemlogm'), DsetAttr);
 
     %% Save the Z-scores Riemannian Cross-Spectra
     dsetname = 'Z_scores_Riemannian_Cross_Spectra'; dtype='Hermitian';
-    DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Z-scores of the Cross-spectral matrix transformed to the Riemanian space.';...
+    DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Z-scores of the Cross-spectral matrix transformed to the Tangent space.';...
         'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zglobalriemlogm', 'riemlogm'), DsetAttr);
 
     if ~isempty(reRefBatch)
         %% Save the Harmonized Z-scores Riemannian Cross-Spectra
         dsetname = 'Harmonized_Z_scores_Riemannian_Cross_Spectra'; dtype='Hermitian';
-        DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Z-scores of the Cross-spectral matrix transformed to the Riemanian space.'; ...
+        DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Z-scores of the Cross-spectral matrix transformed to the Tangent space.'; ...
             'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
         [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zstudyriemlogm', 'riemlogm'), DsetAttr);
     end

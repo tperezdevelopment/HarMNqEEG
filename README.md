@@ -195,10 +195,10 @@ Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:
    <li>Harmonized_Log_Spectra: Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
    <li>Z_scores_Log_Spectra: The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the power spectral density (PSD) of channel i and frequency f. The raw spectra is transformed to the Log space to achieve quasi gaussian distribution.</li>
    <li>Harmonized_Z_scores_Log_Spectra: Harmonized Z-score of the log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
-   <li>Raw_Riemannian_Cross_Spectra: Raw Cross-spectral matrix transformed to the Riemanian space.</li>
-   <li>Harmonized_Raw_Cross_Spectra: Harmonized Raw Cross-spectral matrix transformed to the Riemanian space.</li>
-   <li>Z_scores_Riemannian_Cross_Spectra: Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>
-   <li>Harmonized_Z_scores_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Riemanian space.</li>   
+   <li>Raw_Riemannian_Cross_Spectra: Raw Cross-spectral matrix transformed to the Tangent space.</li>
+   <li>Harmonized_Raw_Cross_Spectra: Harmonized Raw Cross-spectral matrix transformed to the Tangent space.</li>
+   <li>Z_scores_Riemannian_Cross_Spectra: Z-scores of the Cross-spectral matrix transformed to the Tangent space.</li>
+   <li>Harmonized_Z_scores_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Tangent space.</li>   
 
 </ol>
 
