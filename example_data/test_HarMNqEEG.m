@@ -5,7 +5,6 @@ addpath(genpath(pwd));
 %% For generate the cross spectra options
 raw_data_path=[pwd filesep 'example_data' filesep 'raw_data'];
 generate_cross_spectra=1;
-tst=1;
 outputFolder_path=[pwd filesep 'HARMNqEEG_Result_raw_data'];
 % outputFolder_path='';
 subjects_metadata=[pwd filesep 'example_data' filesep 'raw_data_table.mat'];
