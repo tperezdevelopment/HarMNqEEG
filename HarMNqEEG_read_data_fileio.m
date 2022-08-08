@@ -7,15 +7,15 @@ if strcmp(ext, '.edf') || strcmp(ext, '.bdf') || strcmp(ext, '.set')
 
     all_data.data_code=data_code;
 
-    %% Reading Header and  %% Reading eeg data
+    %% Reading Header and Reading eeg data
     try
         [hdr] = ft_read_header(filename);
-        [dat] = ft_read_data(filename);
+        [data] = ft_read_data(filename);
     catch ME
         disp( getReport( ME, 'extended', 'hyperlinks', 'on' ) );
     end
 
-    switch ndims(dat)
+    switch ndims(data)
         case 2
             if  strcmpi(ext, '.set')
                 if isempty(hdr.nTrials)
@@ -30,12 +30,12 @@ if strcmp(ext, '.edf') || strcmp(ext, '.bdf') || strcmp(ext, '.set')
                 else
                     nd=hdr.nChans;
                     nt=hdr.Fs*hdr.orig.Dur; %% by default 200 Hz * 2.56 sec=512
-                    ne=size(dat,2)/nt;
+                    ne=size(data,2)/nt;
                 end
             end
-            all_data.data=reshape(dat,[nd, nt, ne]);
+            all_data.data=reshape(data,[nd, nt, ne]);
         case 3
-            all_data.data=dat;
+            all_data.data=data;
 
         otherwise
             error(['Check the data for ' data_code]);
