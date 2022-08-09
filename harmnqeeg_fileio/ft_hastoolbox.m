@@ -435,7 +435,9 @@ switch toolbox
 
     % the following are FieldTrip modules or toolboxes
   case 'FILEIO'
-    dependency = {'ft_read_header', 'ft_read_data', 'ft_read_event', 'ft_read_sens'};
+%     dependency = {'ft_read_header', 'ft_read_data', 'ft_read_event',
+%     'ft_read_sens'};  changed by tperezdevelopment
+      dependency = {'ft_read_header', 'ft_read_data', 'ft_read_event'};
   case 'FORWARD'
     dependency = {'ft_compute_leadfield', 'ft_prepare_vol_sens'};
   case 'INVERSE'

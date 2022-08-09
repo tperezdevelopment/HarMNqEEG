@@ -17,7 +17,7 @@ function [obj] = ft_determine_units(obj)
 %   source model, see FT_DATATYPE_SOURCE and FT_PREPARE_SOURCEMODEL
 %   anatomical mri, see FT_DATATYPE_VOLUME
 %   segmented mri, see FT_DATATYPE_SEGMENTATION
-%   anatomical or functional atlas, see FT_READ_ATLAS
+
 %
 % This function will add the field 'unit' to the output data structure with the
 % possible values 'm', 'cm ' or 'mm'.

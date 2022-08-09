@@ -34,7 +34,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <ul>
   <li>Subfolder: with_cross_spectra_generated. This folder will be the raw_data_path parameter. This folder contains 2 subjects by folder for testing the tool. In each subject folder there is a .mat file with the <strong>cross spectra generated</strong>. When the raw_data_path parameters is the results of the data_gatherer ( Github location of the script: https://github.com/CCC-members/BC-V_group_stat/blob/master/data_gatherer.m), the generate_cross_spectra parameter must be 0. </li>
   <li>Subfolder: without_the_cross_spectra_generated. This folder will be the raw_data_path parameter. This folder contains 2 subjects by folder for testing the tool. In each subject folder there is a .mat file with the <strong>cross spectra input data</strong>. The generate_cross_spectra parameter must be 1. </li>
-  <li>Subfolder: raw_data. This folder contain different formats: BIDS, .set, .plg, .txt. For run this data, you must select as subjects_metadata parameter the file <strong>raw_data_table.tsv</strong> or <strong>raw_data_table.mat</strong></li>
+  <li>Subfolder: raw_data. This folder contain different formats: BIDS, .set, .plg, .txt. For run this data, you must select as subjects_metadata parameter the file <strong>raw_data_table.tsv</strong> or <strong>raw_data_table.mat</strong>.</li>
 </ul>
 
 
@@ -42,7 +42,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <h4>Auxiliar inputs</h4>
 <ul>
 <li>outputFolder_path: Path of output folder</li>
-<li>generate_cross_spectra: Boolean parameter. Case False (0), the raw_data_path folder will contain the data_gatherer output. Case True (1) is required to calculate the cross spectra</li>
+<li>generate_cross_spectra: Boolean parameter. Case False (0), the raw_data_path folder will contain the data_gatherer output. Case True (1) is required to calculate the cross spectra.</li>
 </ul>
 
 <h4>Note important</h4>
@@ -129,8 +129,8 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <h4>Preproccess Guassianize Data </h4>
 <ul> <li>typeLog: Type of gaussianize method to apply. </br> 
 										<strong>Options:</strong></br>
-                                   <ul><li> typeLog(1): for log (Boolean):     log-spectrum</li>
-                                    <li>typeLog(2): for riemlogm (Boolean): cross-spectrum with riemannian metric</li></ul>
+                                   <ul><li> typeLog(1): for log (Boolean):  log-spectrum.</li>
+                                    <li>typeLog(2): for riemlogm (Boolean): cross-spectrum with Riemannian Vectorization.</li></ul>
 </li></ul>									
 
 
@@ -164,7 +164,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
                     <strong>Options:</strong></br>
       <ul style="list-style: none">
         <li>optional_matrix(1): Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
-        <li>optional_matrix(2): Mean for Age of Riemannian Cross Spectra Norm</li>
+        <li>optional_matrix(2): Mean for Age of Tangent Space Cross Spectra Norm</li>
      </ul>       
 </li>
 </ul>								
@@ -184,22 +184,37 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
    <li>MinFreq: Minimum spectral frequency (according to the data recording maybe down-sampled if higher than the expected, or the original one if lower than the expected)</li>
    <li>FreqRes: Frequency resolution (maybe down-sampled if higher than the expected, or the original one if lower than the expected)</li>
    <li>MaxFreq: Maximum spectral frequency (according to the data recording maybe down-sampled if higher than the expected, or the original one if lower than the expected) </li>
-   <li>Epoch_Length: Epoch size (# of instants of times in an epoch)</li>
-   <li>FFT_coefs: Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).</li>
+   <li>Epoch_Length: Epoch size (# of instants of times in an epoch)</li>  
    <li>reRefBatch: In case of the batch_correction is not empty. The reRefBatch is the batch correction of the z-scores</li>
 </ol>
    
 Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:   
+
+<h4>In case typeLog(1)-> for log = True </h4>
 <ol>
-   <li>Raw_Log_Spectra: Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq</li>
+                        
+   <li>Raw_Log_Spectra: Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq.</li>
    <li>Harmonized_Log_Spectra: Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
    <li>Z_scores_Log_Spectra: The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the power spectral density (PSD) of channel i and frequency f. The raw spectra is transformed to the Log space to achieve quasi gaussian distribution.</li>
    <li>Harmonized_Z_scores_Log_Spectra: Harmonized Z-score of the log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
-   <li>Raw_Riemannian_Cross_Spectra: Raw Cross-spectral matrix transformed to the Tangent space.</li>
-   <li>Harmonized_Raw_Cross_Spectra: Harmonized Raw Cross-spectral matrix transformed to the Tangent space.</li>
-   <li>Z_scores_Riemannian_Cross_Spectra: Z-scores of the Cross-spectral matrix transformed to the Tangent space.</li>
-   <li>Harmonized_Z_scores_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Tangent space.</li>   
+</ol>   
 
+<h4>In case typeLog(2)-> for riemlogm = True </h4>
+<ol>
+    <li>Raw_TangentSpace_Cross_Spectra: Raw Cross-spectral matrix transformed to the Tangent space.</li>
+   <li>Harmonized_Raw_TangentSpace_Cross_Spectra: Harmonized Raw Cross-spectral matrix transformed to the Tangent space.</li>
+   <li>Z_scores_TangentSpace_Cross_Spectra: Z-scores of the Cross-spectral matrix transformed to the Tangent space.</li>
+   <li>Harmonized_Z_scores_TangentSpace_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Tangent space.</li>   
+</ol>
+
+<h4>In case optional_matrix(1) = True </h4>
+<ol>
+   <li>FFT_coefs:  Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).</li>
+</ol>
+
+<h4> In case optional_matrix(2) = True</h4>
+<ol>
+   <li>Mean_for_Age_of_TangentSpace_Cross_Spectra_Norm: Mean for Age of Tangent Space Cross Spectra Norm.</li>
 </ol>
 
 

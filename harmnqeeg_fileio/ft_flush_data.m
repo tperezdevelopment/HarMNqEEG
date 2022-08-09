@@ -1,11 +1,11 @@
-function ft_flush_event(filename, varargin)
+function ft_flush_data(filename, varargin)
 
-% FT_FLUSH_EVENT removes all events from the event queue
+% FT_FLUSH_DATA removes all data from the data queue
 %
 % Use as
-%   ft_flush_event(filename, ...)
+%   ft_flush_data(filename, ...)
 %
-% See also FT_FLUSH_HEADER, FT_FLUSH_DATA
+% See also FT_FLUSH_HEADER, FT_FLUSH_EVENT
 
 % Copyright (C) 2007-2010 Robert Oostenveld
 %
@@ -27,31 +27,29 @@ function ft_flush_event(filename, varargin)
 %
 % $Id$
 
-% TODO implement filtering
-
 % set the defaults
-eventformat = ft_getopt(varargin, 'eventformat',  ft_filetype(filename));
+dataformat = ft_getopt(varargin, 'dataformat', ft_filetype(filename));
 
-switch eventformat
+switch dataformat
   case 'disp'
     % nothing to do
 
   case 'fcdc_buffer'
     [host, port] = filetype_check_uri(filename);
-    buffer('flush_evt', [], host, port);
+    buffer('flush_dat', [], host, port);
 
-  case 'fcdc_mysql'
-    % open the database
-    [user, password, server, port] = filetype_check_uri(filename);
-    if ~isempty(port)
-      server = sprintf('%s:%d', server, port);
-    end
-    mysql('open', server, user, password);
-    % remove all previous event information
-    cmd = 'TRUNCATE TABLE fieldtrip.event';
-    mysql(cmd);
-    mysql('close');
-
+%   case 'fcdc_mysql'  %% Commented by tperezdevelopment
+%     % open the database
+%     [user, password, server, port] = filetype_check_uri(filename);
+%     if ~isempty(port)
+%       server = sprintf('%s:%d', server, port);
+%     end
+%     mysql('open', server, user, password);
+%     % remove all previous data
+%     cmd = 'TRUNCATE TABLE fieldtrip.data';
+%     mysql(cmd);
+%     mysql('close');
+    
   case 'matlab'
     if exist(filename, 'file')
       warning('deleting existing file ''%s''', filename);
@@ -61,4 +59,3 @@ switch eventformat
   otherwise
     error('unsupported data format');
 end
-

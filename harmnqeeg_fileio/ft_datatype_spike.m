@@ -195,9 +195,9 @@ switch version
       if ~isfield(spike, 'trialtime')
         % determine from the data itself
         warning('Reconstructing the field trialtime from spike.origtime and spike.origtrial. This is not the original representation');
-        tmax  = nanmax(spike.trial{1});
-        tsmin = nanmin(spike.time{1});
-        tsmax = nanmax(spike.time{1});
+        tmax  = max(spike.trial{1}); %% changed by tperezdevelopment nanmax
+        tsmin = min(spike.time{1}); %% changed by tperezdevelopment nanmin
+        tsmax = max(spike.time{1}); %% changed by tperezdevelopment nanmax
         spike.trialtime = [tsmin*ones(tmax,1) tsmax*ones(tmax,1)];
       end
       spike.lfplabel = spike.label; % in the old format, these were the lfp channels

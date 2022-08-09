@@ -97,7 +97,7 @@ if istrue(denoise) && isempty(threshold)
     end
     % look at the skewness of derivative of the channel, it will be large for a channel with an occasional TTL pulse
     % taking the derivative makes it sensitive for upgoing and downgoing flanks of long TTL pulses
-    if skewness(abs(diff(dat(i,:))))>5
+    if HarMNqEEG_stats_skewness(abs(diff(dat(i,:))))>5  %% Changed by tperezdevelopment for skewness from stats toolbox problem with mcc
       warning(['trigger channel ' hdr.label{chanindx(i)} ' looks like analog TTL pulses and will be thresholded']);
       % use a value halfway the channel-specific extremes
       threshold_value = midrange(dat(i,:));

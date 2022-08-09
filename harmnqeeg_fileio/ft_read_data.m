@@ -34,8 +34,7 @@ function [dat] = ft_read_data(filename, varargin)
 % 'dataformat' option. This function should take five input arguments: filename, hdr,
 % begsample, endsample, chanindx. Please check the code of this function for details,
 % and search for BIDS_TSV as example.
-%
-% See also FT_READ_HEADER, FT_READ_EVENT, FT_WRITE_DATA, FT_WRITE_EVENT
+
 
 % Copyright (C) 2003-2020 Robert Oostenveld
 %
@@ -823,25 +822,25 @@ switch dataformat
       % nothing to do
     end
     
-  case 'fcdc_mysql'
-    % check that the required low-level toolbox is available
-    ft_hastoolbox('mysql', 1);
-    % read from a MySQL server listening somewhere else on the network
-    db_open(filename);
-    if db_blob
-      error('not implemented');
-    else
-      for i=begtrial:endtrial
-        s = db_select('fieldtrip.data', {'nChans', 'nSamples', 'data'}, i);
-        dum{i-begtrial+1} = mxDeserialize(s.data);
-      end
-      dat = zeros(length(chanindx), s.nSamples, endtrial-begtrial+1);
-      for i=begtrial:endtrial
-        dat(:,:,i-begtrial+1) = dum{i-begtrial+1}(chanindx,:);
-      end
-      dimord = 'chans_samples_trials';
-    end
-    
+%   case 'fcdc_mysql'   %% Commented by tperezdevelopment
+%     % check that the required low-level toolbox is available
+%     ft_hastoolbox('mysql', 1);
+%     % read from a MySQL server listening somewhere else on the network
+%     db_open(filename);
+%     if db_blob
+%       error('not implemented');
+%     else
+%       for i=begtrial:endtrial
+%         s = db_select('fieldtrip.data', {'nChans', 'nSamples', 'data'}, i);
+%         dum{i-begtrial+1} = mxDeserialize(s.data);
+%       end
+%       dat = zeros(length(chanindx), s.nSamples, endtrial-begtrial+1);
+%       for i=begtrial:endtrial
+%         dat(:,:,i-begtrial+1) = dum{i-begtrial+1}(chanindx,:);
+%       end
+%       dimord = 'chans_samples_trials';
+%     end
+%     
   case 'gdf'
     % this requires the biosig toolbox
     ft_hastoolbox('BIOSIG', 1);

@@ -101,7 +101,7 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 %% Preproccess Guassianize Data %%
 %%% typeLog ----------> Type of gaussianize method to apply. Options:
 %%%                     typeLog(1)-> for log (Boolean): log-spectrum
-%%%                     typeLog(2)-> for riemlogm (Boolean): cross-spectrum with riemannian metric
+%%%                     typeLog(2)-> for riemlogm (Boolean): cross-spectrum with Riemannian Vectorization
 
 
 %% Calculate z-scores and harmonize %%
@@ -128,7 +128,7 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 %% Optional Matrices to save
 %%% optional_matrix --> List of matrix optional that the user can select. Options:
 %%%                     optional_matrix(1) -> Complex matrix of FFT coefficients of nd x nfreqs x epoch length
-%%%                     optional_matrix(2) -> Mean for Age of Riemannian Cross Spectra Norm
+%%%                     optional_matrix(2) -> Mean for Age of Tangent Space Cross Spectra Norm
 
 
 % Checking the parameters and Create output folder and subfolders
@@ -170,7 +170,7 @@ else
 end
 
 if typeLog(1)==0 && typeLog(2)==0
-    error('You must select the log-spectrum(log) or/and cross-spectrum with riemannian metric(riemlog)');
+    error('You must select the log-spectrum(log) or/and cross-spectrum with Riemannian Vectorization(riemlog)');
 end
 
 

@@ -11,7 +11,7 @@ function [DPs_table, num_subj]=gaussianize_DPs_predict(DataInfo,refM,typeLog,ste
 % refM: the geometric mean for gaussianize incoming cross-spectrum
 %
 % typeLog: 'log' for spectrum,
-%          'riemlog' for cross-spectrum with riemannian metric
+%          'riemlog' for cross-spectrum with Riemannian Vectorization
 %           other gaussianize method not support yet
 %
 % steps: steps and order for the preprocessing of the cross spectrum,

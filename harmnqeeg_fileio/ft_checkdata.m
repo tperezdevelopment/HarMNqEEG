@@ -1229,10 +1229,10 @@ elseif strcmp(current, 'sparse') && strcmp(desired, 'fullfast')
           if ~complete
             % this realizes the missing combinations to be represented as the
             % conjugate of the corresponding combination across the diagonal
-            tmpdat(indx) = reshape(nanmean(data.(fn{ii})(:,cmbindx(indx),m,k)),[numel(indx) 1]);
+            tmpdat(indx) = reshape(mean(data.(fn{ii})(:,cmbindx(indx),m,k), 'omitnan'),[numel(indx) 1]); %% nanmean changed by tperezdevelopment
             tmpdat       = ctranspose(tmpdat);
           end
-          tmpdat(indx)    = reshape(nanmean(data.(fn{ii})(:,cmbindx(indx),m,k)),[numel(indx) 1]);
+          tmpdat(indx)    = reshape(mean(data.(fn{ii})(:,cmbindx(indx),m,k), 'omitnan'),[numel(indx) 1]); %% nanmean changed by tperezdevelopment
           tmpall(:,:,m,k) = tmpdat;
         end % for m
       end % for k
@@ -1543,7 +1543,7 @@ else
   begtime = min(cellfun(@min, data.time));
   endtime = max(cellfun(@max, data.time));
   % find 'common' sampling rate
-  fsample = 1./nanmean(cellfun(@mean, cellfun(@diff,data.time, 'uniformoutput', false)));
+  fsample = 1./mean(cellfun(@mean, cellfun(@diff,data.time, 'uniformoutput', false)), 'omitnan'); %% nanmean changed by tperezdevelopment
   % estimate number of samples
   nsmp = round((endtime-begtime)*fsample) + 1; % numerical round-off issues should be dealt with by this round, as they will/should never cause an extra sample to appear
   % construct general time-axis
@@ -1791,8 +1791,8 @@ for i=1:ntrial
   for j=1:nchans
     hasAllInts    = all(isnan(data.trial{i}(j,:)) | data.trial{i}(j,:) == round(data.trial{i}(j,:)));
     hasAllPosInts = all(isnan(data.trial{i}(j,:)) | data.trial{i}(j,:)>=0);
-    T = nansum(diff(data.time{i}),2); % total time
-    fr            = nansum(data.trial{i}(j,:),2) ./ T;
+    T = sum(diff(data.time{i}),2, 'omitnan'); % total time  %% nansum changed by tperezdevelopment
+    fr            = sum(data.trial{i}(j,:),2, 'omitnan') ./ T; %% nansum changed by tperezdevelopment
     spikechan(j)  = spikechan(j) + double(hasAllInts & hasAllPosInts & fr<=maxRate);
   end
 end

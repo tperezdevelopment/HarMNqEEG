@@ -68,8 +68,7 @@ function [event] = ft_read_event(filename, varargin)
 %   find([event.sample]>samples_trials(t) & [event.sample]<samples_trials(t+1))
 %
 % The list of supported file formats can be found in FT_READ_HEADER.
-%
-% See also FT_READ_HEADER, FT_READ_DATA, FT_WRITE_EVENT, FT_FILTER_EVENT
+
 
 % Copyright (C) 2004-2021 Robert Oostenveld
 %
@@ -1291,16 +1290,16 @@ switch eventformat
     % this code is moved to a separate file
     event = read_serial_event(filename);
     
-  case 'fcdc_mysql'
-    % check that the required low-level toolbox is available
-    ft_hastoolbox('mysql', 1);
-    % read from a MySQL server listening somewhere else on the network
-    db_open(filename);
-    if db_blob
-      event = db_select_blob('fieldtrip.event', 'msg');
-    else
-      event = db_select('fieldtrip.event', {'type', 'value', 'sample', 'offset', 'duration'});
-    end
+%   case 'fcdc_mysql' %% Commented by tperezdevelopment
+%     % check that the required low-level toolbox is available
+%     ft_hastoolbox('mysql', 1);
+%     % read from a MySQL server listening somewhere else on the network
+%     db_open(filename);
+%     if db_blob
+%       event = db_select_blob('fieldtrip.event', 'msg');
+%     else
+%       event = db_select('fieldtrip.event', {'type', 'value', 'sample', 'offset', 'duration'});
+%     end
     
   case 'gtec_hdf5'
     % the header mentions trigger channels, but I don't know how they are stored

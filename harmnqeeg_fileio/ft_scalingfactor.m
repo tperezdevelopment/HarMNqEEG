@@ -175,11 +175,16 @@ for i=1:length(unit)
   eval(sprintf('Y%s  = %s;', unit{i}, unit{i}));
 end
 
-eval(sprintf('oldunit = %s;', old));
-eval(sprintf('newunit = %s;', new));
-if ~isequal(oldunit, newunit)
+%% Changed by tperezdevelopment
+% eval(sprintf('oldunit = %s;', old));
+% eval(sprintf('newunit = %s;', new));
+% if ~isequal(oldunit, newunit)
+%   error('cannot convert %s to %s', old, new);
+% end
+if ~strcmp(old, new)
   error('cannot convert %s to %s', old, new);
 end
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % the following pertains to determining the scaling factor

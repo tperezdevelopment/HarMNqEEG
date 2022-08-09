@@ -93,8 +93,7 @@ function [hdr] = ft_read_header(filename, varargin)
 %   SensoMotoric Instruments - (*.txt)
 %   Tobii - (*.tsv)
 %
-% See also FT_READ_DATA, FT_READ_EVENT, FT_WRITE_DATA, FT_WRITE_EVENT,
-% FT_CHANTYPE, FT_CHANUNIT
+
 
 % Copyright (C) 2003-2021 Robert Oostenveld
 %
@@ -1444,17 +1443,17 @@ switch headerformat
     % this is multiplexed data in a *.bin file, accompanied by a MATLAB file containing the header
     load(headerfile, 'hdr');
     
-  case 'fcdc_mysql'
-    % check that the required low-level toolbox is available
-    ft_hastoolbox('mysql', 1);
-    % read from a MySQL server listening somewhere else on the network
-    db_open(filename);
-    if db_blob
-      hdr = db_select_blob('fieldtrip.header', 'msg', 1);
-    else
-      hdr = db_select('fieldtrip.header', {'nChans', 'nSamples', 'nSamplesPre', 'Fs', 'label'}, 1);
-      hdr.label = mxDeserialize(hdr.label);
-    end
+%   case 'fcdc_mysql'  %% Commented by tperezdevelopment
+%     % check that the required low-level toolbox is available
+%     ft_hastoolbox('mysql', 1);
+%     % read from a MySQL server listening somewhere else on the network
+%     db_open(filename);
+%     if db_blob
+%       hdr = db_select_blob('fieldtrip.header', 'msg', 1);
+%     else
+%       hdr = db_select('fieldtrip.header', {'nChans', 'nSamples', 'nSamplesPre', 'Fs', 'label'}, 1);
+%       hdr.label = mxDeserialize(hdr.label);
+%     end
     
   case 'gtec_hdf5'
     % check that the required low-level toolbox is available

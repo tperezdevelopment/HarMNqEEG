@@ -39,17 +39,17 @@ switch headerformat
     [host, port] = filetype_check_uri(filename);
     buffer('flush_hdr', [], host, port);
 
-  case 'fcdc_mysql'
-    % open the database
-    [user, password, server, port] = filetype_check_uri(filename);
-    if ~isempty(port)
-      server = sprintf('%s:%d', server, port);
-    end
-    mysql('open', server, user, password);
-    % remove all previous header information
-    cmd = 'TRUNCATE TABLE fieldtrip.header';
-    mysql(cmd);
-    mysql('close');
+%   case 'fcdc_mysql'  %% Commented by tperezdevelopment
+%     % open the database
+%     [user, password, server, port] = filetype_check_uri(filename);
+%     if ~isempty(port)
+%       server = sprintf('%s:%d', server, port);
+%     end
+%     mysql('open', server, user, password);
+%     % remove all previous header information
+%     cmd = 'TRUNCATE TABLE fieldtrip.header';
+%     mysql(cmd);
+%     mysql('close');
 
   case 'matlab'
     if exist(filename, 'file')
