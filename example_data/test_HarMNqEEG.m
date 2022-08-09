@@ -21,9 +21,13 @@ subjects_metadata=[pwd filesep 'example_data' filesep 'raw_data_table.mat'];
 % outputFolder_path=[pwd filesep 'HARMNqEEG_Result_with_cross_spectra_generated'];
 % subjects_metadata='';
 
-typeLog='1 1';
+% typeLog='1 1'; Or
+typeLog(1)=true;
+typeLog(2)=true;
 
-optional_matrix='1 1';
+% optional_matrix='1 1'; Or 
+optional_matrix(1)=1;
+optional_matrix(2)=1;
 
 % batch_correction=6; %or% batch_correction='';
 
@@ -38,7 +42,7 @@ end
 
 
 
-HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_metadata, raw_data_path, typeLog,batch_correction, optional_matrix);
+HarMNqEEG_main(generate_cross_spectra, raw_data_path,subjects_metadata, typeLog,batch_correction, optional_matrix, outputFolder_path);
 
 
 

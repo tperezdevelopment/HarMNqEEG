@@ -39,18 +39,13 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 
 <h2 dir="auto">INPUT PARAMETERS:</h2> 
-<h4>Auxiliar inputs</h4>
-<ul>
-<li>outputFolder_path: Path of output folder</li>
-<li>generate_cross_spectra: Boolean parameter. Case False (0), the raw_data_path folder will contain the data_gatherer output. Case True (1) is required to calculate the cross spectra.</li>
-</ul>
-
 <h4>Note important</h4>
 <p>The chanel montage must be 10-20 system</p>
 
 <h4>Data Gatherer</h4>
 <ul>
-<li>raw_data_path : Folder path of the raw data. The content of this raw_data_path depends of generate_cross_spectra parameters:
+<li>generate_cross_spectra: Boolean parameter. Default True. Case False (0), the raw_data_path folder will contain the data_gatherer output. Case True (1) is required to calculate the cross spectra.</li>
+<li>raw_data_path : This parameter is required. Folder path of the raw data. The content of this raw_data_path depends of generate_cross_spectra parameters:
                   <ul style="list-style: none">
                     <li>1- If the generate_cross_spectra is False (0), this folder must be contain the data_gatherer output, with the cross spectra generated.
                        (See more: <a href="https://github.com/CCC-members/BC-V_group_stat/blob/master/data_gatherer.m" target="_blank">https://github.com/CCC-members/BC-V_group_stat/blob/master/data_gatherer.m</a>)
@@ -109,7 +104,10 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
                     
 </ul>
 
-</li></ul>								
+</li>
+
+
+</ul>								
 
 
 <h4>Metadata</h4>
@@ -126,17 +124,12 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
   </li>
 </ul>
 
-<h4>Preproccess Guassianize Data </h4>
-<ul> <li>typeLog: Type of gaussianize method to apply. </br> 
+<h4>Preproccess Guassianize Data and  Calculate z-scores and harmonize </h4>
+<ul> <li>typeLog: This parameter is required. Type of gaussianize method to apply. </br> 
 										<strong>Options:</strong></br>
                                    <ul><li> typeLog(1): for log (Boolean):  log-spectrum.</li>
                                     <li>typeLog(2): for riemlogm (Boolean): cross-spectrum with Riemannian Vectorization.</li></ul>
-</li></ul>									
-
-
-
-<h4>Calculate z-scores and harmonize </h4>
-<ul>
+</li>
 <li>batch_correction --> List of the batch correction. You must select one closed study for calculating batch harmonized z-scores. The batch_correction you can put the number of the batch list or the batch correction name.  </br>
 				     <strong>The name of existed batch reference is the union between: EEG_Device+Country+Study_Year:</strong></br>
 		<ul>			 
@@ -163,11 +156,17 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <li>optional_matrix: List of matrix optional that the user can select. </br>
                     <strong>Options:</strong></br>
       <ul style="list-style: none">
-        <li>optional_matrix(1): Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
-        <li>optional_matrix(2): Mean for Age of Tangent Space Cross Spectra Norm</li>
+        <li>optional_matrix(1):  FFT_coefs (Boolean):  Complex matrix of FFT coefficients of nd x nfreqs x epoch length</li>
+        <li>optional_matrix(2): Mean_Age_Cross (Boolean): Mean for Age of Tangent Space Cross Spectra Norm</li>
      </ul>       
 </li>
-</ul>								
+</ul>		
+
+
+<h4>Auxiliar inputs</h4>
+<ul>
+<li>outputFolder_path: Path of output folder</li>
+</ul>
 					
 
 <h2 dir="auto">HarMNqEEG Output Description</h2>

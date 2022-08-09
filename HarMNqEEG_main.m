@@ -1,4 +1,4 @@
-function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_metadata, raw_data_path, typeLog,batch_correction, optional_matrix)
+function [] = HarMNqEEG_main(generate_cross_spectra, raw_data_path,subjects_metadata, typeLog,batch_correction, optional_matrix, outputFolder_path)
 %     Original code Author: Ying Wang, Min Li
 %     Cbrain Tool Author: Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
 %     Copyright(c): 2020-2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com
@@ -17,17 +17,15 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 
 
 % INPUT PARAMETERS:
-%% Auxiliar inputs
-%%% outputFolder_path ----------> Path of output folder.
-%%% generate_cross_spectra -----> Boolean parameter. Case False (0), the
-%%%                               raw_data_path folder will contain the
-%%%                               data_gatherer output. Case True (1) is required to calculate the cross spectra
-
 %% Note important
 %%% The chanel montage must be 10-20 system
 
 %% Data Gatherer
-%%% raw_data_path -------------> Folder path of the raw data. The content of this raw_data_path depends 
+%%% generate_cross_spectra -----> Boolean parameter. Default True. Case False (0), the
+%%%                               raw_data_path folder will contain the
+%%%                               data_gatherer output. Case True (1) is required to calculate the cross spectra
+
+%%% raw_data_path -------------> This parameter is required. Folder path of the raw data. The content of this raw_data_path depends
 %%%                              of generate_cross_spectra parameters:
 %%%                              1- If the generate_cross_spectra is False (0),
 %%%                              this folder must be contain the data_gatherer output, with the cross spectra generated
@@ -52,7 +50,7 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 %%%                                 - sex           : subject's sex
 %%%                                 - country       : country providing the data
 %%%                                 - eeg_device    : EEG hardware where the data was recorded
-%%%                                 
+%%%
 %%%                                 2.2- An ASCII file (*.txt) with a fixed
 %%%                                 structure which contains the data of an EEG file. In that case, the file needs to
 %%%                                 have the extension ".txt" and m ust have the following structure:
@@ -71,7 +69,7 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 %%%                                  where each lione is an instant of time and each column represents a channel.
 %%%                                 If the EEG contains 30 segments of 512 points each and 19 channels, then
 %%%                                 30*512 lines of 19 columns of numbers (either float or integer) are expected
-%%%         
+%%%
 %%%                                 2.3- Generic data formats (*.edf)
 %%%
 %%%                                 2.4- Biosemi (*.bdf)
@@ -79,6 +77,10 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 %%%                                 2.5- EEGLAB format (*.set)
 %%%
 %%%                                 2.6- MEDICID neurometrics system (*.plg)
+%%%
+%%%
+
+
 
 
 %% Metadata
@@ -98,13 +100,12 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 %%%                              6- eeg_device: EEG hardware where the data
 %%%                                 was recorded. Required metadata
 
-%% Preproccess Guassianize Data %%
-%%% typeLog ----------> Type of gaussianize method to apply. Options:
+
+%% Preproccess Guassianize Data and  Calculate z-scores and harmonize %%
+%%% typeLog ----------> This parameter is required. Type of gaussianize method to apply. Options:
 %%%                     typeLog(1)-> for log (Boolean): log-spectrum
 %%%                     typeLog(2)-> for riemlogm (Boolean): cross-spectrum with Riemannian Vectorization
 
-
-%% Calculate z-scores and harmonize %%
 %%% batch_correction --> List of the batch correction. You must select one closed study for calculating batch harmonized z-scores.
 %%%                      The batch_correction you can put the number of the
 %%%                      batch list or the batch correction name.
@@ -126,9 +127,13 @@ function [] = HarMNqEEG_main(outputFolder_path, generate_cross_spectra,subjects_
 %%%                      14-> nvx136-Russia(2013)
 
 %% Optional Matrices to save
-%%% optional_matrix --> List of matrix optional that the user can select. Options:
-%%%                     optional_matrix(1) -> Complex matrix of FFT coefficients of nd x nfreqs x epoch length
-%%%                     optional_matrix(2) -> Mean for Age of Tangent Space Cross Spectra Norm
+%%% optional_matrix --> List of matrix optional that the user can select. This can be empty. Options:
+%%%                     optional_matrix(1) -> FFT_coefs (Boolean): Complex matrix of FFT coefficients of nd x nfreqs x epoch length
+%%%                     optional_matrix(2) -> Mean_Age_Cross (Boolean): Mean for Age of Tangent Space Cross Spectra Norm
+
+
+%% Auxiliar inputs
+%%% outputFolder_path ----------> Path of output folder.
 
 
 % Checking the parameters and Create output folder and subfolders
@@ -159,29 +164,35 @@ if ~isempty(subjects_metadata)
     end
 end
 
-if isempty(typeLog)
-    error('The Type of gaussianize method to apply(typeLog) parameter is required');
-else
-    try
+try
+    if ischar(typeLog)
         typeLog = str2num(typeLog); %#ok<ST2NM>
-    catch
-        error('Incorrect definition of the parameter "Type of gaussianize method to apply(typeLog)"')
     end
+    if isempty(typeLog)
+        error('The Type of gaussianize method to apply(typeLog) parameter is required');
+    end
+    if typeLog(1)==0 && typeLog(2)==0
+        error('You must select the log-spectrum(log) or/and cross-spectrum with Riemannian Vectorization(riemlog)');
+    end
+catch
+    error('Incorrect definition of the parameter "Type of gaussianize method to apply(typeLog)"');
 end
 
-if typeLog(1)==0 && typeLog(2)==0
-    error('You must select the log-spectrum(log) or/and cross-spectrum with Riemannian Vectorization(riemlog)');
-end
 
 
-if ~isempty(optional_matrix)
-    try
+
+try
+    if ischar(optional_matrix)
         optional_matrix = str2num(optional_matrix); %#ok<ST2NM>
-    catch
-        error('Incorrect definition of the parameter "List of matrix optional"');
     end
-
+    if isempty(optional_matrix)
+        optional_matrix(1)=0;
+        optional_matrix(2)=0;
+    end
+catch
+    error('Incorrect definition of the parameter "List of matrix optional"');
 end
+
 
 % ADD PATH Commented for compiled version
 addpath(genpath(pwd));
