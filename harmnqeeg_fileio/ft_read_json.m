@@ -1,5 +1,5 @@
 function json = ft_read_json(filename)
-
+%% Changed by tperezdevelopment
 % FT_READ_JSON reads information from a JSON file and represents it as a MATLAB structure
 %
 % Use as
@@ -30,27 +30,33 @@ function json = ft_read_json(filename)
 fprintf('reading ''%s''\n', filename);
 
 % Only check whether they are already present on the path
-hasspm12up = ft_hastoolbox('SPM12UP');
-hasjsonlab = ft_hastoolbox('jsonlab');
+%% Modified by tperezdevelopment
+% hasspm12up = ft_hastoolbox('SPM12UP');
+% hasjsonlab = ft_hastoolbox('jsonlab');
 
 % The default is to use the native MATLAB implementation, which is fine for reading
 % but not so optimal for writing.
 
-if hasspm12up
-  % use the SPM12 implementation
-  json = spm_jsonread(filename);
+% if hasspm12up
+%   % use the SPM12 implementation
+%   json = spm_jsonread(filename);
+%
+% elseif hasjsonlab
+%   % use the JSONLAB implementation
+%   json = loadjson(filename);
+%
+% else
+%   % use the native MATLAB implementation
+%   fid = fopen_or_error(filename, 'rt');
+%   jsontxt = fread(fid, [1 inf], 'char=>char');
+%   fclose(fid);
+%   json = jsondecode(jsontxt);
+% end
 
-elseif hasjsonlab
-  % use the JSONLAB implementation
-  json = loadjson(filename);
-
-else
-  % use the native MATLAB implementation
-  fid = fopen_or_error(filename, 'rt');
-  jsontxt = fread(fid, [1 inf], 'char=>char');
-  fclose(fid);
-  json = jsondecode(jsontxt);
-end
+fid = fopen_or_error(filename, 'rt');
+jsontxt = fread(fid, [1 inf], 'char=>char');
+fclose(fid);
+json = jsondecode(jsontxt);
 
 % convert all strings into char-arrays
 json = HarMNqEEG_ft_struct2char(json);
