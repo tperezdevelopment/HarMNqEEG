@@ -21,7 +21,7 @@ function [] = HarMNqEEG_main(generate_cross_spectra, raw_data_path,subjects_meta
 %%% The chanel montage must be 10-20 system
 
 %% Data Gatherer
-%%% generate_cross_spectra -----> Boolean parameter. Default True. Case False (0), the
+%%% generate_cross_spectra -----> Boolean parameter. Default False. Case False (0), the
 %%%                               raw_data_path folder will contain the
 %%%                               data_gatherer output. Case True (1) is required to calculate the cross spectra
 
@@ -146,7 +146,7 @@ end
 
 
 if isempty(generate_cross_spectra)
-    generate_cross_spectra=true;
+    generate_cross_spectra=false;
 end
 
 if isempty(raw_data_path)

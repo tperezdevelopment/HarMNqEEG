@@ -44,7 +44,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 
 <h4>Data Gatherer</h4>
 <ul>
-<li>generate_cross_spectra: Boolean parameter. Default True. Case False (0), the raw_data_path folder will contain the data_gatherer output. Case True (1) is required to calculate the cross spectra.</li>
+<li>generate_cross_spectra: Boolean parameter. Default False. Case False (0), the raw_data_path folder will contain the data_gatherer output. Case True (1) is required to calculate the cross spectra.</li>
 <li>raw_data_path : This parameter is required. Folder path of the raw data. The content of this raw_data_path depends of generate_cross_spectra parameters:
                   <ul style="list-style: none">
                     <li>1- If the generate_cross_spectra is False (0), this folder must be contain the data_gatherer output, with the cross spectra generated.
