@@ -2,22 +2,22 @@ clear; clc;
 
 addpath(genpath(pwd));
 
-%% For generate the cross spectra options
-% raw_data_path=[pwd filesep 'example_data' filesep 'raw_data'];
-% generate_cross_spectra=1;
-% outputFolder_path=[pwd filesep 'HARMNqEEG_Result_raw_data'];
-% % outputFolder_path='';
-% subjects_metadata=[pwd filesep 'example_data' filesep 'raw_data_table.mat'];
-
-%% for cross spectra with other options
-raw_data_path=[pwd filesep 'example_data' filesep 'without_the_cross_spectra_generated'];
+%% For generate the cross spectra options with differents eeg data formats
+raw_data_path=[pwd filesep 'example_data' filesep 'raw_data'];
 generate_cross_spectra=1;
-outputFolder_path=[pwd filesep 'HARMNqEEG_Result_without_the_cross_spectra_generated'];
-subjects_metadata='';
+outputFolder_path=[pwd filesep 'HARMNqEEG_Result_raw_data'];
+% outputFolder_path='';
+subjects_metadata=[pwd filesep 'example_data' filesep 'raw_data_table.mat'];
+
+%% for cross spectra with other .mat
+% raw_data_path=[pwd filesep 'example_data' filesep 'without_the_cross_spectra_generated'];
+% generate_cross_spectra=1;
+% outputFolder_path=[pwd filesep 'HARMNqEEG_Result_without_the_cross_spectra_generated'];
+% subjects_metadata='';
 
 %% For cross spectra generated
 % raw_data_path=[pwd filesep 'example_data' filesep 'with_cross_spectra_generated'];
-% generate_cross_spectra=0;
+% generate_cross_spectra=false;
 % outputFolder_path=[pwd filesep 'HARMNqEEG_Result_with_cross_spectra_generated'];
 % subjects_metadata='';
 

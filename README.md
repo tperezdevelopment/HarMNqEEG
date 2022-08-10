@@ -127,8 +127,8 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <h4>Preproccess Guassianize Data and  Calculate z-scores and harmonize </h4>
 <ul> <li>typeLog: This parameter is required. Type of gaussianize method to apply. </br> 
 										<strong>Options:</strong></br>
-                                   <ul><li> typeLog(1): for log (Boolean):  log-spectrum.</li>
-                                    <li>typeLog(2): for riemlogm (Boolean): cross-spectrum with Riemannian Vectorization.</li></ul>
+                                   <ul><li> typeLog(1): for log (Boolean). By default is False:  log-spectrum.</li>
+                                    <li>typeLog(2): for riemlogm (Boolean). By default is True: cross-spectrum with Riemannian Vectorization.</li></ul>
 </li>
 <li>batch_correction --> List of the batch correction. You must select one closed study for calculating batch harmonized z-scores. The batch_correction you can put the number of the batch list or the batch correction name.  </br>
 				     <strong>The name of existed batch reference is the union between: EEG_Device+Country+Study_Year:</strong></br>

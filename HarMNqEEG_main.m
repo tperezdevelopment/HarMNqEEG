@@ -103,8 +103,8 @@ function [] = HarMNqEEG_main(generate_cross_spectra, raw_data_path,subjects_meta
 
 %% Preproccess Guassianize Data and  Calculate z-scores and harmonize %%
 %%% typeLog ----------> This parameter is required. Type of gaussianize method to apply. Options:
-%%%                     typeLog(1)-> for log (Boolean): log-spectrum
-%%%                     typeLog(2)-> for riemlogm (Boolean): cross-spectrum with Riemannian Vectorization
+%%%                     typeLog(1)-> for log (Boolean). By default is False: log-spectrum
+%%%                     typeLog(2)-> for riemlogm (Boolean). By default is True: cross-spectrum with Riemannian Vectorization
 
 %%% batch_correction --> List of the batch correction. You must select one closed study for calculating batch harmonized z-scores.
 %%%                      The batch_correction you can put the number of the
@@ -144,6 +144,9 @@ else
     test_folder(outputFolder_path);
 end
 
+ if ischar(generate_cross_spectra)
+        generate_cross_spectra = str2num(generate_cross_spectra); %#ok<ST2NM>
+ end
 
 if isempty(generate_cross_spectra)
     generate_cross_spectra=false;
@@ -172,10 +175,11 @@ try
         error('The Type of gaussianize method to apply(typeLog) parameter is required');
     end
     if typeLog(1)==0 && typeLog(2)==0
-        error('You must select the log-spectrum(log) or/and cross-spectrum with Riemannian Vectorization(riemlog)');
+        typeLog(2)=1;
+        warning('You must select the log-spectrum(log) or/and cross-spectrum with Riemannian Vectorization(riemlog). By default the riemlog option (typeLog(2)=1) will be selected');
     end
-catch
-    error('Incorrect definition of the parameter "Type of gaussianize method to apply(typeLog)"');
+catch ME
+    rethrow(ME);
 end
 
 
