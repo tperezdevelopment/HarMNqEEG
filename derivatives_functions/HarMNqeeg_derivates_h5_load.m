@@ -89,5 +89,8 @@ switch lower(type)
         error([dset_att.DataType ': Conversion not implemented']); 
 end
 
+%% Added for delete de problem with single precision
+data=double(data);
+
 end
 
