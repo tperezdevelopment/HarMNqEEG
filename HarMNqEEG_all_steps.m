@@ -10,7 +10,7 @@ if generate_cross_spectra
         return;
     end
 else
-     data_struct=all_data;
+    data_struct=all_data;
 end
 %%% reference batch
 [reRefBatch] = HarMNqEEG_generate_reRefBatch(batch_correction,data_struct.pais, data_struct.EEGMachine);
@@ -52,13 +52,14 @@ if typeLog(1)==1
     prec='double';
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'log', 'log'), DsetAttr);
 
-    %% Save the Harmonized Raw Log-Spectra
-    dsetname = 'Harmonized_Log_Spectra'; dtype='Real_Matrix';
-    DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.';...
-        'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-    prec='double';
-    [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarlog', 'log'), DsetAttr);
-
+    if ~isempty(reRefBatch)
+        %% Save the Harmonized Raw Log-Spectra
+        dsetname = 'Harmonized_Log_Spectra'; dtype='Real_Matrix';
+        DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.';...
+            'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
+        prec='double';
+        [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarlog', 'log'), DsetAttr);
+    end
 
     %% Save the Z-scores Log Spectra
     dsetname = 'Z_scores_Log_Spectra'; dtype='Real_Matrix';
@@ -96,11 +97,13 @@ if typeLog(2)==1
     %% Notes globalriemlogm and riemlogm are the same
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'globalriemlogm', 'riemlogm'), DsetAttr);
 
-    %% Save the Harmonized Raw TangentSpace Cross-Spectra
-    dsetname = 'Harmonized_Raw_TangentSpace_Cross_Spectra'; dtype='Hermitian';
-    DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Raw Cross-spectral matrix transformed to the Tangent space.';...
-        'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
-    [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarriemlogm', 'riemlogm'), DsetAttr);
+    if ~isempty(reRefBatch)
+        %% Save the Harmonized Raw TangentSpace Cross-Spectra
+        dsetname = 'Harmonized_Raw_TangentSpace_Cross_Spectra'; dtype='Hermitian';
+        DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Raw Cross-spectral matrix transformed to the Tangent space.';...
+            'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
+        [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarriemlogm', 'riemlogm'), DsetAttr);
+    end
 
     %% Save the Z-scores TangentSpace Cross-Spectra
     dsetname = 'Z_scores_TangentSpace_Cross_Spectra'; dtype='Hermitian';

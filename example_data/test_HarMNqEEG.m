@@ -30,7 +30,6 @@ optional_matrix(1)=1;
 optional_matrix(2)=1;
 
 % batch_correction=6; %or% batch_correction='';
-
 batch_correction=6;
 
 if exist(outputFolder_path, 'dir')

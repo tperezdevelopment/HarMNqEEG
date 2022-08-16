@@ -3,5 +3,7 @@
 # test
 /HARMNqEEG_Result*
 
+test_bosch.m
+
 # misc
 *.asv
