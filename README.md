@@ -16,16 +16,6 @@ eliminating a scale factor that affects the signal amplitude and refers all the 
 the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
 choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.</br>
 
-<h2>HarMNqEEG CBRAIN Plugin and Docker Image</h2>
-<ol dir="auto">
-<li><h5 dir="auto">About Cbrain Tool</h5>
-<p>This is the matlab code to develop the Cbrain plugin. That's why it doesn't  have a graphical interface.</p>
-<p>In example_data folder you have an example script.</p></li>
-
-<li><a target="_blank" href="https://github.com/tperezdevelopment/cbrain_plugins/blob/master/cbrain_task_descriptors/HarMNqEEG.json">HarMNqEEG.json</a></li>
-<li><a  target="_blank "href="https://hub.docker.com/repository/docker/tperezdevelopment90/harmnqeeg" >HarMNqEEG docker image</a></li>
-
-</ol>
 
 <h2 dir="auto">HarMNqEEG Installation and Requirements</h2>
 <ol dir="auto">
@@ -36,7 +26,6 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 </ol>
 
 
-
 <h2 dir="auto">HarMNqEEG EXAMPLE</h2>
 <p>In the folder example_data, there are two subfolders and the test_HarMNqEEG.m file to run the tool with data example.</p>
 <ul>
@@ -44,6 +33,14 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
   <li>Subfolder: without_the_cross_spectra_generated. This folder will be the raw_data_path parameter. This folder contains 2 subjects by folder for testing the tool. In each subject folder there is a .mat file with the <strong>cross spectra input data</strong>. The generate_cross_spectra parameter must be 1. </li>
   <li>Subfolder: raw_data. This folder contain different formats: BIDS, .set, .plg, .txt. For run this data, you must select as subjects_metadata parameter the file <strong>raw_data_table.tsv</strong> or <strong>raw_data_table.mat</strong>.</li>
 </ul>
+
+<h2>HarMNqEEG Cbrain Plugin and Docker Image</h2>
+<h4>Note important</h4>
+<p>This is the matlab code to develop the Cbrain plugin. That's why it doesn't  have a graphical interface. In example_data folder you have an example script.</p>
+<ol dir="auto">
+<li><a target="_blank" href="https://github.com/tperezdevelopment/cbrain_plugins/blob/master/cbrain_task_descriptors/HarMNqEEG.json">HarMNqEEG.json</a></li>
+<li><a  target="_blank "href="https://hub.docker.com/repository/docker/tperezdevelopment90/harmnqeeg" >HarMNqEEG docker image</a></li>
+</ol>
 
 
 <h2 dir="auto">INPUT PARAMETERS:</h2> 
