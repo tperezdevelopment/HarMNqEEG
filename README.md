@@ -20,10 +20,12 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <ol dir="auto">
 <li><a target="_blank" href="https://github.com/tperezdevelopment/cbrain_plugins/blob/master/cbrain_task_descriptors/HarMNqEEG.json">HarMNqEEG.json</a></li>
 <li><a  target="_blank "href="https://hub.docker.com/repository/docker/tperezdevelopment90/harmnqeeg" >HarMNqEEG docker image</a></li>
+
+<li><h5 dir="auto">About Cbrain Tool</h5>
+<p>This is the matlab code to develop the Cbrain plugin. That's why it doesn't  have a graphical interface.</p>
+<p>In example_data folder you have an example script.</p></li>
+
 </ol>
-
-
-
 
 <h2 dir="auto">HarMNqEEG Installation and Requirements</h2>
 <ol dir="auto">
@@ -33,9 +35,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <li> Call the main function HarMNqEEG_main.m.</li>
 </ol>
 
-<h2 dir="auto">About Cbrain Tool</h2>
-<p>This is the matlab code to develop the Cbrain plugin. That's why it doesn't  have a graphical interface.</p>
-<p>In example_data folder you have an example script.</p>
+
 
 <h2 dir="auto">HarMNqEEG EXAMPLE</h2>
 <p>In the folder example_data, there are two subfolders and the test_HarMNqEEG.m file to run the tool with data example.</p>
