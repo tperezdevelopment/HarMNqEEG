@@ -16,6 +16,12 @@ eliminating a scale factor that affects the signal amplitude and refers all the 
 the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
 choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.</br>
 
+<h2>HarMNqEEG CBRAIN Plugin</h2>
+<a href="https://github.com/tperezdevelopment/cbrain_plugins/blob/master/cbrain_task_descriptors/HarMNqEEG.json">HarMNqEEG.json</a>
+
+<h2>HarMNqEEG Docker Image</h2>
+<a href="https://hub.docker.com/repository/docker/tperezdevelopment90/harmnqeeg" >HarMNqEEG docker image</a>
+
 
 <h2 dir="auto">HarMNqEEG Installation and Requirements</h2>
 <ol dir="auto">
