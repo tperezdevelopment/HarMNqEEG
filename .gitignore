@@ -5,5 +5,7 @@
 
 test_bosch.m
 
+/example_data/raw_data_table_Bosch.mat
+
 # misc
 *.asv
