@@ -5,6 +5,7 @@
     Copyright(c): 2020-2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com
     Joint China-Cuba LAB, UESTC, CNEURO
 
+[![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
 <h2 dir="auto">HarMNqEEG TOOL DESCRIPTION</h2>
 These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
