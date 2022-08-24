@@ -3,7 +3,7 @@
     Cbrain Tool Author: Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
     Copyright(c): 2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com, 
                   Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
-    Joint China-Cuba LAB, UESTC, CNEURO, MNI
+    Joint China-Cuba LAB, UESTC, CNEURO (Cuban Center for Neurosciences), MNI (Montreal Neurological Institute)
 
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
