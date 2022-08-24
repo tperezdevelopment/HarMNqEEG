@@ -1,4 +1,4 @@
-# HarMNqEEG                 
+# HarMNqEEG Toolbox                
     Original code Author: Ying Wang, Min Li, Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
     Cbrain Tool Author: Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
     Copyright(c): 2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com, 
@@ -8,23 +8,14 @@
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
 <h2 dir="auto">Reference Paper</h2>
-Harmonized-Multinational qEEG norms (HarMNqEEG).  Neuroimage. 2022;256:119190.
-doi: <a href="10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>.
+<img src="./harmnqeeg_readme_folder/harmnqeeg_paper.png"/>
+doi: <a href="https://doi.org/10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>.
 Epub 2022 Apr 7. PMID: 35398285.
 
-<h2 dir="auto">Reference Paper Authors</h2>
-Min Li, Ying Wang, Carlos Lopez-Naranjo, Shiang Hu, Ronaldo César García Reyes, Deirel Paz-Linares,
-Ariosky Areces-Gonzalez, Aini Ismafairus Abd Hamid, Alan C. Evans, Alexander N. Savostyanov,
-Ana Calzada-Reyes, Arno Villringer, Carlos A. Tobon-Quintero, Daysi Garcia-Agusti, Dezhong Yao, Li Dong,
-Eduardo Aubert-Vazquez, Faruque Reza, Fuleah Abdul Razzaqa, Hazim Omar, Jafri Malin Abdullah, Janina R. Galler, 
-John F. Ochoa-Gomez, Leslie S. Prichep, Lidice Galan-Garcia, Lilia Morales-Chacon, Mitchell J. Valdes-Sosa, 
-Marius Tröndle, Mohd Faizal Mohd Zulkifly, Muhammad Riddha Bin Abdul Rahman, Natalya S. Milakhina, Nicolas Langer,
-Pavel Rudych, Thomas Koenig, Trinidad A. Virues-Alba, Xu Lei, Maria L. Bringas-Vega, Jorge F. Bosch-Bayard, 
-Pedro Antonio Valdes-Sosa
 
 
 
-<h2 dir="auto">HarMNqEEG TOOL DESCRIPTION</h2>
+<h2 dir="auto">HarMNqEEG Toolbox Description</h2>
 These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
 In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
 We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
