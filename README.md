@@ -8,7 +8,7 @@
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
 <h2 dir="auto">Reference Paper</h2>
-<img src="./harmnqeeg_readme_folder/harmnqeeg_paper.png"/>
+<img src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/>
 doi: <a href="https://doi.org/10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>.
 Epub 2022 Apr 7. PMID: 35398285.
 
