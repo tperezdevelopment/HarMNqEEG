@@ -1,10 +1,11 @@
 # HarMNqEEG                 
     Original code Author: Ying Wang, Min Li, Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
     Cbrain Tool Author: Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
-    Copyright(c): 2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com, Jorge F. Bosch-Bayard, 
-                  Pedro Antonio Valdes-Sosa
+    Copyright(c): 2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com, 
+                  Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
     Joint China-Cuba LAB, UESTC, CNEURO, MNI
 
+[![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
 <h2 dir="auto">From paper</h2>
 Harmonized-Multinational qEEG norms (HarMNqEEG).  Neuroimage. 2022;256:119190.
@@ -21,7 +22,7 @@ Marius Tröndle, Mohd Faizal Mohd Zulkifly, Muhammad Riddha Bin Abdul Rahman, Na
 Pavel Rudych, Thomas Koenig, Trinidad A. Virues-Alba, Xu Lei, Maria L. Bringas-Vega, Jorge F. Bosch-Bayard, 
 Pedro Antonio Valdes-Sosa
 
-[![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
+
 
 <h2 dir="auto">HarMNqEEG TOOL DESCRIPTION</h2>
 These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
