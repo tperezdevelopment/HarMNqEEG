@@ -16,17 +16,13 @@ Epub 2022 Apr 7. PMID: 35398285.
 
 
 <h2 dir="auto">HarMNqEEG Toolbox Description</h2>
-These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
-In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage. 
-We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent 
-of the variability in the EEG that is not due to the neurophysiological activity of the person, but rather than to impedance 
-at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of 
-eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes 
-the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
-choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.</br>
+This toolbox extends frequency domain quantitative electroencephalography (qEEG) methods pursuing higher sensitivity to detect Brain Developmental Disorders. Prior qEEG work lacked integration of cross-spectral information omitting important functional connectivity descriptors. Lack of geographical diversity precluded accounting for site-specific variance, increasing qEEG nuisance variance. We ameliorate these weaknesses by (i) Creating lifespan Riemannian multinational qEEG norms for cross-spectral tensors. These norms result from the HarMNqEEG project fostered by the Global Brain Consortium. We calculated the norms with data from 9 countries, 12 devices, and 14 studies, including 1564 subjects. Developmental equations for the mean and standard deviation of qEEG traditional and Riemannian DPs were calculated using additive mixed-effects models. We demonstrate qEEG “batch effects” and provide methods to calculate harmonized z-scores. (ii) We also show that harmonized Riemannian norms produce z-scores with increased diagnostic accuracy. These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings. In this first version, we limited the harmonized qEEG to the 19 channels of the S1020 montage.
+At the present, the toolbox accepts the input EEG data in EEG-BIDS, EDF+, BDF+, PLG, EEGLAB SET format, and a predefined TEXT format. In the case of not EEG-BIDS structure, the derivatives are stored in the same directory where the raw EEG file is located.
+The toolbox also contains the definition of the Harmonized qEEG derivatives for the EEG-BIDS format. The derivatives are stored in the BIDS structure compliant with the BIDS definition for the derivatives, in the Hierarchical Data Format (HDF). The functions for creating and loading the HarMNqEEG derivatives can be found in the directory "derivatives_functions".
+</br>
 
 
-<h2 dir="auto">HarMNqEEG Installation and Requirements</h2>
+<h2 dir="auto">HarMNqEEG Toolbox Installation and Requirements</h2>
 <ol dir="auto">
 <li>Matlab version: 2021b</li>
 <li> Clone the repository or download the .zip folder. </li>
@@ -35,7 +31,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 </ol>
 
 
-<h2 dir="auto">HarMNqEEG EXAMPLE</h2>
+<h2 dir="auto">HarMNqEEG Toolbox Example</h2>
 <p>In the folder example_data, there are two subfolders and the test_HarMNqEEG.m file to run the tool with data example.</p>
 <ul>
   <li>Subfolder: with_cross_spectra_generated. This folder will be the raw_data_path parameter. This folder contains 2 subjects by folder for testing the tool. In each subject folder there is a .mat file with the <strong>cross spectra generated</strong>. When the raw_data_path parameters is the results of the data_gatherer ( Github location of the script: https://github.com/CCC-members/BC-V_group_stat/blob/master/data_gatherer.m), the generate_cross_spectra parameter must be 0. </li>
@@ -52,7 +48,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 </ol>
 
 
-<h2 dir="auto">INPUT PARAMETERS:</h2> 
+<h2 dir="auto">Input Parameters:</h2> 
 <h4>Note important</h4>
 <p>The chanel montage must be 10-20 system</p>
 
@@ -183,7 +179,7 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 </ul>
 					
 
-<h2 dir="auto">HarMNqEEG Output Description</h2>
+<h2 dir="auto">HarMNqEEG Toolbox Output Description</h2>
 <strong>Folder structure</strong></br>
 The tool will save a subfolder 'derivatives' (following the struct BIDs, https://bids.neuroimaging.io/) into the folder defined by the user with the outputFolder_path parameter. Into the subfolder derivatives, the result will save by each folder subject. </br>
 <strong>Type of output files</strong></br>
