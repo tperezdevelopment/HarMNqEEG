@@ -1,11 +1,12 @@
 # HarMNqEEG Toolbox                
-<a href="https://globalbrainconsortium.org/" target="_blank"><img style="height: 80px" src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
+<a href="https://globalbrainconsortium.org/" target="_blank"><img style="align:center; height: 80px" src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
 
     Original code Author: Ying Wang, Min Li, Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
     Cbrain Tool Author: Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
     Copyright(c): 2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com, 
                   Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
-    Joint China-Cuba LAB, UESTC, CNEURO (Cuban Center for Neurosciences), MNI (Montreal Neurological Institute)
+    Joint China-Cuba LAB, UESTC, CNEURO (Cuban Center for Neurosciences),
+    MNI (Montreal Neurological Institute)
 
 
 
