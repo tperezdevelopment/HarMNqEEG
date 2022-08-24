@@ -5,6 +5,8 @@
                   Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
     Joint China-Cuba LAB, UESTC, CNEURO (Cuban Center for Neurosciences), MNI (Montreal Neurological Institute)
 
+<img src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link">
+
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
 <h2 dir="auto">Reference Paper</h2>
