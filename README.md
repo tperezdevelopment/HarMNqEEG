@@ -56,8 +56,8 @@ choice in qEEG and also eliminates the dependence of the EEG amplitude from the 
 <h4>Note important</h4>
 <p>This is the matlab code to develop the Cbrain plugin. That's why it doesn't  have a graphical interface. In example_data folder you have an example script.</p>
 <ol dir="auto">
-<li><a target="_blank" href="https://github.com/tperezdevelopment/cbrain_plugins/blob/master/cbrain_task_descriptors/HarMNqEEG.json">HarMNqEEG.json</a></li>
-<li><a  target="_blank "href="https://hub.docker.com/repository/docker/tperezdevelopment90/harmnqeeg" >HarMNqEEG docker image</a></li>
+<li><a target="_blank" href="https://github.com/tperezdevelopment/boutiques_descriptors/blob/main/HarMNqEEG.json">HarMNqEEG.json</a></li>
+<li><a  target="_blank "href="https://hub.docker.com/repository/docker/tperezdevelopment90/harmnqeeg">HarMNqEEG docker image</a></li>
 </ol>
 
 
