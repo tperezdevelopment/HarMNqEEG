@@ -1,8 +1,8 @@
 # HarMNqEEG
-
-    From paper: Harmonized-Multinational qEEG norms (HarMNqEEG).  Neuroimage. 2022;256:119190. 
-                doi: <a href="10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>. 
-                Epub 2022 Apr 7. PMID: 35398285.
+    From paper: 
+    Harmonized-Multinational qEEG norms (HarMNqEEG).  Neuroimage. 2022;256:119190. 
+    doi: <a href="10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>. 
+    Epub 2022 Apr 7. PMID: 35398285.
     Paper Authors: Min Li, Ying Wang, Carlos Lopez-Naranjo, Shiang Hu, Ronaldo César García Reyes, Deirel Paz-Linares,
                    Ariosky Areces-Gonzalez, Aini Ismafairus Abd Hamid, Alan C. Evans, Alexander N. Savostyanov,
                    Ana Calzada-Reyes, Arno Villringer, Carlos A. Tobon-Quintero, Daysi Garcia-Agusti, Dezhong Yao, Li Dong
