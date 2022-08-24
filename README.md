@@ -1,24 +1,25 @@
-# HarMNqEEG
-    <strong>From paper:</strong> 
-    Harmonized-Multinational qEEG norms (HarMNqEEG).  Neuroimage. 2022;256:119190. 
-    doi: <a href="10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>. 
-    Epub 2022 Apr 7. PMID: 35398285.
-
-    Paper Authors:
-    Min Li, Ying Wang, Carlos Lopez-Naranjo, Shiang Hu, Ronaldo César García Reyes, Deirel Paz-Linares,
-    Ariosky Areces-Gonzalez, Aini Ismafairus Abd Hamid, Alan C. Evans, Alexander N. Savostyanov,
-    Ana Calzada-Reyes, Arno Villringer, Carlos A. Tobon-Quintero, Daysi Garcia-Agusti, Dezhong Yao, Li Dong
-    Eduardo Aubert-Vazquez, Faruque Reza, Fuleah Abdul Razzaqa, Hazim Omar, Jafri Malin Abdullah, Janina R. Galler, 
-    John F. Ochoa-Gomez, Leslie S. Prichep, Lidice Galan-Garcia, Lilia Morales-Chacon, Mitchell J. Valdes-Sosa, 
-    Marius Tröndle, Mohd Faizal Mohd Zulkifly, Muhammad Riddha Bin Abdul Rahman, Natalya S. Milakhina, Nicolas Langer,
-    Pavel Rudych, Thomas Koenig, Trinidad A. Virues-Alba, Xu Lei, Maria L. Bringas-Vega, Jorge F. Bosch-Bayard, 
-    Pedro Antonio Valdes-Sosa
-                   
+# HarMNqEEG                 
     Original code Author: Ying Wang, Min Li, Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
     Cbrain Tool Author: Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
     Copyright(c): 2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com, Jorge F. Bosch-Bayard, 
                   Pedro Antonio Valdes-Sosa
     Joint China-Cuba LAB, UESTC, CNEURO, MNI
+
+
+<h2 dir="auto">From paper</h2>
+Harmonized-Multinational qEEG norms (HarMNqEEG).  Neuroimage. 2022;256:119190.
+doi: <a href="10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>.
+Epub 2022 Apr 7. PMID: 35398285.
+
+<h2 dir="auto">Paper Authors</h2>
+Min Li, Ying Wang, Carlos Lopez-Naranjo, Shiang Hu, Ronaldo César García Reyes, Deirel Paz-Linares,
+Ariosky Areces-Gonzalez, Aini Ismafairus Abd Hamid, Alan C. Evans, Alexander N. Savostyanov,
+Ana Calzada-Reyes, Arno Villringer, Carlos A. Tobon-Quintero, Daysi Garcia-Agusti, Dezhong Yao, Li Dong
+Eduardo Aubert-Vazquez, Faruque Reza, Fuleah Abdul Razzaqa, Hazim Omar, Jafri Malin Abdullah, Janina R. Galler, 
+John F. Ochoa-Gomez, Leslie S. Prichep, Lidice Galan-Garcia, Lilia Morales-Chacon, Mitchell J. Valdes-Sosa, 
+Marius Tröndle, Mohd Faizal Mohd Zulkifly, Muhammad Riddha Bin Abdul Rahman, Natalya S. Milakhina, Nicolas Langer,
+Pavel Rudych, Thomas Koenig, Trinidad A. Virues-Alba, Xu Lei, Maria L. Bringas-Vega, Jorge F. Bosch-Bayard, 
+Pedro Antonio Valdes-Sosa
 
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
