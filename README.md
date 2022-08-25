@@ -1,4 +1,4 @@
-# HarMNqEEG Toolbox                
+# HarMNqEEG Toolbox
 <h3>Global EEG Normative Project</h3>
 <a href="https://globalbrainconsortium.org/" target="_blank"><img style="height: 60px" src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
 
@@ -6,7 +6,7 @@
     Cbrain Tool Author:   Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
     Copyright(c):         2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com                          
     Joint China-Cuba LAB, UESTC, CNEURO (Cuban Center for Neurosciences)
-   
+
 
 
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
@@ -63,7 +63,7 @@ The toolbox also contains the definition of the Harmonized qEEG derivatives for 
 </ol>
 
 
-<h2 dir="auto">Input Parameters:</h2> 
+<h2 dir="auto">Input Parameters:</h2>
 <h4>Note important</h4>
 <p>The chanel montage must be 10-20 system</p>
 
@@ -125,8 +125,8 @@ The toolbox also contains the definition of the Harmonized qEEG derivatives for 
 </ul>
                      </li>
                     </ul>
-                    
-                    
+
+
 </ul>
 
 </li>
@@ -192,7 +192,7 @@ The toolbox also contains the definition of the Harmonized qEEG derivatives for 
 <ul>
 <li>outputFolder_path: Path of output folder</li>
 </ul>
-					
+
 
 <h2 dir="auto">HarMNqEEG Toolbox Output Description</h2>
 <strong>Folder structure</strong></br>
@@ -211,12 +211,12 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
    <li>Epoch_Length: Epoch size (# of instants of times in an epoch)</li>  
    <li>reRefBatch: In case of the batch_correction is not empty. The reRefBatch is the batch correction of the z-scores</li>
 </ol>
-   
-Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:   
+
+Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:
 
 <h4>In case typeLog(1)-> for log = True </h4>
 <ol>
-                        
+
    <li>Raw_Log_Spectra: Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq.</li>
    <li>Harmonized_Log_Spectra: Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
    <li>Z_scores_Log_Spectra: The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the power spectral density (PSD) of channel i and frequency f. The raw spectra is transformed to the Log space to achieve quasi gaussian distribution.</li>
