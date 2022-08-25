@@ -16,7 +16,7 @@
 <img align="left" width="55%"  height="auto" src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/> <img width="30%" height="auto" align="center" src="./harmnqeeg_readme_folder/paper-1.jpg"/> </br> <img height="auto"  width="30%" align="left" src="./harmnqeeg_readme_folder/paper-2.jpg"/>
 </div>
 
-<spam dir="auto"></spam>
+</br></br></br></br>
 <p>doi: <a href="https://doi.org/10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>.</p>
 <p>Epub 2022 Apr 7. PMID: 35398285.</p>
 
