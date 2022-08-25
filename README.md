@@ -4,7 +4,8 @@
 
     Original code Author: Ying Wang, Min Li
     Cbrain Tool Author:   Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
-    Copyright(c):         2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com                          
+    Copyright(c):         2022 Ying Wang, yingwangrigel@gmail.com,
+                          Min Li, minli.231314@gmail.com
     Joint China-Cuba LAB, UESTC, CNEURO (Cuban Center for Neurosciences)
 
 
