@@ -12,7 +12,6 @@
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
 <h2 dir="auto">Reference Paper</h2>
-<<<<<<< HEAD
 <div dir="auto">
 <img align="left" width="50%"  height="auto" src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/> <img width="50%" height="auto" align="center" src="./harmnqeeg_readme_folder/paper-1.jpg"/> </br> <img height="auto"  width="50%" align="left" src="./harmnqeeg_readme_folder/paper-2.jpg"/>
 </div>
