@@ -1,22 +1,20 @@
 # HarMNqEEG Toolbox                
-<a href="https://globalbrainconsortium.org/" target="_blank"><img style="height: 80px" src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
+<h3>Global EEG Normative Project</h3>
+<a href="https://globalbrainconsortium.org/" target="_blank"><img style="height: 60px" src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
 
-    Original code Author: Ying Wang, Min Li, Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
+    Original code Author: Ying Wang, Min Li
     Cbrain Tool Author:   Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
-    Copyright(c):         2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com, 
-                          Jorge F. Bosch-Bayard, Pedro Antonio Valdes-Sosa
-    Joint China-Cuba LAB, UESTC, CNEURO (Cuban Center for Neurosciences),
-    MNI (Montreal Neurological Institute)
-
+    Copyright(c):         2022 Ying Wang, yingwangrigel@gmail.com, Min Li, minli.231314@gmail.com                          
+    Joint China-Cuba LAB, UESTC, CNEURO (Cuban Center for Neurosciences)
+   
 
 
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
 <h2 dir="auto">Reference Paper</h2>
-<img src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/>
+<img align="left" width="40" height="auto" src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/> <img width="40" height="auto" align="center" src="./harmnqeeg_readme_folder/paper-1.jpg"/> <img width="40" height="auto"  align="right" src="./harmnqeeg_readme_folder/paper-2.jpg"/></br>
 doi: <a href="https://doi.org/10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>.
 Epub 2022 Apr 7. PMID: 35398285.
-
 
 
 <h2 dir="auto">HarMNqEEG Toolbox Description</h2>
