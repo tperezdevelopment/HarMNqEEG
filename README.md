@@ -12,7 +12,7 @@
 [![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
 
 <h2 dir="auto">Reference Paper</h2>
-<img align="left" width="40" height="auto" src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/> <img width="40" height="auto" align="center" src="./harmnqeeg_readme_folder/paper-1.jpg"/> <img width="40" height="auto"  align="right" src="./harmnqeeg_readme_folder/paper-2.jpg"/></br>
+<img align="left"  height="auto" src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/> <img height="auto" align="center" src="./harmnqeeg_readme_folder/paper-1.jpg"/> <img height="auto"  align="right" src="./harmnqeeg_readme_folder/paper-2.jpg"/></br>
 doi: <a href="https://doi.org/10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>.
 Epub 2022 Apr 7. PMID: 35398285.
 
