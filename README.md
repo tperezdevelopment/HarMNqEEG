@@ -13,19 +13,20 @@
 
 <h2 dir="auto">Reference Paper</h2>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div dir="auto">
 <img align="left" width="50%"  height="auto" src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/> <img width="50%" height="auto" align="center" src="./harmnqeeg_readme_folder/paper-1.jpg"/> </br> <img height="auto"  width="50%" align="left" src="./harmnqeeg_readme_folder/paper-2.jpg"/>
 </div>
 =======
 >>>>>>> a3246c8201423bc39419135e6ba572c6a8598fea
 
+=======
+<div dir="auto">
+>>>>>>> parent of a3246c8 (Update README.md)
 <img align="left" width="55%"  height="auto" src="./harmnqeeg_readme_folder/harmnqeeg_paper.jpg"/> <img width="30%" height="auto" align="center" src="./harmnqeeg_readme_folder/paper-1.jpg"/> </br> <img height="auto"  width="30%" align="left" src="./harmnqeeg_readme_folder/paper-2.jpg"/>
+</div>
 
-
-
-
-
-
+</br></br></br></br>
 <p>doi: <a href="https://doi.org/10.1016/j.neuroimage.2022.119190" target="_blank">10.1016/j.neuroimage.2022.119190</a>.</p>
 <p>Epub 2022 Apr 7. PMID: 35398285.</p>
 
