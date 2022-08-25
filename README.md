@@ -1,6 +1,6 @@
 # HarMNqEEG Toolbox
 <h4>Global EEG Normative Project</h4>
-<a href="https://globalbrainconsortium.org/" target="_blank"><img src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
+<a href="https://globalbrainconsortium.org/" target="_blank"><img width="30%" src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
 
     Original code Author: Ying Wang, Min Li
     Cbrain Tool Author:   Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
