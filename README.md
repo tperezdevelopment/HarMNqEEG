@@ -27,12 +27,6 @@ At the present, the toolbox accepts the input EEG data in EEG-BIDS, EDF+, BDF+, 
 The toolbox also contains the definition of the Harmonized qEEG derivatives for the EEG-BIDS format. The derivatives are stored in the BIDS structure compliant with the BIDS definition for the derivatives, in the Hierarchical Data Format (HDF). The functions for creating and loading the HarMNqEEG derivatives can be found in the directory "derivatives_functions".
 </p>
 
-| Primer encabezado | Segundo encabezado |
-| ------------- | ------------- |
-| Contenido de la celda  | Contenido de la celda  |
-| Contenido de la celda  | Contenido de la celda  |
-
-
 
 <h2 dir="auto">HarMNqEEG Toolbox Installation and Requirements</h2>
 <ol dir="auto">
@@ -211,32 +205,7 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
 
 Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:
 
-<h4>In case typeLog(1)-> for log = True </h4>
-<ol>
-
-   <li>Raw_Log_Spectra: Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq.</li>
-   <li>Harmonized_Log_Spectra: Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
-   <li>Z_scores_Log_Spectra: The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the power spectral density (PSD) of channel i and frequency f. The raw spectra is transformed to the Log space to achieve quasi gaussian distribution.</li>
-   <li>Harmonized_Z_scores_Log_Spectra: Harmonized Z-score of the log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.</li>
-</ol>   
-
-<h4>In case typeLog(2)-> for riemlogm = True </h4>
-<ol>
-    <li>Raw_TangentSpace_Cross_Spectra: Raw Cross-spectral matrix transformed to the Tangent space.</li>
-   <li>Harmonized_Raw_TangentSpace_Cross_Spectra: Harmonized Raw Cross-spectral matrix transformed to the Tangent space.</li>
-   <li>Z_scores_TangentSpace_Cross_Spectra: Z-scores of the Cross-spectral matrix transformed to the Tangent space.</li>
-   <li>Harmonized_Z_scores_TangentSpace_Cross_Spectra: Harmonized Z-scores of the Cross-spectral matrix transformed to the Tangent space.</li>   
-</ol>
-
-<h4>In case optional_matrix(1) = True </h4>
-<ol>
-   <li>FFT_coefs:  Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).</li>
-</ol>
-
-<h4> In case optional_matrix(2) = True</h4>
-<ol>
-   <li>Mean_for_Age_of_TangentSpace_Cross_Spectra_Norm: Mean for Age of Tangent Space Cross Spectra Norm.</li>
-</ol>
-
-
-
+| Derivative | DataType | Dimensions | Description |
+| --------- | -------- | | --------- | ------------- |
+| Contenido de la celda  | Contenido de la celda | | Contenido de la celda  | Contenido de la celda |
+| Contenido de la celda  | Contenido de la celda | | Contenido de la celda  | Contenido de la celda |
