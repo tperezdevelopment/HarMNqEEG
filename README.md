@@ -203,7 +203,7 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
    <li>reRefBatch: In case of the batch_correction is not empty. The reRefBatch is the batch correction of the z-scores</li>
 </ol>
 
-<h4>Also the HarMNqeeg_derivatives.h5 will be saved the following matrix</h4>
+<h4>The HarMNqeeg_derivatives.h5 will be saved the following matrix</h4>
 
 | Derivative                                                                  | DataType             | Dimensions   | Dimensions                                                                                                                                                                                                                                                                              |
 |-----------------------------------------------------------------------------|----------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
