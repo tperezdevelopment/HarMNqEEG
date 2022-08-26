@@ -203,9 +203,9 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
    <li>reRefBatch: In case of the batch_correction is not empty. The reRefBatch is the batch correction of the z-scores</li>
 </ol>
 
-Also the HarMNqeeg_derivatives.h5 will be saved the following matrix:
+<h5>Also the HarMNqeeg_derivatives.h5 will be saved the following matrix</h5>
 
-| Derivative | DataType | Dimensions | Description |
-| --------- | -------- | | --------- | ------------- |
-| Contenido de la celda  | Contenido de la celda | | Contenido de la celda  | Contenido de la celda |
-| Contenido de la celda  | Contenido de la celda | | Contenido de la celda  | Contenido de la celda |
+| Derivative | DataType | Dimensions |
+| ------------- | ----- | ------------- | 
+| Raw Log-Spectra  | 2D Spectral Matrix  | | Nc x Nf |
+| Contenido de la celda  | Contenido de la celda | | Contenido de la celda  |
