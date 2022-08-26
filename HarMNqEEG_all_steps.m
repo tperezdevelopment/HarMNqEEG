@@ -54,7 +54,7 @@ if typeLog(1)==1
 
     if ~isempty(reRefBatch)
         %% Save the Harmonized Raw Log-Spectra
-        dsetname = 'Harmonized_Log_Spectra'; dtype='Real_Matrix';
+        dsetname = 'Harmonized_Raw_Log_Spectra'; dtype='Real_Matrix';
         DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.';...
             'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
         prec='double';
