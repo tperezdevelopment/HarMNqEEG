@@ -27,6 +27,12 @@ At the present, the toolbox accepts the input EEG data in EEG-BIDS, EDF+, BDF+, 
 The toolbox also contains the definition of the Harmonized qEEG derivatives for the EEG-BIDS format. The derivatives are stored in the BIDS structure compliant with the BIDS definition for the derivatives, in the Hierarchical Data Format (HDF). The functions for creating and loading the HarMNqEEG derivatives can be found in the directory "derivatives_functions".
 </p>
 
+| Primer encabezado | Segundo encabezado |
+| ------------- | ------------- |
+| Contenido de la celda  | Contenido de la celda  |
+| Contenido de la celda  | Contenido de la celda  |
+
+
 
 <h2 dir="auto">HarMNqEEG Toolbox Installation and Requirements</h2>
 <ol dir="auto">
