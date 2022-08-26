@@ -207,5 +207,4 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
 
 | Derivative | DataType | Dimensions |
 | ------------- | ----- | ------------- | 
-| Raw Log-Spectra  | 2D Spectral Matrix  | | Nc x Nf |
-| Contenido de la celda  | Contenido de la celda | | Contenido de la celda  |
+| Raw Log-Spectra  | 2D Spectral Matrix  | Nc x Nf  | 
