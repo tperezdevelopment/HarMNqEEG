@@ -205,6 +205,6 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
 
 <h5>Also the HarMNqeeg_derivatives.h5 will be saved the following matrix</h5>
 
-| Derivative | DataType | Dimensions |
-| ------------- | ----- | ------------- | 
-| Raw Log-Spectra  | 2D Spectral Matrix  | Nc x Nf  | 
+| Derivative | DataType | Dimensions | Dimensions |
+| ------------- | ----- | ------------- | ------------- | 
+| Raw Log-Spectra  | 2D Spectral Matrix  | Nc x Nf  | The (i, j) element of this matrix (where i,j=1:Nc and f=1:Nf) are the real log power spectral density (PSD) of channel i and frequency f. The raw spectra are transformed to the Log space to achieve quasi gaussian distribution. | 
