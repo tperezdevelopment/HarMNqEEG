@@ -241,11 +241,12 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
 | 2D Spectral Matrix  | Frequency   | This is a matrix of real numbers of size Nc x Nf. By columns, the numbers represent the spectra of all channels at a specific frequency, by rows they represent the spectra of the corresponding channel at all frequencies.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 
 | 3D Complex Matrix   | Frequency   | This is a tensor of complex numbers of size Nc x Nf x Ne.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | 
 
-Where:
-Nc: Number of channels
-Nf: Number of frequencies
-Ne: Number of epochs
-
+<strong>Where:</strong></br>
+<ol>
+<li>Nc: Number of channels</li>
+<li>Nf: Number of frequencies</li>
+<li>Ne: Number of epochs</li>
+</ol>
 <h5>Implementation</h5>
 The derivatives are stored in the HDF5 format, which efficiently allows compressing all the information in a single file, and at the same time space optimization by using a factor of data compression (7/9 in our case, high compression).
 
