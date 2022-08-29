@@ -204,8 +204,8 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
 </ol>
 
 <h4>The HarMNqeeg_derivatives.h5 will be saved the following matrices</h4>
+<h5 style="text-align:center">Log Spectra matrices. Case typeLog(1) parameter has true or 1 value</h5>
 
-                              <h5>Log Spectra matrices. Case typeLog(1) parameter has true or 1 value</h5>
 | Derivative                                       | DataType             | Dimensions   | Description                                                                                                                                                                                                                        |
 |--------------------------------------------------|----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | <strong>Raw_Log_Spectra</strong>                 | 2D Spectral Matrix   | Nc x Nf      | The (i, j) element of this matrix (where i,j=1:Nc and f=1:Nf) are the real log power spectral density (PSD) of channel i and frequency f. The raw spectra are transformed to the Log space to achieve quasi gaussian distribution. | 
@@ -213,7 +213,9 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
 | <strong>Z_scores_Log_Spectra</strong>            | 2D Spectral Matrix   | Nc x Nf      | The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the log power spectral density (PSD) of channel i and frequency f.                                         | 
 | <strong>Harmonized_Z_scores_Log_Spectra</strong> | 2D Spectral Matrix   | Nc x Nf      | Same as the Z-scores Log-Spectra for the harmonized Raw Log-Spectra.                                                                                                                                                               | 
 
-                            <h5>Cross Spectra matrices. Case typeLog(2) parameter has true or 1 value</h5>
+
+ <h5 style="text-align:center">Cross Spectra matrices. Case typeLog(2) parameter has true or 1 value</h5>
+
 | Derivative                                                                  | DataType             | Dimensions   | Description                                                                                                                                                                                                                                                                             |
 |-----------------------------------------------------------------------------|----------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | <strong>Raw_Cross_Spectra_in_Tangent_Space</strong>                         | 3D Hermitian Tensor  | Nc x Nc x Nf | The (i, j) element of the f-th matrix (where i,j=1:Nc and f=1:Nf) are the complex cross-spectrum between channels i and j, at frequency f, transformed to the tangent space. It is understood as a measurement of coupling between the time series of channels I and j, at frequency f. | 
@@ -222,7 +224,8 @@ Into each folder subject (data_code) will be saved three files: 1-log_[data_code
 | <strong>Harmonized_Z_scores_of_Cross_Spectra_in_Tangent_Space</strong>      | 3D Hermitian Tensor  | Nc x Nc x Nf | It is the Z-scores of the <strong>Harmonized Raw Cross-Spectra in Tangent Space</strong>.                                                                                                                                                                                               | 
 
 
-                            <h5>FFT_coefs and Mean_Age_Cross matrices. Case optional_matrix(1) and optional_matrix(2) parameters have true or 1 value, respectively</h5>
+<h5 style="text-align:center">FFT_coefs and Mean_Age_Cross matrices. Case optional_matrix(1) and optional_matrix(2) parameters have true or 1 value, respectively</h5>
+
 | Derivative                                                                  | DataType             | Dimensions   | Description                                                                                                                                                                                               |
 |-----------------------------------------------------------------------------|----------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | <strong>Age_evaluated_Norms_Mean_of_Cross_Spectra_in_Tangent_Space</strong> | 3D Hermitian Tensor  | Nc x Nc x Nf | This is obtained by evaluating the Mean of the normative regression for the Raw Cross-Spectra in Tangent Space, at the subject’s age.                                                                     | 
