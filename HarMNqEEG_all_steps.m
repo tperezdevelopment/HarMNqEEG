@@ -26,7 +26,8 @@ end
 %% Saving FFTCoefs (Optional Matrix)
 if optional_matrix(1)==1
     dsetname = 'FFT_coefs'; dtype='Complex_Matrix';
-    DsetAttr = {'Algorithm', 'FFT Matlab R2020';'Domain', 'Frequency'; 'Description', 'Complex matrix of FFT coefficients of nd x nfreqs x epoch length (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).'; ...
+    DsetAttr = {'Algorithm', 'FFT Matlab R2020';'Domain', 'Frequency'; 'Dimensions', 'Nc x Nf x Ne (Number of channels, Number of frequencies, Number of epochs)'; 'DataType', '3D Complex Matrix'; ...
+        'Description', 'Complex matrix of FFT coefficients of the EEG data (stored for possible needed further processing for calculating the cross-spectral matrix, like regularization algorithms in case of ill-conditioning).'; ...
         'Minimum_Spectral_Frequency', num2str(data_struct.fmin); 'Maximum_Spectral_Frequency', num2str(data_struct.fmax); 'Frequency_Range',  data_struct.freqrange };
     prec='double';
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, data_struct.ffteeg, DsetAttr);
@@ -47,7 +48,8 @@ if typeLog(1)==1
 
     %% Save the Raw Log-Spectra
     dsetname = 'Raw_Log_Spectra'; dtype='Real_Matrix';
-    DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Raw Log-spectra matrix, after average reference and GSF (Global Scale Factor) correction. Each row is a frequency. The value of the frequency is in the field Freq.'; ...
+    DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'DataType', '2D Spectral Matrix'; ...
+        'Description', 'The (i, j) element of this matrix (where i,j=1:Nc and f=1:Nf) are the real log power spectral density (PSD) of channel i and frequency f. The raw spectra are transformed to the Log space to achieve quasi gaussian distribution.'; ...
         'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
     prec='double';
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'log', 'log'), DsetAttr);
@@ -55,7 +57,8 @@ if typeLog(1)==1
     if ~isempty(reRefBatch)
         %% Save the Harmonized Raw Log-Spectra
         dsetname = 'Harmonized_Raw_Log_Spectra'; dtype='Real_Matrix';
-        DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Harmonized log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.';...
+        DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ;'DataType', '2D Spectral Matrix'; ...
+            'Description', 'Same as the Raw Log-Spectra after harmonization to account for the batch effect.';...
             'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
         prec='double';
         [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarlog', 'log'), DsetAttr);
@@ -63,7 +66,8 @@ if typeLog(1)==1
 
     %% Save the Z-scores Log Spectra
     dsetname = 'Z_scores_Log_Spectra'; dtype='Real_Matrix';
-    DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the power spectral density (PSD) of channel i and frequency f. The raw spectra is transformed to the Log space to achieve quasi gaussian distribution.';...
+    DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'DataType', '2D Spectral Matrix'; ...
+        'Description', 'The Z-scores of an individual raw Spectra. The element (i, f) of this matrix represents the deviation from normality of the log power spectral density (PSD) of channel i and frequency f.';...
         'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
     prec='single';
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zgloballog', 'log'), DsetAttr);
@@ -71,7 +75,8 @@ if typeLog(1)==1
     if ~isempty(reRefBatch)
         %% Save the Harmonized Z-scores Log Spectra
         dsetname = 'Harmonized_Z_scores_Log_Spectra'; dtype='Real_Matrix';
-        DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'Description', 'Harmonized Z-score of the log raw spectrum average reference and corrected by the GSF, harmonized by the correction of the given batch.';...
+        DsetAttr={'Domain', 'Frequency (Euclidean space)'; 'Dimensions', 'Nc x Nf (Number of channels, Number of frequencies)' ; 'DataType', '2D Spectral Matrix'; ...
+            'Description', 'Same as the Z-scores Log Spectra for the harmonized Raw Log-Spectra.';...
             'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
         prec='single';
         [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zstudylog', 'log'), DsetAttr);
@@ -80,7 +85,7 @@ if typeLog(1)==1
 end
 
 if typeLog(2)==1
-    disp('----------------------------------------------------------------- Calculates for cross-spectrum with Riemannian Vectorization -----------------------------------------------------------------');
+    disp('----------------------------------------------------------------- Calculates for cross-spectrum in Tangent Space -----------------------------------------------------------------');
     [T] = HarMNqEEG_step2_step3_by_typeLog(data_struct, 'riemlogm', reRefBatch);
 
     %% MATRIX STEP 2
@@ -90,43 +95,48 @@ if typeLog(2)==1
     MinFreq=freqrange(1);
     MaxFreq=freqrange(end);
 
-    %% Save the Raw TangentSpace Cross-Spectra
-    dsetname = 'Raw_TangentSpace_Cross_Spectra'; dtype='Hermitian';
-    DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Raw Cross-spectral matrix transformed to the Tangent space.';...
+    %% Save the Raw Cross-Spectra in Tangent Space
+    dsetname = 'Raw_Cross_Spectra_in_Tangent_Space'; dtype='Hermitian';
+    DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'DataType', '3D Hermitian Tensor'; ...
+        'Description', 'The (i, j) element of the f-th matrix (where i,j=1:Nc and f=1:Nf) are the complex cross-spectrum between channels i and j, at frequency f, transformed to the tangent space. It is understood as a measurement of coupling between the time series of channels I and j, at frequency f.';...
         'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
     %% Notes globalriemlogm and riemlogm are the same
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'globalriemlogm', 'riemlogm'), DsetAttr);
 
     if ~isempty(reRefBatch)
-        %% Save the Harmonized Raw TangentSpace Cross-Spectra
-        dsetname = 'Harmonized_Raw_TangentSpace_Cross_Spectra'; dtype='Hermitian';
-        DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Raw Cross-spectral matrix transformed to the Tangent space.';...
+        %% Save the Harmonized Raw Cross-Spectra in Tangent Space
+        dsetname = 'Harmonized_Raw_Cross_Spectra_in_Tangent_Space'; dtype='Hermitian';
+        DsetAttr={'Domain', 'Frequency (Riemannian manifold)'; 'Dimensions', 'Nc x Nc x Nf' ; 'DataType', '3D Hermitian Tensor'; ...
+            'Description', 'Same as the Raw Cross-Spectra in Tangent Space, after harmonization to account for the batch effect.';...
             'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
         [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'ystarriemlogm', 'riemlogm'), DsetAttr);
     end
 
-    %% Save the Z-scores TangentSpace Cross-Spectra
-    dsetname = 'Z_scores_TangentSpace_Cross_Spectra'; dtype='Hermitian';
-    DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Z-scores of the Cross-spectral matrix transformed to the Tangent space.';...
+    %% Save the Z-scores of Cross-Spectra in Tangent Space
+    dsetname = 'Z_scores_of_Cross_Spectra_in_Tangent_Space'; dtype='Hermitian';
+    DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'DataType', '3D Hermitian Tensor'; ...
+        'Description', 'It is the Z-scores of the Raw Cross-Spectra in Tangent Space.';...
         'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
     [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zglobalriemlogm', 'riemlogm'), DsetAttr);
 
     if ~isempty(reRefBatch)
-        %% Save the Harmonized Z-scores TangentSpace Cross-Spectra
-        dsetname = 'Harmonized_Z_scores_TangentSpace_Cross_Spectra'; dtype='Hermitian';
-        DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Harmonized Z-scores of the Cross-spectral matrix transformed to the Tangent space.'; ...
+        %% Save the Harmonized Z-scores of Cross-Spectra in Tangent Space
+        dsetname = 'Harmonized_Z_scores_of_Cross_Spectra_in_Tangent_Space'; dtype='Hermitian';
+        DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'DataType', '3D Hermitian Tensor'; ...
+            'Description', 'It is the Z-scores of the Harmonized Raw Cross-Spectra in Tangent Space.'; ...
             'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
         [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'zstudyriemlogm', 'riemlogm'), DsetAttr);
     end
 
-    %% Saving muglobalriemlogm (Optional Matrix)
+    %% Saving muglobalriemlogm (Optional Matrix). Age evaluated Norms Mean of Cross Spectra in Tangent Space
     if optional_matrix(2)==1
-        dsetname = 'Mean_for_Age_of_TangentSpace_Cross_Spectra_Norm'; dtype='Complex_Matrix';
-        DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'Description', 'Mean for Age of Tangent Space Cross Spectra Norm.'; ...
+        dsetname = 'Age_evaluated_Norms_Mean_of_Cross_Spectra_in_Tangent_Space'; dtype='Complex_Matrix';
+        DsetAttr={'Domain', 'Frequency'; 'Dimensions', 'Nc x Nc x Nf' ; 'DataType', '3D Hermitian Tensor'; ...
+            'Description', 'This is obtained by evaluating the Mean of the normative regression for the Raw Cross-Spectra in Tangent Space, at the subject’s age.'; ...
             'Minimum_Spectral_Frequency', num2str(MinFreq); 'Maximum_Spectral_Frequency', num2str(MaxFreq); 'Frequency_Range',  freqrange };
         [jsonFile] = HarMNqeeg_derivates_main_store(@HarMNqeeg_derivates_overwrite, derivatives_output_folder, data_code, jsonFile, dsetname, dtype, prec, HarMNqEEG_extractMetaDataTable(T,'muglobalriemlogm', 'riemlogm'), DsetAttr);
     end
-    disp('----------------------------------------------------------------- END Calculates for cross-spectrum with Riemannian Vectorization -----------------------------------------------------------------');
+    disp('----------------------------------------------------------------- END Calculates for cross-spectrum in Tangent Space -----------------------------------------------------------------');
 
 end
 
