@@ -144,7 +144,7 @@ The toolbox also contains the definition of the Harmonized qEEG derivatives for 
 <ul> <li>typeLog: This parameter is required. Type of gaussianize method to apply. </br> 
 										<strong>Options:</strong></br>
                                    <ul><li> typeLog(1): for log (Boolean). By default is False:  log-spectrum.</li>
-                                    <li>typeLog(2): for riemlogm (Boolean). By default is True: cross-spectrum with Riemannian Vectorization.</li></ul>
+                                    <li>typeLog(2): for riemlogm (Boolean). By default is True: cross-spectrum in Tangent Space.</li></ul>
 </li>
 <li>batch_correction --> List of the batch correction. You must select one closed study for calculating batch harmonized z-scores. The batch_correction you can put the number of the batch list or the batch correction name.  </br>
 				     <strong>The name of existed batch reference is the union between: EEG_Device+Country+Study_Year:</strong></br>
@@ -153,11 +153,11 @@ The toolbox also contains the definition of the Harmonized qEEG derivatives for 
                     <li> 2:  BrainAmp_DC-Chengdu_2014</li>
                     <li> 3:  BrainAmp_MR_plus_64C-Chongqing</li>
                     <li> 4:  BrainAmp_MR_plus-Germany_2013</li>
-                    <li> 5:  DEDAAS Barbados1978</li>
+                    <li> 5:  DEDAAS-Barbados1978</li>
                     <li> 6:  DEDAAS-NewYork_1970s</li>
-                    <li> 7:  EGI-256 HCGSN_Zurich(2017)-Swiss</li>
-                    <li> 8:  Medicid-3M Cuba1990</li>
-                    <li> 9:  Medicid-4 Cuba2003</li>
+                    <li> 7:  EGI-256_HCGSN_Zurich(2017)-Swiss</li>
+                    <li> 8:  Medicid-3M-Cuba1990</li>
+                    <li> 9:  Medicid-4-Cuba2003</li>
                     <li> 10: Medicid_128Ch-CHBMP</li>
                     <li> 11: NihonKohden-Bern(1980)_Swiss</li>
                     <li> 12: actiCHamp_Russia_2013</li>

@@ -6,15 +6,12 @@ function [] = HarMNqEEG_main(generate_cross_spectra, raw_data_path,subjects_meta
 %     Matlab version: 2021b
 
 % HarMNqEEG TOOL DESCRIPTION
-% % These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings.
-% % In this first version, we calculate the harmonized qEEG for the 19 channels of the S1020 montage.
-% % We additionally apply the Global Scale Factor (GSF, Hernandez-Caceres et al., 1994) correction, which accounts for the percent
-% % of the variability in the EEG that is not due to the neurophysiological activity of the person, but rather than to impedance
-% % at the electrodes, skull thickness, hair thickness, and some other technical aspects. This GSF correction has the effect of
-% % eliminating a scale factor that affects the signal amplitude and refers all the recordings to a common baseline, which makes
-% % the recordings more comparable. Also, the EEG recordings are all re-reference to the Average Reference montage, which is a popular
-% % choice in qEEG and also eliminates the dependence of the EEG amplitude from the physical site where the reference electrode was located.
-
+% %This toolbox extends frequency domain quantitative electroencephalography (qEEG) methods pursuing higher sensitivity to detect Brain Developmental Disorders. 
+% % Prior qEEG work lacked integration of cross-spectral information omitting important functional connectivity descriptors. Lack of geographical diversity precluded accounting for site-specific variance, increasing qEEG nuisance variance. We ameliorate these weaknesses by (i) Creating lifespan Riemannian multinational qEEG norms for cross-spectral tensors. 
+% % These norms result from the HarMNqEEG project fostered by the Global Brain Consortium. We calculated the norms with data from 9 countries, 12 devices, and 14 studies, including 1564 subjects. Developmental equations for the mean and standard deviation of qEEG traditional and Riemannian DPs were calculated using additive mixed-effects models. 
+% % We demonstrate qEEG “batch effects” and provide methods to calculate harmonized z-scores. (ii) We also show that harmonized Riemannian norms produce z-scores with increased diagnostic accuracy. These results contribute to developing bias-free, low-cost neuroimaging technologies applicable in various health settings. 
+% % In this first version, we limited the harmonized qEEG to the 19 channels of the S1020 montage. At the present, the toolbox accepts the input EEG data in EEG-BIDS, EDF+, BDF+, PLG, EEGLAB SET format, and a predefined TEXT format. In the case of not EEG-BIDS structure, the derivatives are stored in the same directory where the raw EEG file is located. 
+% % The toolbox also contains the definition of the Harmonized qEEG derivatives for the EEG-BIDS format. The derivatives are stored in the BIDS structure compliant with the BIDS definition for the derivatives, in the Hierarchical Data Format (HDF). The functions for creating and loading the HarMNqEEG derivatives can be found in the directory "derivatives_functions".
 
 % INPUT PARAMETERS:
 %% Note important
@@ -104,7 +101,7 @@ function [] = HarMNqEEG_main(generate_cross_spectra, raw_data_path,subjects_meta
 %% Preproccess Guassianize Data and  Calculate z-scores and harmonize %%
 %%% typeLog ----------> This parameter is required. Type of gaussianize method to apply. Options:
 %%%                     typeLog(1)-> for log (Boolean). By default is False: log-spectrum
-%%%                     typeLog(2)-> for riemlogm (Boolean). By default is True: cross-spectrum with Riemannian Vectorization
+%%%                     typeLog(2)-> for riemlogm (Boolean). By default is True: cross-spectrum in Tangent Space
 
 %%% batch_correction --> List of the batch correction. You must select one closed study for calculating batch harmonized z-scores.
 %%%                      The batch_correction you can put the number of the
@@ -115,11 +112,11 @@ function [] = HarMNqEEG_main(generate_cross_spectra, raw_data_path,subjects_meta
 %%%                      2->  BrainAmp_DC-Chengdu_2014
 %%%                      3->  BrainAmp_MR_plus_64C-Chongqing
 %%%                      4->  BrainAmp_MR_plus-Germany_2013
-%%%                      5->  DEDAAS Barbados1978
+%%%                      5->  DEDAAS-Barbados1978
 %%%                      6->  DEDAAS-NewYork_1970s
-%%%                      7->  EGI-256 HCGSN_Zurich(2017)-Swiss
-%%%                      8->  Medicid-3M Cuba1990
-%%%                      9->  Medicid-4 Cuba2003
+%%%                      7->  EGI-256_HCGSN_Zurich(2017)-Swiss
+%%%                      8->  Medicid-3M-Cuba1990
+%%%                      9->  Medicid-4-Cuba2003
 %%%                      10-> Medicid_128Ch-CHBMP
 %%%                      11-> NihonKohden-Bern(1980)_Swiss
 %%%                      12-> actiCHamp_Russia_2013
