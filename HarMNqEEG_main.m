@@ -112,16 +112,16 @@ function [] = HarMNqEEG_main(generate_cross_spectra, raw_data_path,subjects_meta
 %%%                      2->  BrainAmp_DC-Chengdu_2014
 %%%                      3->  BrainAmp_MR_plus_64C-Chongqing
 %%%                      4->  BrainAmp_MR_plus-Germany_2013
-%%%                      5->  DEDAAS-Barbados1978
+%%%                      5->  DEDAAS-Barbados_1978
 %%%                      6->  DEDAAS-NewYork_1970s
-%%%                      7->  EGI-256_HCGSN_Zurich(2017)-Swiss
-%%%                      8->  Medicid-3M-Cuba1990
-%%%                      9->  Medicid-4-Cuba2003
+%%%                      7->  EGI-256_HCGSN_Zurich_2017-Swiss
+%%%                      8->  Medicid-3M-Cuba_1990
+%%%                      9->  Medicid-4-Cuba_2003
 %%%                      10-> Medicid_128Ch-CHBMP
-%%%                      11-> NihonKohden-Bern(1980)_Swiss
+%%%                      11-> NihonKohden-Bern_1980_Swiss
 %%%                      12-> actiCHamp_Russia_2013
 %%%                      13-> Neuroscan_synamps_2-Colombia
-%%%                      14-> nvx136-Russia(2013)
+%%%                      14-> nvx136-Russia_2013
 
 %% Optional Matrices to save
 %%% optional_matrix --> List of matrix optional that the user can select. This can be empty. Options:

@@ -24,25 +24,25 @@ try
             case {4, '4', 'BrainAmp_MR_plus-Germany_2013'}
                 reRefBatch={nomenclatura_batch, 'BrainAmpMRplus Germany'};
 
-            case {5, '5', 'DEDAAS-Barbados1978'}
+            case {5, '5', 'DEDAAS-Barbados_1978'}
                 reRefBatch={nomenclatura_batch, 'DEDAAS Barbados1978'};
 
             case {6, '6', 'DEDAAS-NewYork_1970s'}
                 reRefBatch={nomenclatura_batch, 'DEDAAS NewYork'};
 
-            case {7, '7', 'EGI-256_HCGSN_Zurich(2017)-Swiss'}
+            case {7, '7', 'EGI-256_HCGSN_Zurich_2017-Swiss'}
                 reRefBatch={nomenclatura_batch, 'EGI Zurich'};
 
-            case {8, '8', 'Medicid-3M-Cuba1990'}
+            case {8, '8', 'Medicid-3M-Cuba_1990'}
                 reRefBatch={nomenclatura_batch, 'Medicid-3M Cuba1990'};
 
-            case {9, '9', 'Medicid-4-Cuba2003'}
+            case {9, '9', 'Medicid-4-Cuba_2003'}
                 reRefBatch={nomenclatura_batch, 'Medicid-4 Cuba2003'};
 
             case {10, '10', 'Medicid_128Ch-CHBMP'}
                 reRefBatch={nomenclatura_batch, 'Medicid-5 CHBMP'};
 
-            case {11, '11', 'NihonKohden-Bern(1980)_Swiss'}
+            case {11, '11', 'NihonKohden-Bern_1980_Swiss'}
                 reRefBatch={nomenclatura_batch, 'NihonKohden Bern'};
 
             case {12, '12', 'actiCHamp_Russia_2013'}
@@ -51,7 +51,7 @@ try
             case {13, '13', 'Neuroscan_synamps_2-Colombia'}
                 reRefBatch={nomenclatura_batch, 'neuroscan Colombia'};
 
-            case {14, '14', 'nvx136-Russia(2013)'}
+            case {14, '14', 'nvx136-Russia_2013'}
                 reRefBatch={nomenclatura_batch, 'nvx136 Russia'};
 
             otherwise

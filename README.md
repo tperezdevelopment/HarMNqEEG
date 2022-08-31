@@ -153,16 +153,16 @@ The toolbox also contains the definition of the Harmonized qEEG derivatives for 
                     <li> 2:  BrainAmp_DC-Chengdu_2014</li>
                     <li> 3:  BrainAmp_MR_plus_64C-Chongqing</li>
                     <li> 4:  BrainAmp_MR_plus-Germany_2013</li>
-                    <li> 5:  DEDAAS-Barbados1978</li>
+                    <li> 5:  DEDAAS-Barbados_1978</li>
                     <li> 6:  DEDAAS-NewYork_1970s</li>
-                    <li> 7:  EGI-256_HCGSN_Zurich(2017)-Swiss</li>
-                    <li> 8:  Medicid-3M-Cuba1990</li>
-                    <li> 9:  Medicid-4-Cuba2003</li>
+                    <li> 7:  EGI-256_HCGSN_Zurich_2017-Swiss</li>
+                    <li> 8:  Medicid-3M-Cuba_1990</li>
+                    <li> 9:  Medicid-4-Cuba_2003</li>
                     <li> 10: Medicid_128Ch-CHBMP</li>
-                    <li> 11: NihonKohden-Bern(1980)_Swiss</li>
+                    <li> 11: NihonKohden-Bern_1980_Swiss</li>
                     <li> 12: actiCHamp_Russia_2013</li>
                     <li> 13: Neuroscan_synamps_2-Colombia</li>
-                    <li> 14: nvx136-Russia(2013)</li>
+                    <li> 14: nvx136-Russia_2013</li>
 	   </ul>							
 </li>
 </ul>
