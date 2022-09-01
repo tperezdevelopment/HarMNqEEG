@@ -3,6 +3,8 @@
 <a href="https://globalbrainconsortium.org/" target="_blank"><img width="30%" src="https://globalbrainconsortium.org/images/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
 
     Original code Author: Ying Wang, Min Li
+    Project leader:       Pedro Antonio Valdes-Sosa 
+    Researchers:           Jorge F. Bosch-Bayard, Lidice Galan Garcia  
     Cbrain Tool Author:   Eng. Tania Perez Ramirez <tperezdevelopment@gmail.com>
     Copyright(c):         2022 Ying Wang, yingwangrigel@gmail.com,
                           Min Li, minli.231314@gmail.com
