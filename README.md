@@ -10,7 +10,7 @@
 
 
 
-[![DOI](https://zenodo.org/badge/511590067.svg)](https://zenodo.org/badge/latestdoi/511590067)
+<a href="https://doi.org/10.5281/zenodo.7017243"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7017243.svg" alt="DOI"></a>
 
 <h2 dir="auto">Reference Paper</h2>
 
