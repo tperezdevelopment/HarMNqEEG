@@ -6,7 +6,7 @@ if exist(fullfile(filepath, 'eeg'),'dir')
    HarMNqEEG_calculate_bids_level_eeg(filepath, typeLog, all_data, batch_correction, outputFolder_path, generate_cross_spectra, optional_matrix); 
 else
     subFolders = dir(fullfile(filepath, 'ses-*'));
-   if ~empty(subFolders)
+   if ~isempty(subFolders)
     for iFold = 1:length(subFolders)
         if ~exist(fullfile(filepath, subFolders(iFold).name, 'eeg'), 'dir')
             error(['Check the data for '  subFolders(iFold).name ' from '  data_code ' this must be contain the eeg folder']);
