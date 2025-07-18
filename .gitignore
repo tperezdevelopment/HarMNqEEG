@@ -6,6 +6,7 @@
 test_bosch.m
 
 /example_data/raw_data_table_Bosch.mat
+/example_data/test_Lidice
 
 # misc
 *.asv

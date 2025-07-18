@@ -25,7 +25,11 @@ end
 %% Get the metada
 try
     all_data.reference=char(metadata_table.reference(pos));
-    all_data.age=str2double(strrep(cell2mat(metadata_table.age(pos)),',','.'));
+    if iscell(metadata_table.age(pos))
+        all_data.age=str2double(strrep(cell2mat(metadata_table.age(pos)),',','.'));
+    else %%is double
+       all_data.age=metadata_table.age(pos);
+    end   
     if isempty(metadata_table.sex(pos))
         all_data.sex={'U'};
     else
