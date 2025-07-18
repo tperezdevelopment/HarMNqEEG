@@ -1,6 +1,6 @@
 # HarMNqEEG Toolbox
 <h4>Global EEG Normative Project</h4>
-<a href="https://globalbrainconsortium.org/" target="_blank"><img width="30%" src="./harmnqeeg_readme_folder/gbc-logo.png" alt="Global Brain Consortium Homepage Link"></a>
+<a href="https://globalbrainconsortium.org/" target="_blank"><img width="30%" src="./harmnqeeg_readme_folder/gbc-logo_white_background.png" alt="Global Brain Consortium Homepage Link"></a>
 
     Original code Author: Ying Wang, Min Li
     Project leader:       Pedro Antonio Valdes-Sosa 
